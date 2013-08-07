@@ -12,7 +12,17 @@ img {
 	vertical-align: top;
 }
 
-/* FONTS */
+/* ----------------------------------------------------------------------------------------------------------------------
+   BASIC STYLES
+   --------------------------------------------------------------------------------------------------------------------*/
+.aright {
+	text-align: right !important;
+}
+
+
+/* ----------------------------------------------------------------------------------------------------------------------
+   FONTS 
+   --------------------------------------------------------------------------------------------------------------------*/
 
 @font-face {
     font-family: 'oswaldbold';
@@ -134,7 +144,9 @@ header {
 		margin: 0 auto;
 	}
 
-/* CENTRO */
+/* ----------------------------------------------------------------------------------------------------------------------
+   CENTRO 
+   --------------------------------------------------------------------------------------------------------------------*/
 .wrapper {
 	width: 980px;
 	margin: 0 auto;
@@ -242,7 +254,9 @@ header {
 	color: #444;
 }
 
-/* COLORES DE BILLETES */
+/* ----------------------------------------------------------------------------------------------------------------------
+   COLORES DE BILLETES 
+   --------------------------------------------------------------------------------------------------------------------*/
 .color-mil {
 	color: #92ab47;
 }
@@ -263,7 +277,9 @@ header {
 	color: #de814f;
 }
 
-/* FONDOS BILLETES */
+/* ----------------------------------------------------------------------------------------------------------------------
+   FONDOS DE BILLETES 
+   --------------------------------------------------------------------------------------------------------------------*/
 .bg-mil {
 	background: url(../img/billete_mil.png) no-repeat 95% 10px;
 }
@@ -288,7 +304,9 @@ header {
 	background: url(../img/cheque.png) no-repeat 95% 10px;
 }
 
-/* CENTRO ULTIMOS AVISOS */
+/* ----------------------------------------------------------------------------------------------------------------------
+   ULTIMOS AVISOS (HOME) 
+   --------------------------------------------------------------------------------------------------------------------*/
 .controls-wrapper {
 	float: left;
 	width: 100%;
@@ -355,7 +373,9 @@ header {
 	padding: 8px 0 0 11px;
 }
 
-/* AVISOS  */
+/* ----------------------------------------------------------------------------------------------------------------------
+   AVISOS 
+   --------------------------------------------------------------------------------------------------------------------*/
 
 .advice {
 	float: left;
@@ -445,9 +465,9 @@ header {
 		padding: 5px 10px 0 0;
 	}
 
-/* DESPLIEGUE */
-
-
+/* ----------------------------------------------------------------------------------------------------------------------
+   DESPLIEGUE 
+   --------------------------------------------------------------------------------------------------------------------*/
 .logo_mepagas_despliegue {
 	width: 266px;
 	padding: 0 0 0 36px;
@@ -975,10 +995,9 @@ header {
 	text-decoration: none;
 }
 
-
-
-/* FOOTER */
-
+/* ----------------------------------------------------------------------------------------------------------------------
+   FOOTER 
+   --------------------------------------------------------------------------------------------------------------------*/
 footer {
 	background: -moz-linear-gradient(top,  rgba(243,243,243,0) 0%, rgba(243,243,243,0.65) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(243,243,243,0)), color-stop(100%,rgba(243,243,243,0.65))); /* Chrome,Safari4+ */
@@ -1002,3 +1021,94 @@ footer {
 	margin: 0 auto;
 	color: #545454;
 }
+
+
+/* ----------------------------------------------------------------------------------------------------------------------
+   PUBLICADOR 
+   --------------------------------------------------------------------------------------------------------------------*/
+
+.publish {
+	padding: 10px;
+	padding-left: 30px;
+}
+
+	.publish h1 {
+		text-align: right;
+		font-family: 'bree_serifregular', Arial, sans-serif ;
+		font-size: 28px;
+		font-weight: normal;
+		color: #444;
+		margin-right: 5%;
+	}
+
+	.publish form {
+		margin-top: 30px !important;
+		font-size: 16px;
+		width: 60%;
+		margin: auto;
+	}
+
+	.publish .row {
+		margin-bottom: 20px;
+		width: 100%;
+	}
+
+	.publish input, .publish select, .publish textarea {
+		padding: 5px;
+		font-size: 16px;
+		border: 1px solid #CCC;
+		border-radius: 5px;
+		width: 390px;
+		background: #ffffff;
+		background-image: -webkit-linear-gradient(-90deg, #eee 0%, #fff 25%);
+		background-image: -moz-linear-gradient(-90deg, #eee 0%, #fff 25%);
+		background-image: -ms-linear-gradient(-90deg, #eee 0%, #fff 25%);
+		background-image: -o-linear-gradient(-90deg, #eee 0%, #fff 25%);
+		background-image: linear-gradient(180deg, #eee 0%, #fff 25%);
+	}
+
+	.publish label {
+		width: 20%;
+		display: inline-block;
+		vertical-align: top;
+	}
+
+		.publish label[for="titulo"] {
+			width: 5%;
+			text-align: center;
+		}
+
+	.publish #precio {
+    	width: 100px;
+	}
+	.publish #titulo {
+	    width: 250px;
+	}
+
+	.publish #categorias {
+	    width: 400px;
+	}
+
+	.publish label[for="acepto"] {
+	    width: 310px;
+	}
+
+	.publish #acepto {
+	    width: 30px;
+	}
+
+	.publish #descripcion {
+	    height: 150px;
+	    font-family: Arial;
+	}
+
+	.publish #subir {
+		width: 100px;
+		padding: 10px;
+	}
+
+
+
+/* ----------------------------------------------------------------------------------------------------------------------
+   FICHA USUARIO 
+   --------------------------------------------------------------------------------------------------------------------*/

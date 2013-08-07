@@ -1,12 +1,11 @@
 <?php
-$uri = $_SERVER['REQUEST_URI'];
-
-switch ($uri) {
-	case '/publica-tu-pituto':
+$mod = $_GET['mod'];
+switch ($mod) {
+	case 'publica-tu-pituto':
 		include("includes/publish.php");
 		break;
 
-	case '/':
+	case '':
 		include("includes/search.php");
 		break;
 	

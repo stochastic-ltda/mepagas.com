@@ -1,6 +1,11 @@
-RewriteEngine On
+RewriteEngine on
 RewriteBase /
 
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.php [L]
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+
+
+RewriteRule ^([A-Za-z0-9-]+)/?$   index.php?mod=$1 [NC,L]
+#RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/?$   index.php?mod=$1&name=$2
