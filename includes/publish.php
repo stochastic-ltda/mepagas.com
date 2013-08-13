@@ -1,3 +1,9 @@
+<script type="text/javascript" src="/includes/javascripts/wysihtml5/parser_rules/advanced.js"></script>
+<script src="/includes/javascripts/wysihtml5/dist/wysihtml5-0.3.0.min.js"></script>
+<script type="text/javascript" src="/includes/javascripts/chosen/chosen.jquery.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/includes/javascripts/chosen/chosen.min.css">
+
 <div class="publish">
 	<h1>Publica tu pituto</h1>
 
@@ -142,12 +148,24 @@
 
 		<div class="row">
 			<label for="descripcion">Descripción</label>
-			<textarea name="descripcion" id="descripcion"></textarea>
+
+			<!-- // Wysihtml5 Toolbar -->
+			<div id="toolbar" style="display: none;">
+				<a data-wysihtml5-command="bold" id="bold" class="btn"></a>
+				<a data-wysihtml5-command="italic" id="italic" class="btn"></a>
+				<a data-wysihtml5-command="underline" id="underline" class="btn"></a>
+				<a data-wysihtml5-command="insertOrderedList" id="insertOrderedList" class="btn"></a>
+				<a data-wysihtml5-command="insertUnorderedList" id="insertUnorderedList" class="btn last"></a>
+			</div>
+
+			<textarea name="descripcion" id="descripcion" placeholder="Ingresa una descripción ..."></textarea>
 		</div>
 
 		<div class="row"> 
 			<label for="cobertura">Cobertura de servicio</label> 
-			<input type="text" name="cobertura" id="cobertura">
+			<select name="cobertura" id="cobertura" multiple="multiple">
+				
+			</select>
 		</div>
 
 		<div class="row">
@@ -165,3 +183,24 @@
 		</div>
 	</form>
 </div>
+
+
+<script>
+
+$(document).ready(function(){
+
+	// WYISHTML5 Editor
+	var editor = new wysihtml5.Editor("descripcion", { // id of textarea element
+		toolbar:      "toolbar", // id of toolbar element
+		parserRules:  wysihtml5ParserRules, // defined in parser rules set 
+		stylesheets: ["/includes/javascripts/wysihtml5/website/css/stylesheet.css", "/includes/javascripts/wysihtml5/website/css/editor.css"]
+	});
+
+	// CHOSEN List
+	$('#cobertura').chosen({
+			no_results_text: "Localidad no encontrada",
+			placeholder_text_multiple: "Selecciona una localidad"
+		});
+});
+	
+</script>

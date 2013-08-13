@@ -4,6 +4,8 @@
 	<meta charset="utf-8">
 	<title>MePagas.com - Gana dinero publicando GRATIS tu pituto.</title>
 	<link rel="stylesheet" href="/assets/css/style.css"/>
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 </head>
 <body>
 	
