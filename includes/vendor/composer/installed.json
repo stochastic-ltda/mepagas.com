@@ -1,0 +1,60 @@
+[
+    {
+        "name": "ruflin/elastica",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ruflin/Elastica.git",
+            "reference": "e600c3e2520ff550b927464a762e482cd0d225c4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ruflin/Elastica/zipball/e600c3e2520ff550b927464a762e482cd0d225c4",
+            "reference": "e600c3e2520ff550b927464a762e482cd0d225c4",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "munkie/elasticsearch-thrift-php": "1.4.*",
+            "psr/log": "~1.0"
+        },
+        "suggest": {
+            "monolog/monolog": "Logging request",
+            "munkie/elasticsearch-thrift-php": "Allow using thrift transport",
+            "psr/log": "for logging"
+        },
+        "time": "2013-08-08 08:36:24",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.20.5.x-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Elastica": "lib/",
+                "Elastica\\Test": "test/lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache 2.0"
+        ],
+        "authors": [
+            {
+                "name": "Nicolas Ruflin",
+                "homepage": "http://ruflin.com/"
+            }
+        ],
+        "description": "Elasticsearch Client",
+        "homepage": "http://ruflin.github.com/Elastica/",
+        "keywords": [
+            "client",
+            "search"
+        ]
+    }
+]

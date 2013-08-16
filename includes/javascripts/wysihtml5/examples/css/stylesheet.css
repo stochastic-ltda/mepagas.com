@@ -127,3 +127,8 @@
 .wysiwyg-clear-left {
   clear: left;
 }
+
+
+.wysihtml5-editor {
+width: 100% !important;
+}

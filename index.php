@@ -1,3 +1,8 @@
+<?php 
+include(dirname(__FILE__) . '/config.php'); 
+$config = new Config();
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,6 +11,7 @@
 	<link rel="stylesheet" href="/assets/css/style.css"/>
 	
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="/assets/js/functions.js"></script>
 </head>
 <body>
 	

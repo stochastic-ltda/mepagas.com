@@ -1,3 +1,16 @@
+<?php
+
+if (!class_exists('LocalidadMapper')) { include( dirname(__FILE__) . '/classes/Mappers/LocalidadMapper.php'); }
+if (!class_exists('PrecioMapper')) { include( dirname(__FILE__) . '/classes/Mappers/PrecioMapper.php'); }
+
+$localidadMapper = new LocalidadMapper();
+$localidades = $localidadMapper->getAll();
+
+$precioMapper = new PrecioMapper;
+$precios = $precioMapper->getAll();
+
+?>
+
 <script type="text/javascript" src="/includes/javascripts/wysihtml5/parser_rules/advanced.js"></script>
 <script src="/includes/javascripts/wysihtml5/dist/wysihtml5-0.3.0.min.js"></script>
 <script type="text/javascript" src="/includes/javascripts/chosen/chosen.jquery.min.js"></script>
@@ -7,22 +20,31 @@
 <div class="publish">
 	<h1>Publica tu pituto</h1>
 
-	<form method="post" action="">
+	<form method="post" action="" onsubmit="return false;">
 		<div class="row">
-			<label for="precio">Me pagas</label>
+
+			<!-- // Tipo de aviso -->
+			<select name="tipo" id="tipo">
+				<option value="Me pagas">Me pagas</option>
+				<option value="Te pago">Te pago</option>
+			</select>
+
+			<!-- // Precio -->
 			<select name="precio" id="precio">
 				<option value="">$ precio</option>
-				<option value="1000">$ 1.000</option>
-				<option value="2000">$ 2.000</option>
-				<option value="5000">$ 5.000</option>
-				<option value="10000">$ 10.000</option>
-				<option value="20000">$ 20.000</option>
+				<? foreach($precios as $p): ?>
+					<option value="<?=$p->get('valor')?>"><?=$p->get('nombre');?></option>
+				<? endforeach; ?>				
 			</select>
+
+			<!-- // Titulo -->
 			<label for="titulo"> y </label> 
 			<input type="text" name="titulo" id="titulo" placeholder="Ej: te paseo el perro">
 		</div>
 
 		<div class="row">
+			<!-- // Listado de categorias -->
+			<!-- TODO: Pasar las categorias a base de datos -->
 			<label for="categorias">Categorías </label> 
 			<select name="categorias" id="categorias">
 				<option value="">Selecciona una categoría</option>
@@ -147,6 +169,8 @@
 		</div>
 
 		<div class="row">
+
+			<!-- // Descripcion -->
 			<label for="descripcion">Descripción</label>
 
 			<!-- // Wysihtml5 Toolbar -->
@@ -162,18 +186,27 @@
 		</div>
 
 		<div class="row"> 
+			<!-- // Cobertura del servicio -->
+			<!-- TODO: Agregar las regiones y todo chile al listado de localidades -->
+			<!-- TODO: Agregar icono informativo con explicacion de regiones y todo chile -->
 			<label for="cobertura">Cobertura de servicio</label> 
 			<select name="cobertura" id="cobertura" multiple="multiple">
-				
+				<? foreach($localidades as $loc): ?>
+					<option value="<?=utf8_encode($loc->get('nombre'))?>"><?=utf8_encode($loc->get('nombre'))?></option>
+				<? endforeach; ?>
 			</select>
 		</div>
 
 		<div class="row">
+			<!-- // Imagenes -->
 			<label for="imagenes">Imágenes</label> 
-			<input type="file" name="imagenes" id="imagenes">
+			<input type="file" name="imagenes[]" id="imagenes" multiple="multiple" onchange="imgselected();">
+
+			<div class="imagenes-zone"></div>
 		</div>
 
 		<div class="row aright">
+			<!-- // Terminos y condiciones de uso -->
 			<input type="checkbox" name="acepto" id="acepto"> 
 			<label for="acepto">Acepto los Términos y Condiciones de uso</label>
 		</div>
@@ -184,6 +217,9 @@
 	</form>
 </div>
 
+<div id="load-image-template" style="display:none;">
+	<div id="load-image"><img src="/assets/img/loader.gif"> <p>Cargando imagen...</p></div>
+</div>
 
 <script>
 
@@ -198,9 +234,14 @@ $(document).ready(function(){
 
 	// CHOSEN List
 	$('#cobertura').chosen({
-			no_results_text: "Localidad no encontrada",
-			placeholder_text_multiple: "Selecciona una localidad"
-		});
+		no_results_text: "Localidad no encontrada",
+		placeholder_text_multiple: "Selecciona una localidad"
+	});
+
+	$('#subir').on('click', function() {
+		processAviso();
+	});
+
 });
 	
 </script>

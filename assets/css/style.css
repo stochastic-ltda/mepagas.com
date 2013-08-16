@@ -19,6 +19,24 @@ img {
 	text-align: right !important;
 }
 
+.row {
+margin-bottom: 20px;
+width: 100%;
+}
+
+input, select, textarea {
+	padding: 5px;
+	font-size: 16px;
+	border: 1px solid #CCC;
+	border-radius: 5px;
+	background: #ffffff;
+	background-image: -webkit-linear-gradient(-90deg, #eee 0%, #fff 25%);
+	background-image: -moz-linear-gradient(-90deg, #eee 0%, #fff 25%);
+	background-image: -ms-linear-gradient(-90deg, #eee 0%, #fff 25%);
+	background-image: -o-linear-gradient(-90deg, #eee 0%, #fff 25%);
+	background-image: linear-gradient(180deg, #eee 0%, #fff 25%);
+}
+
 
 /* ----------------------------------------------------------------------------------------------------------------------
    FONTS 
@@ -261,46 +279,46 @@ header {
 /* ----------------------------------------------------------------------------------------------------------------------
    COLORES DE BILLETES 
    --------------------------------------------------------------------------------------------------------------------*/
-.color-mil {
+.color-mil, .color-1000 {
 	color: #92ab47;
 }
 
-.color-2mil {
+.color-2mil, .color-2000 {
 	color: #8d5ec9;
 }
 
-.color-5mil {
+.color-5mil, .color-5000 {
 	color: #c94753;
 }
 
-.color-10mil {
+.color-10mil, .color-10000 {
 	color: #4a7fc1;
 }
 
-.color-20mil {
+.color-20mil, .color-20000 {
 	color: #de814f;
 }
 
 /* ----------------------------------------------------------------------------------------------------------------------
    FONDOS DE BILLETES 
    --------------------------------------------------------------------------------------------------------------------*/
-.bg-mil {
+.bg-1000  {
 	background: url(../img/billete_mil.png) no-repeat 95% 10px;
 }
 
-.bg-2mil {
+.bg-2000 {
 	background: url(../img/billete_2mil.png) no-repeat 95% 10px;
 }
 
-.bg-5mil {
+.bg-5000 {
 	background: url(../img/billete_5mil.png) no-repeat 95% 10px;
 }
 
-.bg-10mil {
+.bg-10000 {
 	background: url(../img/billete_10mil.png) no-repeat 95% 10px;
 }
 
-.bg-20mil {
+.bg-20000 {
 	background: url(../img/billete_20mil.png) no-repeat 95% 10px;
 }
 
@@ -381,32 +399,32 @@ header {
    AVISOS 
    --------------------------------------------------------------------------------------------------------------------*/
 
-.advice {
+.aviso {
 	float: left;
 	width: 100%;
 	padding-bottom: 40px;
 }
 
-.advice .thumb {
+.aviso .thumb {
 	float: left;
 	width: 204px;
 	border: 5px solid #a2a2a2;
 	margin-right: 23px;
 }
 
-	.advice .text {
+	.aviso .text {
 		float: left;
 	}
 
-	.advice .no-image {
+	.aviso .no-image {
 		width: 100%;
 	}
 
-	.advice .si-image {
+	.aviso .si-image {
 		width: 66%;
 	}
 
-	.advice .text h1 {
+	.aviso .text h1 {
 		font-family: 'bree_serifregular', Arial, sans-serif ;
 		font-size: 20px;
 		font-weight: normal;
@@ -414,23 +432,23 @@ header {
 		padding: 0 0 4px 0;
 	}
 
-	.advice .text p {
+	.aviso .text p {
 		line-height: 18px;
 		color: #545454;
 	}
 
-	.advice .text h1 a {
+	.aviso .text h1 a {
 		color: #444;
 	}
 
-	.advice .price {
+	.aviso .price {
 		float: left;
 		width: 100%;
 		height: 36px;
 		background: url(../img/f_lin_pre.jpg) repeat-x 0 20px;
 	}
 
-	.advice .price-bill {
+	.aviso .price-bill {
 		float: right;
 		width: 110px;
 		height: 33px;
@@ -444,27 +462,27 @@ header {
 		text-align: right;
 	}
 
-	.advice .bg-mil {
+	.aviso .bg-1000 {
 		background: url(../img/billete_mil.png) no-repeat 10px 9px #fff;
 		padding: 5px 10px 0 0;
 	}
 
-	.advice .bg-2mil {
+	.aviso .bg-2000 {
 		background: url(../img/billete_2mil.png) no-repeat 10px 9px #fff;
 		padding: 5px 10px 0 0;
 	}
 
-	.advice .bg-5mil {
+	.aviso .bg-5000 {
 		background: url(../img/billete_5mil.png) no-repeat 10px 9px #fff;
 		padding: 5px 10px 0 0;
 	}
 
-	.advice .bg-10mil {
+	.aviso .bg-10000 {
 		background: url(../img/billete_10mil.png) no-repeat 10px 9px #fff;
 		padding: 5px 10px 0 0;
 	}
 
-	.advice .bg-20mil {
+	.aviso .bg-20000 {
 		background: url(../img/billete_20mil.png) no-repeat 10px 9px #fff;
 		padding: 5px 10px 0 0;
 	}
@@ -1052,66 +1070,57 @@ footer {
 		margin: auto;
 	}
 
-	.publish .row {
-		margin-bottom: 20px;
-		width: 100%;
-	}
-
-	.publish input, .publish select, .publish textarea {
-		padding: 5px;
-		font-size: 16px;
-		border: 1px solid #CCC;
-		border-radius: 5px;
-		width: 390px;
-		background: #ffffff;
-		background-image: -webkit-linear-gradient(-90deg, #eee 0%, #fff 25%);
-		background-image: -moz-linear-gradient(-90deg, #eee 0%, #fff 25%);
-		background-image: -ms-linear-gradient(-90deg, #eee 0%, #fff 25%);
-		background-image: -o-linear-gradient(-90deg, #eee 0%, #fff 25%);
-		background-image: linear-gradient(180deg, #eee 0%, #fff 25%);
-	}
-
-	.publish label {
-		width: 20%;
-		display: inline-block;
-		vertical-align: top;
-	}
-
-		.publish label[for="titulo"] {
-			width: 5%;
-			text-align: center;
-		}
-
-	.publish #precio {
-    	width: 100px;
-	}
-	.publish #titulo {
-	    width: 250px;
-	}
-
-	.publish #categorias {
-	    width: 400px;
-	}
-
-	.publish label[for="acepto"] {
-	    width: 310px;
-	}
-
-	.publish #acepto {
-	    width: 30px;
-	}
-
 	.publish #descripcion {
 	    height: 150px;
 	    font-family: Arial;
 	}
 
-	.publish #subir {
-		width: 100px;
-		padding: 10px;
+	#cobertura_chosen {
+	font-size: 16px;
 	}
 
+	.publish .imagenes-zone {
+		border: 1px solid #CCC;
+		margin: 10px;
+		padding: 5px;
+		width: 100%;
+	}
 
+	.publish .image-thumb {
+	    width: 150px;
+	    height: 100px;
+	    overflow: hidden !important;
+	    display: inline-block;
+	    margin: 5px;
+	}
+
+	.publish .image-thumb img {
+	    width: 150px;
+	}
+
+	.publish .trash img {
+    	width: 32px !important;
+	}
+
+	.publish .trash {
+	    position: absolute;
+	    margin-left: 119px;
+	    margin-top: -2px;
+	    cursor: pointer;
+	}
+
+	#load-image {
+		width: 130px;
+		text-align: center;
+		padding: 10px;
+		font-size: 11px;
+		color: #666;
+		margin: 15px auto
+	}
+
+	#load-image p {
+		margin-top: 5px;
+	}
 
 
 /* ----------------------------------------------------------------------------------------------------------------------

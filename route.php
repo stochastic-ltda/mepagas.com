@@ -1,17 +1,24 @@
 <?php
-$mod = $_GET['mod'];
-switch ($mod) {
-	case 'publica-tu-pituto':
-		include("includes/publish.php");
-		break;
 
-	case '':
-		include("includes/search.php");
-		break;
-	
-	default:
-		// logica despliegue
-		break;
+if(isset($_GET['mod'])) {
+
+	$mod = $_GET['mod'];
+	switch ($mod) {
+		
+		case 'publica-tu-pituto':
+			include("includes/publish.php");
+			break;
+
+		default:
+			include("includes/search_controller.php");
+			include("includes/search_view.php");
+			break;
+		
+	}
+
+} else {
+	include("includes/search_controller.php");
+	include("includes/search_view.php");
 }
 
 ?>
