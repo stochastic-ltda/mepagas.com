@@ -8,17 +8,16 @@ $elastic = new Elasticsearch("avisos");
 try {
 
 	$index = $elastic->createIndex(array());
-
 	$mapping = array(
 			'precio' => array('type' => 'integer'),
 			'categoria' => array('type' => 'string', 'index' => 'not_analyzed')
 		);
 	$elastic->createType('aviso', $mapping);
-
-
+	
 } catch(Exception $e) {
 	echo "<p>Ha ocurrido un error al crear el indice:</p>";
 	echo "<pre>$e</pre>";
 }
+
 
 ?>
