@@ -5,6 +5,7 @@ class Elasticsearch {
 
 	protected $_client;
 	protected $_index;
+	protected $_type;
 
 	protected $_results;
 	protected $_facets;
@@ -144,13 +145,27 @@ class Elasticsearch {
 	/**
 	 * Crear indice
 	 *
-	 * @param string name Nombre del indice
-	 * @param mixed def Definicion del indice
+	 * @param mixed indexDef Definicion del indice
 	 * @return Elastica\Index index Indice creado
 	 */
 	function createIndex($indexDef) {
 		$this->_index->create($indexDef);
 		return $this->_index;
+	}
+
+	/**
+	 * Crear tipo
+	 *
+	 * @param string typeName Nombre del tipo
+	 * @param mixed mappingArr Mapping properties
+	 */
+	function createType($typeName, $mappingArr) {
+		$this->_type = $this->_index->getType($typeName);
+
+		$mapping = new \Elastica\Type\Mapping();
+		$mapping->setType($this->_type);
+		$mapping->setProperties($mappingArr);
+		$mapping->send();
 	}
 
 	function insertDocument($typeName, $id,  $doc) {

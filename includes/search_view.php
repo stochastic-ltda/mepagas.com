@@ -15,27 +15,16 @@
 			<nav>
 				<ul>
 					<? foreach($facets['precio']['terms'] as $precio): ?>
+						<? $monto = $precio['term']; ?>
+						<? if($precio['term']>20000) $precio['term'] = 'cheque'; ?>
 						<li class="bg-<?=$precio['term']?>">
 							<a href="#">
-								Todo a <span class="color-<?=$precio['term']?>"><?=number_format($precio['term'],0,",",".")?></span> (<?=$precio['count']?>)
+								Todo a <span class="color-<?=$precio['term']?>"><?=number_format($monto,0,",",".")?></span> (<?=$precio['count']?>)
 							</a>
 						</li>
 					<? endforeach; ?>
 				</ul>
 			</nav>
-
-			<!--
-			<h2>Cheques</h2>
-			<nav>
-				<ul>
-					<li class="bg-cheque"><a href="#">Todo a 100.000</span></a></li>
-					<li class="bg-cheque"><a href="#">Todo a 250.000</span></a></li>
-					<li class="bg-cheque"><a href="#">Todo a 400.000</span></a></li>
-					<li class="bg-cheque"><a href="#">Todo a 550.000</span></a></li>
-					<li class="bg-cheque"><a href="#">Todo a 650.000</span></a></li>
-				</ul>
-			</nav>
-			-->
 
 			<h2>Categorías</h2>
 			<nav>
@@ -84,7 +73,7 @@
 					<h1><a href="#"><?=$r->__get('tipo')?> <span class="color-<?=$r->__get('precio')?>">$<?=number_format($r->__get('precio'),0,",",".")?></span> y <?=$r->__get('titulo')?></a></h1>
 					<p><?=substr(strip_tags($r->__get('descripcion')),0,150)?>...</p>
 					<span class="price">
-						<span class="price-bill bg-<?=$r->__get('precio')?>"><span class="color-<?=$r->__get('precio')?>"><?=number_format($r->__get('precio'),0,",",".")?></span></span>
+						<span class="price-bill bg-<?=($r->__get('precio')>20000)?'cheque':$r->__get('precio');?>"><span class="color-<?=$r->__get('precio')?>"><?=number_format($r->__get('precio'),0,",",".")?></span></span>
 					</span>
 				</div>
 
