@@ -13,7 +13,7 @@ class Elasticsearch {
 	function __construct($index=null){
 
 		if(!is_null($index)) {
-			$this->_client = new \Elastica\Client( array('host' => 'mepagas.dev','port' => 9200) );
+			$this->_client = new \Elastica\Client( array('host' => 'mepagas.com','port' => 9200) );
 			$this->_index = $this->_client->getIndex($index);
 		}
 	}
