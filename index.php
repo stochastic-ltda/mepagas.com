@@ -17,7 +17,7 @@ $config = new Config();
 	
 	<header>
 		<aside class="header-wrapper">
-			<div class="<?=($_SERVER['REQUEST_URI']!="/")?'logo-despliegue':'logo'?>">
+			<div class="logo">
 				<a href="/"><img src="/assets/img/logo.png"/></a>
 			</div>
 		</aside>
