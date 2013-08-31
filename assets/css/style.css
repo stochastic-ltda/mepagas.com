@@ -24,6 +24,14 @@ margin-bottom: 20px;
 width: 100%;
 }
 
+.midrow {
+	margin-bottom: 20px;
+	width: 50%;
+}
+
+.left { float: left; }
+.right { float: right; }
+
 input, select, textarea {
 	padding: 5px;
 	font-size: 16px;
@@ -35,6 +43,19 @@ input, select, textarea {
 	background-image: -ms-linear-gradient(-90deg, #eee 0%, #fff 25%);
 	background-image: -o-linear-gradient(-90deg, #eee 0%, #fff 25%);
 	background-image: linear-gradient(180deg, #eee 0%, #fff 25%);
+}
+
+.butn {
+	padding: 6px;
+	border: 1px solid #DDD;
+	border-radius: 5px;
+	background-color: #EEE;
+	cursor: pointer;
+}
+
+a.butn {
+	text-decoration: none !important;
+	line-height: 40px;
 }
 
 
@@ -142,6 +163,7 @@ header {
 	width: 980px;
 	height: 71px;
 	margin: 0 auto;
+	position: relative;
 
 	background: rgb(255,255,255); /* Old browsers */
 	background: -moz-linear-gradient(top,  rgba(255,255,255,1) 43%, rgba(243,243,243,1) 100%); /* FF3.6+ */
@@ -164,6 +186,44 @@ header {
 
 	.header-wrapper .logo-despliegue {
 		margin-left: 2%;
+	}
+
+	.header-wrapper .login-info {
+		top: 10px;
+		right: 10px;
+		position: absolute;
+		width: auto;
+	}
+
+	.login-info { text-align: right; }
+
+	.login-info img {
+	    float: left;
+	    margin-right: 4px;
+	    width: 50px;
+	}
+
+	#logout {
+	    text-decoration: underline;
+	    color: blue;
+	}
+	.login-info p {
+	    float: left;
+	    margin-top: 5px;
+	}
+
+	.header-login input {
+    font-size: 10px;
+	}
+	.header-login {
+	    float: left;
+	}
+	.fb-login-button {
+	    text-align: right;
+	}
+	.header-login .butn {
+	    padding: 4px;
+	    line-height: 30px;
 	}
 
 /* ----------------------------------------------------------------------------------------------------------------------
@@ -1055,12 +1115,10 @@ footer {
    --------------------------------------------------------------------------------------------------------------------*/
 
 .publish {
-	padding: 10px;
-	padding-left: 30px;
+	padding: 50px 5px 10px 30px;	
 }
 
 	.publish h1 {
-		text-align: right;
 		font-family: 'bree_serifregular', Arial, sans-serif ;
 		font-size: 28px;
 		font-weight: normal;
@@ -1069,10 +1127,9 @@ footer {
 	}
 
 	.publish form {
-		margin-top: 50px !important;
 		font-size: 16px;
-		width: 60%;
-		margin: auto;
+		width: 70%;
+		margin-top: 20px;
 	}
 
 	.publish #descripcion {
@@ -1084,8 +1141,27 @@ footer {
 	font-size: 16px;
 	}
 
+
+	.publish .aviso-wrapper {
+	    background-color: #DDE;
+	    width: 100%;
+	    padding: 30px;
+	    margin-bottom: 20px;
+	}
+
+	.publish .usuario-wrapper {
+	    background-color: #FC9;
+	    padding: 30px;
+	    width: 100%;
+	    margin-bottom: 20px;
+	}
+
+		.publish .usuario-wrapper label {
+			display: block;
+			font-size: 13px;
+		}
+
 	.publish .imagenes-zone {
-		border: 1px solid #CCC;
 		margin: 10px;
 		padding: 5px;
 		width: 100%;
@@ -1126,6 +1202,17 @@ footer {
 	#load-image p {
 		margin-top: 5px;
 	}
+
+	#usuario-registro, #usuario-logged, #user-enterprise-group { display: none; }
+
+.form-row {
+	margin: 10px 0px;
+}
+
+.smallfont {
+font-size: 12px;
+font-style: italic;
+}
 
 
 /* ----------------------------------------------------------------------------------------------------------------------

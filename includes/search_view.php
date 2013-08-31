@@ -10,21 +10,28 @@
 	<aside class="sidebar-wrapper">
 		
 		<div class="sidebar">
+			<!-- // Filtros -->
+			<? if(isset($term_precio) && !is_null($term_precio)): ?>
+				<nav><ul><li><a href="/<?=$term_categoria?>">[X] Precio: <?=$term_precio?></a></li></ul></nav>
+			<? endif; ?>
+
 			<!-- // Facets -->
-			<h2>Precios</h2>
-			<nav>
-				<ul>
-					<? foreach($facets['precio']['terms'] as $precio): ?>
-						<? $monto = $precio['term']; ?>
-						<? if($precio['term']>20000) $precio['term'] = 'cheque'; ?>
-						<li class="bg-<?=$precio['term']?>">
-							<a href="#">
-								Todo a <span class="color-<?=$precio['term']?>"><?=number_format($monto,0,",",".")?></span> (<?=$precio['count']?>)
-							</a>
-						</li>
-					<? endforeach; ?>
-				</ul>
-			</nav>
+			<? if(!isset($term_precio) || is_null($term_precio)): ?>
+				<h2>Precios</h2>
+				<nav>
+					<ul>					
+						<? foreach($facets['precio']['terms'] as $precio): ?>
+							<? $monto = $precio['term']; ?>
+							<? if($precio['term']>20000) $precio['term'] = 'cheque'; ?>
+							<li class="bg-<?=$precio['term']?>">
+								<a href="<?=$monto?>">
+									Todo a <span class="color-<?=$precio['term']?>"><?=number_format($monto,0,",",".")?></span> (<?=$precio['count']?>)
+								</a>
+							</li>
+						<? endforeach; ?>					
+					</ul>
+				</nav>
+			<? endif;?>
 
 			<h2>Categorías</h2>
 			<nav>
@@ -65,7 +72,7 @@
 
 				<? if(!is_null($r->__get('thumbnail'))): ?>
 					<div class="thumb">
-						<img src="/upload/<?=$r->__get('thumbnail')?>"/>
+						<img src="/upload/img/<?=$r->__get('thumbnail')?>"/>
 					</div>
 				<? endif; ?>
 
