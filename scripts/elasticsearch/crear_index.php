@@ -10,13 +10,13 @@ try {
 	$index = $elastic->createIndex(array());
 	$mapping = array(
 			'precio' => array('type' => 'integer'),
-			'categoria' => array('type' => 'string', 'index' => 'not_analyzed')
+			'categoria' => array('type' => 'string', 'index' => 'not_analyzed'),
+			'fecha_creacion' => array('type' => 'date', 'format' => 'yyyy-MM-dd HH:mm:ss')
 		);
 	$elastic->createType('aviso', $mapping);
-	
+
 } catch(Exception $e) {
-	echo "<p>Ha ocurrido un error al crear el indice:</p>";
-	echo "<pre>$e</pre>";
+	echo $e;
 }
 
 

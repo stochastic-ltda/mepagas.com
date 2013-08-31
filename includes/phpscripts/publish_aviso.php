@@ -3,6 +3,7 @@ if (!class_exists('Aviso')) { include( dirname(__FILE__) . '/../classes/Objects/
 if (!class_exists('AvisoMapper')) { include( dirname(__FILE__) . '/../classes/Mappers/AvisoMapper.php'); }
 
 $aviso = new Aviso();
+$aviso->set("id_usuario", $_POST['id_usuario']);
 $aviso->set("tipo", $_POST['tipo']);
 $aviso->set("precio", $_POST['precio']);
 $aviso->set("titulo", $_POST['titulo']);

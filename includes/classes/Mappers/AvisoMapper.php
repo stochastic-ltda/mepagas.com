@@ -10,7 +10,7 @@ class AvisoMapper {
 		$link = $mysql->connect();
 
 		// Insert aviso
-		$sql = "INSERT INTO aviso (id_usuario,tipo,precio,titulo,categoria,descripcion, publicado, fecha_creacion, fecha_modificacion) VALUES (1,'".$aviso->get('tipo')."','".$aviso->get('precio')."','".$aviso->get('titulo')."','".$aviso->get('categoria')."','".$aviso->get('descripcion')."', 0, now(), now())";
+		$sql = "INSERT INTO aviso (id_usuario,tipo,precio,titulo,categoria,descripcion, publicado, fecha_creacion, fecha_modificacion) VALUES ('".$aviso->get('id_usuario')."','".$aviso->get('tipo')."','".$aviso->get('precio')."','".$aviso->get('titulo')."','".$aviso->get('categoria')."','".$aviso->get('descripcion')."', 0, now(), now())";
 		$res = mysql_query($sql) or die(mysql_error());		
 
 		$id = mysql_insert_id();

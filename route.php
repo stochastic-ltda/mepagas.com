@@ -10,6 +10,10 @@ if(isset($_GET['mod'])) {
 			break;
 
 		default:
+			$term_precio = null;
+			$term_categoria = null;			
+			if(is_numeric($mod)) $term_precio = $mod;
+			
 			include("includes/search_controller.php");
 			include("includes/search_view.php");
 			break;
