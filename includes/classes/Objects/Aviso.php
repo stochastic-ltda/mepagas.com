@@ -9,6 +9,7 @@ class Aviso {
 			'precio' => null,
 			'titulo' => null,
 			'categoria' => null,
+			'subcategoria' => null,
 			'descripcion' => null,
 			'localidades' => null,
 			'imagenes' => null

@@ -1,3 +1,8 @@
+<?php
+if (!class_exists('CategoriaMapper')) { include( dirname(__FILE__) . '/classes/Mappers/CategoriaMapper.php'); }
+if (!class_exists('SubcategoriaMapper')) { include( dirname(__FILE__) . '/classes/Mappers/SubcategoriaMapper.php'); }
+?>
+
 <div class="publish-zone">
 	<h1>En Mepagas.com gana dinero publicando <span class="gratis">GRATIS</span> TU PITUTO</h1> 
 	<div class="text">
@@ -11,20 +16,35 @@
 		
 		<div class="sidebar">
 			<!-- // Filtros -->
-			<? if(isset($term_precio) && !is_null($term_precio)): ?>
-				<nav><ul><li><a href="/<?=$term_categoria?>">[X] Precio: <?=$term_precio?></a></li></ul></nav>
-			<? endif; ?>
+			<nav><ul>
+
+				<? if(isset($term_precio) && !is_null($term_precio)): ?>
+					<? $url = (isset($term_subcategoria)) ? "/".$term_categoria."/".$term_subcategoria : "/".$term_categoria; ?>
+					<li><a href="<?=$url?>">[X] Precio: <?=$term_precio?></a></li>
+				<? endif; ?>
+
+				<? if(isset($term_categoria) && !is_null($term_categoria)): ?>
+					<li><a href="/<?=$term_precio?>">[X] Categoria: <?=$term_categoria?></a></li>
+				<? endif; ?>
+
+				<? if(isset($term_subcategoria) && !is_null($term_subcategoria)): ?>
+					<li><a href="/<?=$term_precio?>/<?=$term_categoria?>">[X] Subcategoria: <?=$term_subcategoria?></a></li>
+				<? endif; ?>
+
+			</ul></nav>
 
 			<!-- // Facets -->
 			<? if(!isset($term_precio) || is_null($term_precio)): ?>
 				<h2>Precios</h2>
 				<nav>
-					<ul>					
+					<ul>		
+						<? $url = (isset($term_subcategoria)) ? "/".$term_categoria."/".$term_subcategoria : "/".$term_categoria; ?>
+
 						<? foreach($facets['precio']['terms'] as $precio): ?>
 							<? $monto = $precio['term']; ?>
-							<? if($precio['term']>20000) $precio['term'] = 'cheque'; ?>
+							<? if($precio['term']>20000) $precio['term'] = 'cheque'; ?>							
 							<li class="bg-<?=$precio['term']?>">
-								<a href="<?=$monto?>">
+								<a href="/<?=$monto?><?=$url?>">
 									Todo a <span class="color-<?=$precio['term']?>"><?=number_format($monto,0,",",".")?></span> (<?=$precio['count']?>)
 								</a>
 							</li>
@@ -33,14 +53,29 @@
 				</nav>
 			<? endif;?>
 
-			<h2>Categorías</h2>
-			<nav>
-				<ul>
-					<? foreach($facets['categoria']['terms'] as $cat): ?>
-						<li><a href="#"><?=$cat['term']?></span> (<?=$cat['count']?>)</a></li>
-					<? endforeach; ?>
-				</ul>
-			</nav>
+			<? if(!isset($term_categoria) || is_null($term_categoria)): ?>
+				<h2>Categorías</h2>
+				<nav>
+					<ul>
+						<? $base_cat_url = (isset($term_precio)) ? '/'.$term_precio.'/':'/';  ?>
+						<? foreach($facets['categoria']['terms'] as $cat): ?>
+							<li><a href="<?=$base_cat_url . CategoriaMapper::getPermalinkByNombre($cat['term'])?>"><?=$cat['term']?></span> (<?=$cat['count']?>)</a></li>
+						<? endforeach; ?>
+					</ul>
+				</nav>
+			<? endif; ?>
+
+			<? if(isset($term_categoria) && !is_null($term_categoria)): ?>
+				<h2>Sub Categorías</h2>
+				<nav>
+					<ul>
+						<? $base_subcat_url = (isset($term_precio)) ? '/'.$term_precio.'/'.$term_categoria.'/':'/'.$term_categoria.'/';  ?>
+						<? foreach($facets['subcategoria']['terms'] as $cat): ?>
+							<li><a href="<?=$base_subcat_url. SubcategoriaMapper::getPermalinkByNombre(utf8_decode($cat['term']))?>""><?=$cat['term']?></span> (<?=$cat['count']?>)</a></li>
+						<? endforeach; ?>
+					</ul>
+				</nav>
+			<? endif; ?>
 		</div>
 
 	</aside>

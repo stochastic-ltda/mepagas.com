@@ -11,6 +11,7 @@ try {
 	$mapping = array(
 			'precio' => array('type' => 'integer'),
 			'categoria' => array('type' => 'string', 'index' => 'not_analyzed'),
+			'subcategoria' => array('type' => 'string', 'index' => 'not_analyzed'),
 			'fecha_creacion' => array('type' => 'date', 'format' => 'yyyy-MM-dd HH:mm:ss')
 		);
 	$elastic->createType('aviso', $mapping);

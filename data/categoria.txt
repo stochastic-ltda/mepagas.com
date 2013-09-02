@@ -1,0 +1,23 @@
+INSERT INTO categoria (id, nombre) VALUES 
+('1', 'Belleza'),
+('2', 'Clases,Cursos y Capacitaciones'),
+('3', 'Fiestas y Eventos'),
+('4', 'Mantenimiento de Vehículos'),
+('5', 'Mantenimiento del Hogar'),
+('6', 'Otros Servicios'),
+('7', 'Profesionales'),
+('8', 'Recreación y Ocio'),
+('9', 'Servicio Técnico'),
+('10', 'Servicios de Traslado'),
+('11', 'Viajes y Turismo');
+
+update categoria set permalink = LCASE(nombre);
+update categoria set permalink = replace(permalink, 'ñ', 'n');
+update categoria set permalink = replace(permalink, 'á', 'a');
+update categoria set permalink = replace(permalink, 'é', 'e');
+update categoria set permalink = replace(permalink, 'í', 'i');
+update categoria set permalink = replace(permalink, 'ó', 'o');
+update categoria set permalink = replace(permalink, 'ú', 'u');
+update categoria set permalink = replace(permalink, '\'', '-');
+update categoria set permalink = replace(permalink, ' ', '-');
+update categoria set permalink = replace(permalink, ',', '-');

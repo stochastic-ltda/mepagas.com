@@ -8,6 +8,7 @@ $aviso->set("tipo", $_POST['tipo']);
 $aviso->set("precio", $_POST['precio']);
 $aviso->set("titulo", $_POST['titulo']);
 $aviso->set("categoria", $_POST['categoria']);
+$aviso->set("subcategoria", $_POST['subcategoria']);
 $aviso->set("descripcion", $_POST['descripcion']);
 $aviso->set("localidades", $_POST['localidades']);
 $aviso->set("imagenes", $_POST['imagenes']);

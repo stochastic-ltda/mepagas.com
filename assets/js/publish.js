@@ -202,6 +202,14 @@ function userdata() {
 }
 
 // ------------------------------------------------------------------------------------------
-// FORMULARIO DE INICIO DE SESION
+// CATEGORIAS
 // ------------------------------------------------------------------------------------------
 
+$('#categorias').on('change', function() {
+
+	var catID = $(this).val().split('||')[0];
+	$.post('/includes/phpscripts/publish_categorias.php', {id_categoria:catID}, function(data){
+		$('#subcategorias-wrapper').html(data);
+	});
+
+});

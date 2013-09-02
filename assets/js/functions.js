@@ -74,7 +74,8 @@ function processAviso() {
 	var tipo = $('#tipo').val();
 	var precio = $('#precio').val();
 	var titulo = $('#titulo').val();
-	var categoria = $('#categorias').val();
+	var categoria = $('#categorias').val().split("||")[1];
+	var subcategoria = $('#subcategorias').val();
 	var descripcion = $('#descripcion').val();
 	
 	var i=0;
@@ -100,7 +101,7 @@ function processAviso() {
 	// TODO: Validacion de campos
 
 	// Procesamiento de datos
-	$.post('/includes/phpscripts/publish_aviso.php', {id_usuario:id_usuario, tipo:tipo, precio:precio, titulo:titulo, categoria:categoria, descripcion:descripcion, localidades:localidades, imagenes:imagenes, acepto:acepto}, function(data) {
+	$.post('/includes/phpscripts/publish_aviso.php', {id_usuario:id_usuario, tipo:tipo, precio:precio, titulo:titulo, categoria:categoria, subcategoria:subcategoria, descripcion:descripcion, localidades:localidades, imagenes:imagenes, acepto:acepto}, function(data) {
 		
 		// TODO: Procesar posibles errores de carga en el aviso
 		alert("Su aviso ha sido publicado");

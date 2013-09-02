@@ -1,0 +1,1 @@
+ALTER TABLE  `aviso` ADD  `subcategoria` VARCHAR( 100 ) NOT NULL AFTER  `categoria`;
