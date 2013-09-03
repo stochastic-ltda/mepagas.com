@@ -12,7 +12,8 @@ class Aviso {
 			'subcategoria' => null,
 			'descripcion' => null,
 			'localidades' => null,
-			'imagenes' => null
+			'imagenes' => null,
+			'permalink' => null
 		);
 
 	public function set($field, $value) {

@@ -7,6 +7,6 @@ RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^.*$ - [NC,L]
 
 
-RewriteRule ^([A-Za-z0-9-]+)/?$   index.php?f1=$1 [NC,L]
-RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/?$   index.php?f1=$1&f2=$2
-RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/?$   index.php?f1=$1&f2=$2&f3=$3
+RewriteRule ^([A-Za-z0-9-]+)/?$   index.php?f1=$1 [QSA]
+RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/?$   index.php?f1=$1&f2=$2 [QSA]
+RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/?$   index.php?f1=$1&f2=$2&f3=$3 [QSA]

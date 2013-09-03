@@ -71,7 +71,7 @@ if (!class_exists('SubcategoriaMapper')) { include( dirname(__FILE__) . '/classe
 					<ul>
 						<? $base_subcat_url = (isset($term_precio)) ? '/'.$term_precio.'/'.$term_categoria.'/':'/'.$term_categoria.'/';  ?>
 						<? foreach($facets['subcategoria']['terms'] as $cat): ?>
-							<li><a href="<?=$base_subcat_url. SubcategoriaMapper::getPermalinkByNombre(utf8_decode($cat['term']))?>""><?=$cat['term']?></span> (<?=$cat['count']?>)</a></li>
+							<li><a href="<?=$base_subcat_url. SubcategoriaMapper::getPermalinkByNombre(utf8_decode($cat['term']))?>"><?=$cat['term']?></span> (<?=$cat['count']?>)</a></li>
 						<? endforeach; ?>
 					</ul>
 				</nav>
@@ -83,7 +83,7 @@ if (!class_exists('SubcategoriaMapper')) { include( dirname(__FILE__) . '/classe
 	<aside class="main">
 
 		<div class="controls-wrapper">
-			<h3>Últimos Avisos</h3>
+			<h3>Últimos Avisos (<?=$total?>)</h3>
 			<div class="controls">
 
 				<div class="display">
@@ -92,9 +92,12 @@ if (!class_exists('SubcategoriaMapper')) { include( dirname(__FILE__) . '/classe
 				</div>
 
 				<div class="order">
+					<? include('paginador.php'); ?>
+					<!--
 					<span class="orden">orden</span>
 					<span class="orden_arrb"><a href="#"><img src="/assets/img/flecha_arriba.png"/></a></span>
 					<span class="orden_pagina">12</span>
+					-->
 				</div>
 				
 			</div>
@@ -112,7 +115,7 @@ if (!class_exists('SubcategoriaMapper')) { include( dirname(__FILE__) . '/classe
 				<? endif; ?>
 
 				<div class="text <?=(!is_null($r->__get('thumbnail')))?'si':'no'?>-image">
-					<h1><a href="#"><?=$r->__get('tipo')?> <span class="color-<?=$r->__get('precio')?>">$<?=number_format($r->__get('precio'),0,",",".")?></span> y <?=$r->__get('titulo')?></a></h1>
+					<h1><a href="/<?=$r->__get('permalink')?>"><?=$r->__get('tipo')?> <span class="color-<?=$r->__get('precio')?>">$<?=number_format($r->__get('precio'),0,",",".")?></span> y <?=$r->__get('titulo')?></a></h1>
 					<p><?=substr(strip_tags($r->__get('descripcion')),0,150)?>...</p>
 					<span class="price">
 						<span class="price-bill bg-<?=($r->__get('precio')>20000)?'cheque':$r->__get('precio');?>"><span class="color-<?=$r->__get('precio')?>"><?=number_format($r->__get('precio'),0,",",".")?></span></span>
