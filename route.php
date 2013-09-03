@@ -8,7 +8,7 @@ if(isset($_GET['f1'])) {
 
 		include("includes/publish.php");
 
-	} elseif(strpos($f1, "me-pagas")!==false || strpos($f1, "te-pago")!==false) {
+	} elseif(is_numeric($f1) && isset($_GET['f2']) && (strpos($_GET['f2'], "me-pagas")!==false || strpos($_GET['f2'], "te-pago")!==false)) {
 
 		include("includes/ficha_controller.php");
 		include("includes/ficha_view.php");

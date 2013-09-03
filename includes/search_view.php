@@ -38,6 +38,7 @@ if (!class_exists('SubcategoriaMapper')) { include( dirname(__FILE__) . '/classe
 				<h2>Precios</h2>
 				<nav>
 					<ul>		
+						<? if(!isset($term_categoria)) $term_categoria=null;?>
 						<? $url = (isset($term_subcategoria)) ? "/".$term_categoria."/".$term_subcategoria : "/".$term_categoria; ?>
 
 						<? foreach($facets['precio']['terms'] as $precio): ?>
@@ -110,12 +111,12 @@ if (!class_exists('SubcategoriaMapper')) { include( dirname(__FILE__) . '/classe
 
 				<? if(!is_null($r->__get('thumbnail'))): ?>
 					<div class="thumb">
-						<img src="/upload/img/<?=$r->__get('thumbnail')?>"/>
+						<a href="/<?=$r->__get('id')?>/<?=$r->__get('permalink')?>"><img src="/upload/img/<?=$r->__get('thumbnail')?>"/></a>
 					</div>
 				<? endif; ?>
 
 				<div class="text <?=(!is_null($r->__get('thumbnail')))?'si':'no'?>-image">
-					<h1><a href="/<?=$r->__get('permalink')?>"><?=$r->__get('tipo')?> <span class="color-<?=$r->__get('precio')?>">$<?=number_format($r->__get('precio'),0,",",".")?></span> y <?=$r->__get('titulo')?></a></h1>
+					<h1><a href="/<?=$r->__get('id')?>/<?=$r->__get('permalink')?>"><?=$r->__get('tipo')?> <span class="color-<?=$r->__get('precio')?>">$<?=number_format($r->__get('precio'),0,",",".")?></span> y <?=$r->__get('titulo')?></a></h1>
 					<p><?=substr(strip_tags($r->__get('descripcion')),0,150)?>...</p>
 					<span class="price">
 						<span class="price-bill bg-<?=($r->__get('precio')>20000)?'cheque':$r->__get('precio');?>"><span class="color-<?=$r->__get('precio')?>"><?=number_format($r->__get('precio'),0,",",".")?></span></span>
