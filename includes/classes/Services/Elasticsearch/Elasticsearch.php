@@ -125,7 +125,7 @@ class Elasticsearch {
 	 */
 	function getData($path, $id) {
 
-		$url = 'http://elasticsearch.mersap.com' . $path . "/" . $id;
+		$url = 'http://localhost:9200' . $path . "/" . $id;
 		$data = file_get_contents($url);
 		$data = json_decode($data);
 

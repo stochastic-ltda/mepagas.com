@@ -35,9 +35,11 @@ if(mysql_num_rows($res)) {
 				"precio" => mysql_result($res, $i, "precio"),
 				"titulo" => mysql_result($res, $i, "titulo"),
 				"categoria" => mysql_result($res, $i, "categoria"),
+				"subcategoria" => mysql_result($res, $i, "subcategoria"),
 				"descripcion" => mysql_result($res, $i, "descripcion"),
 				"fecha_creacion" => mysql_result($res, $i, "fecha_creacion"),
-				"fecha_modificacion" => mysql_result($res, $i, "fecha_modificacion")
+				"fecha_modificacion" => mysql_result($res, $i, "fecha_modificacion"),
+				"permalink" => mysql_result($res, $i, "permalink")
 			);
 
 		// Cargo imagenes

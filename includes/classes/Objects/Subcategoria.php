@@ -1,18 +1,11 @@
 <?php 
 
-class Aviso {
+class Subcategoria {
 
 	protected $_fields = array(
 			'id' => null,
-			'id_usuario' => null,
-			'tipo' => null,
-			'precio' => null,
-			'titulo' => null,
-			'categoria' => null,
-			'subcategoria' => null,
-			'descripcion' => null,
-			'localidades' => null,
-			'imagenes' => null,
+			'id_categoria' => null,
+			'nombre' => null,
 			'permalink' => null
 		);
 
