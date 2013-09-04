@@ -6,8 +6,7 @@ $config = new Config();
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>MePagas.com - Gana dinero publicando GRATIS tu pituto.</title>
+	<meta charset="utf-8">	
 	<link rel="stylesheet" href="/assets/css/style.css"/>
 	
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>

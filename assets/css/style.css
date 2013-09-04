@@ -581,6 +581,9 @@ header {
 
 .contenido_nav_categorias {
 	float: left;
+	width: 350px;
+	line-height: 25px;
+	padding-left: 5px;
 }
 
 .contenido_nav_categorias a {
@@ -594,6 +597,7 @@ header {
 
 .contenido_nav_ant_sig {
 	float: right;
+	padding-right: 5px;
 }
 
 .contenido_nav_ant_sig a {
@@ -616,13 +620,14 @@ header {
 	color: #777;
 }
 
-.content_despl h1 {
+.h1-ficha {
 	float: left;
-	width: 100%;
+	width: 98%;
 	font-family: 'Bitter', serif;
 	font-weight: normal;
 	font-size: 24px;
-	padding:3px 0 19px 0;
+	padding: 10px 1%;
+	margin-top: 20px;
 }
 
 .contenido_centro_despl_full {
@@ -658,7 +663,12 @@ header {
 .cont_galeria_nav {
 	position: relative;
 	height: 353px;
-	overflow: hidden;
+	background: #000;
+}
+
+.cont_galeria_nav img {
+	width: 100%;
+	position: absolute;
 }
 
 .cont_galeria_nav_ant {
@@ -822,15 +832,21 @@ header {
 
 .contenido_nombreuser_imagen h3 {
 	float: left;
-	width: 66%;
+	width: 80px;
 	font-family: "Droid Sans", arial, sans-serif;
 	font-size: 15px;
 	font-weight: bold;
-	padding: 17px 0 3px 0;
+	padding: 3px 0 10px 0;
 }
 
 .img_user_mepagas {
 	float: right;
+}
+
+.info-fixed {
+	position: fixed;
+	margin-left: 765px;
+	margin-top: -65px;
 }
 
 .contenido_usuario_despl h1 {
@@ -848,6 +864,24 @@ header {
 	margin: 0  0 22px 0;
 }
 
+#contacto_oculto li {
+	list-style: none;
+	margin-bottom: 10px;
+}
+
+.contactar_email {
+	background: url('/assets/img/icon_mail.png') no-repeat -5px -12px;
+	padding-left: 35px;
+	line-height: 18px;
+	font-weight: bold;
+}
+
+.contactar_telefono {
+	background: url('/assets/img/icon_phone.png') no-repeat -5px -6px;
+	padding-left: 35px;
+	line-height: 29px;
+	font-weight: bold;
+}
 .contenido_contactar_user a {
 	display: block;
 	text-align: center;
@@ -974,10 +1008,11 @@ header {
 
 .contenedor_disqus {
 	float: left;
-	width: 96%;
+	width: 92%;
 	border: 1px solid #ccc;
-	padding: 10px 0;
+	padding: 3%;
 	text-align: center;
+	margin-left: 1%;
 }
 
 .contendor_tabs_list {

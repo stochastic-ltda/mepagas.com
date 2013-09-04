@@ -1,0 +1,28 @@
+<div class="contenido_nombreuser_imagen">
+	<h3>{{nombre}}</h3>
+	<span class="img_user_mepagas"><img src="{{avatar}}"/></span>
+</div>
+
+<div class="contenedor_calificar" style="display:none">
+	<a href="#">Estrella 1</a>
+	<a href="#">Estrella 2</a>
+	<a href="#">Estrella 3</a>
+	<a href="#">Estrella 4</a>
+	<a href="#">Estrella 5</a>
+</div>
+
+<div class="contenido_contactar_user">
+	<a href="#" id="btn-contactar" onclick="showInfo()">Contactar</a>
+
+	<ul id="contacto_oculto" style="display:none">
+		{{#email}} <li class="contactar_email">{{email}}</li> {{/email}}
+		{{#telefono}} <li class="contactar_telefono">{{telefono}}</li> {{/telefono}}
+	</ul>
+</div>
+
+<h1>Compartir</h1>
+
+<div class="compartir_redes_sociales">
+	<a href="https://www.facebook.com/sharer/sharer.php?u={{url}}" onclick="return shareInfo(this)" class="facebook">Facebook</a>
+	<a href="http://twitter.com/share?text={{titulo}}&url={{url}}" onclick="return shareInfo(this)" class="twitter">Twitter</a>
+</div>

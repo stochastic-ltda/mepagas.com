@@ -28,7 +28,13 @@ if (!class_exists('SubcategoriaMapper')) { include( dirname(__FILE__) . '/classe
 				<? endif; ?>
 
 				<? if(isset($term_subcategoria) && !is_null($term_subcategoria)): ?>
+					<? if(isset($term_precio)): ?>
 					<li><a href="/<?=$term_precio?>/<?=$term_categoria?>">[X] Subcategoria: <?=$term_subcategoria?></a></li>
+					<? endif; ?>
+
+					<? if(!isset($term_precio)): ?>
+					<li><a href="/<?=$term_categoria?>">[X] Subcategoria: <?=$term_subcategoria?></a></li>
+					<? endif; ?>
 				<? endif; ?>
 
 			</ul></nav>
