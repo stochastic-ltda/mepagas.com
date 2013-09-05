@@ -24,7 +24,7 @@ $config = new Config();
 	
 	<header>
 		<aside class="header-wrapper">
-			<div class="logo">
+			<div class="logo" id="divlogo">
 				<a href="/"><img src="/assets/img/logo.png"/></a>
 			</div>
 

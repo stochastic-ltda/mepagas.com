@@ -8,6 +8,18 @@ if(isset($_GET['f1'])) {
 
 		include("includes/publish.php");
 
+	} elseif($f1 == 'usuario') {
+
+		if(isset($_GET['f2'])) {
+
+			$userid = $_GET['f2'];
+			include("includes/user_controller.php");
+			include("includes/user_view.php");
+
+		} else {
+			header("Location: /");
+		}
+
 	} elseif(is_numeric($f1) && isset($_GET['f2']) && (strpos($_GET['f2'], "me-pagas")!==false || strpos($_GET['f2'], "te-pago")!==false)) {
 
 		include("includes/ficha_controller.php");
