@@ -1,5 +1,19 @@
 <title><?=$title?></title>
-<script> var userid = <?=$data['id_usuario']?>; </script>
+<script> 
+	var userid = <?=$data['id_usuario']?>; 
+	$('#divlogo').addClass('logo_mepagas_despliegue').removeClass('logo');
+</script>
+
+<div class="fond_text_header_mp_despl">
+				
+	<div class="publish-zone_despl">
+		 <h1>Gana dinero publicando <span class="text_gratis">GRATIS</span> TU PITUTO</h1>
+		<div class="txt_publica_gratis_despl">
+			<a href="/publica-tu-pituto">PUBLICA TU PITUTO AQUI</a>
+		</div> 
+	</div>
+
+</div>
 
 <div class="contenedor_nav_superior_despl">
 

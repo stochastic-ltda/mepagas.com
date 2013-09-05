@@ -32,6 +32,10 @@ width: 100%;
 .left { float: left; }
 .right { float: right; }
 
+.text_gratis {
+	font-size: 47px;
+}
+
 input, select, textarea {
 	padding: 5px;
 	font-size: 16px;
@@ -560,12 +564,60 @@ header {
 	padding: 0 0 0 36px;
 }
 
-.publish-zone_despl {
+.fond_text_header_mp_despl {
 	float: left;
 	width: 100%;
 	height: 174px;
 	background: url(../img/fond_header_despl.png) no-repeat #fff;
 }
+
+.publish-zone_despl {
+	float: left;
+	padding: 9px 0 0 34%;
+}
+
+.publish-zone_despl h1 {
+	float: left;
+	width: 50%;
+	font-family: 'bree_serifregular', Arial, sans-serif ;
+	font-size: 27px;
+	font-weight: normal;
+	color: #444;
+	text-align: center;
+	margin: 0 13px 0 0;
+}
+
+.text_despl {
+	float: left;
+	font-family: 'oswaldbook', Arial, sans-serif;
+	font-size: 29px;
+	letter-spacing: -1px;
+	width: 266px;
+	padding: 0 10px;
+	background: #ffa500;
+	cursor: pointer;
+	margin-top: 6%;
+}
+
+.text_despl a {
+	color: #fff;
+}
+
+.text_despl a:hover{
+	text-decoration: none;
+}
+
+	.publish-_despl .gratis {
+		font-size: 47px;
+	}
+
+
+	.publish-zone_despl .text_despl a {
+		color: #fff;
+	}
+	.publish-zone_despl .text_despl a:hover{
+		text-decoration: none;
+	}
 
 .content_despl {
 	float: left;
@@ -576,7 +628,7 @@ header {
 .contenedor_nav_superior_despl {
 	float: left;
 	width: 100%;
-	padding: 18px 0 17px 0;
+	padding: 0px 0 10px 0;
 }
 
 .contenido_nav_categorias {
@@ -627,7 +679,6 @@ header {
 	font-weight: normal;
 	font-size: 24px;
 	padding: 10px 1%;
-	margin-top: 20px;
 }
 
 .contenido_centro_despl_full {
