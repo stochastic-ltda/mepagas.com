@@ -26,15 +26,48 @@ class UsuarioMapper {
 		$mysql = new Mysql();
 		$link = $mysql->connect();
 
-		$s1 = "UPDATE usuario SET usuario = '" . $usuario->get('usuario') . "' WHERE id = $id";
-		$s2 = "UPDATE usuario SET nombre = '" . $usuario->get('nombre') . "' WHERE id = $id";
-		$s3 = "UPDATE usuario SET email = '" . $usuario->get('email') . "' WHERE id = $id";
-		$s4 = "UPDATE usuario SET avatar = '" . $usuario->get('avatar') . "' WHERE id = $id";
+		if(!is_null($usuario->get('usuario'))) {
+			$s1 = "UPDATE usuario SET usuario = '" . $usuario->get('usuario') . "' WHERE id = $id";
+			mysql_query($s1) or die(mysql_error());
+		}
 
-		mysql_query($s1) or die(mysql_error());
-		mysql_query($s2) or die(mysql_error());
-		mysql_query($s3) or die(mysql_error());
-		mysql_query($s4) or die(mysql_error());
+		if(!is_null($usuario->get('nombre'))) {
+			$s2 = "UPDATE usuario SET nombre = '" . $usuario->get('nombre') . "' WHERE id = $id";
+			mysql_query($s2) or die(mysql_error());
+		}
+
+		if(!is_null($usuario->get('email'))) {
+			$s3 = "UPDATE usuario SET email = '" . $usuario->get('email') . "' WHERE id = $id";
+			mysql_query($s3) or die(mysql_error());
+		}
+
+		if(!is_null($usuario->get('avatar'))) {
+			$s4 = "UPDATE usuario SET avatar = '" . $usuario->get('avatar') . "' WHERE id = $id";
+			mysql_query($s4) or die(mysql_error());
+		}
+
+		if(!is_null($usuario->get('acercade'))) {
+			$s5 = "UPDATE usuario SET acercade = '" . $usuario->get('acercade') . "' WHERE id = $id";
+			mysql_query($s5) or die(mysql_error());
+		}
+
+		if(!is_null($usuario->get('nombre_empresa'))) {
+			$s6 = "UPDATE usuario SET nombre_empresa = '" . $usuario->get('nombre_empresa') . "' WHERE id = $id";
+			mysql_query($s6) or die(mysql_error());
+		}
+
+		if(!is_null($usuario->get('telefono'))) {
+			$s7 = "UPDATE usuario SET telefono = '" . $usuario->get('telefono') . "' WHERE id = $id";
+			mysql_query($s7) or die(mysql_error());
+		}
+
+		
+		
+		
+		
+		
+		
+		
 
 	}
 
@@ -98,6 +131,7 @@ class UsuarioMapper {
 			$usuario->set('email', mysql_result($res, 0, "email"));
 			$usuario->set('telefono', mysql_result($res, 0, "telefono"));
 			$usuario->set('avatar', mysql_result($res, 0, "avatar"));
+			$usuario->set('acercade', mysql_result($res, 0, "acercade"));
 
 			return $usuario;
 		}

@@ -894,6 +894,10 @@ header {
 	float: right;
 }
 
+.img_user_mepagas img{
+	width: 50px;
+}
+
 .info-fixed {
 	position: fixed;
 	margin-left: 765px;
@@ -1313,9 +1317,94 @@ font-style: italic;
 /* ----------------------------------------------------------------------------------------------------------------------
    FICHA USUARIO 
    --------------------------------------------------------------------------------------------------------------------*/
+#user_account {
+	padding-left: 10px;
+}   
+
+#user_avatar {
+	float: left;
+	width: 180px;	
+}
+
+#user_info {
+	float: left;
+	margin-left: 10px;
+	width: 300px;
+}
+
+	#user_info h1 {
+		font-family: 'Bitter', serif;
+		font-weight: normal;
+		font-size: 24px;
+		padding: 10px 1%;
+	}
+
+	#user_info ul {
+		list-style: none;
+	}
+
+	#user_info li {
+		font-size: 16px;
+		line-height: 24px;
+
+	}
+
+#user_about {
+	float: left;
+	width: 430px;
+	border: 1px solid #CCC;
+	border-radius: 5px;
+	padding: 10px;
+
+}
 
 
+.user_data {
+	width: 100%;
+	float: left;
+	margin-top: 20px;
+}
 
+#user_avisos {
+	width: 40%;
+	float: left;
+	margin-left: 5%;
+}
+
+	#user_avisos h3 {
+		font-size: 18px;
+		font-family: 'Bitter', serif;
+		background: url('/assets/img/mis_avisos.png') left no-repeat;
+		padding-left: 40px;
+		line-height: 40px;
+	}
+
+#user_favoritos {
+	width: 40%;
+	float: left;
+	margin-left: 5%;	
+}
+
+	#user_favoritos h3 {
+		font-size: 18px;
+		font-family: 'Bitter', serif;
+		background: url('/assets/img/mis_favoritos.png') left no-repeat;
+		padding-left: 40px;
+		line-height: 40px;
+	}
+
+#user-opt-edit {
+background: url('/assets/img/user_edit.png') top left no-repeat;
+padding-left: 24px;
+height: 32px;
+float: right;
+font-size: 15px;
+line-height: 14px;
+margin-right: 10px;
+margin-bottom: 10px;
+}
+
+#user-opt-edit a { color: blue; }
 
 /* ----------------------------------------------------------------------------------------------------------------------
    WYSIHTML5 PERSONALIZADO
@@ -1378,4 +1467,37 @@ background-position: center -224px !important;
 
 #insertOrderedList {
 background-position: center -158px !important;
+}
+
+
+/* ----------------------------------------------------------------------------------------------------------------------
+   USER EDIT
+   --------------------------------------------------------------------------------------------------------------------*/
+
+#user_edit {
+	margin-top: 60px;
+	padding-left: 20px;
+}
+
+#user_edit .section-half {
+	width: 46%;
+	padding: 2%;
+	float: left;
+}
+
+#user_edit .section-full {
+	width: 96%;
+	padding: 2%;
+	float: left;
+}
+
+#user_edit p {
+	font-size: 16px;
+	line-height: 20px;
+	margin-bottom: 5px;
+}
+
+#user_edit textarea {
+	width: 75%;
+	height: 200px;
 }

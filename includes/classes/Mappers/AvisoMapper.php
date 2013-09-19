@@ -29,6 +29,30 @@ class AvisoMapper {
 
 	}
 
+	public function findByIdUsuario($userid) {
+
+		$mysql = new Mysql();
+		$link = $mysql->connect();
+
+		// Insert aviso
+		$sql = "SELECT * FROM aviso WHERE id_usuario = $userid ORDER BY id DESC";
+		$res = mysql_query($sql) or die(mysql_error());		
+
+		$avisos = array();
+		for($i=0; $i<mysql_num_rows($res); $i++) {
+
+			$aviso = new Aviso();
+			$aviso->set('id', mysql_result($res, $i, "id"));
+			$aviso->set('titulo', mysql_result($res, $i, "titulo"));
+			$aviso->set('permalink', mysql_result($res, $i, "permalink"));
+			$avisos[] = $aviso;
+
+		}
+
+		return $avisos;
+
+	}
+
 
 }
 ?>

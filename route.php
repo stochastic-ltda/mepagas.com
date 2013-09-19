@@ -12,9 +12,15 @@ if(isset($_GET['f1'])) {
 
 		if(isset($_GET['f2'])) {
 
-			$userid = $_GET['f2'];
-			include("includes/user_controller.php");
-			include("includes/user_view.php");
+			if($_GET['f2'] == "editar") {
+				$userid = $_GET['f3'];
+				include("includes/user_edit_controller.php");
+				include("includes/user_edit_view.php");
+			} else {
+				$userid = $_GET['f2'];
+				include("includes/user_controller.php");
+				include("includes/user_view.php");
+			}
 
 		} else {
 			header("Location: /");

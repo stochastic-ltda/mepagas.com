@@ -134,6 +134,7 @@ function userlo() {
 	setCookie('avatar','');
 	setCookie('userid','');
 	setCookie('username','');
+	setCookie('mutm_gif','');
 	document.location="/";
 }
 
@@ -161,12 +162,15 @@ function userli() {
 				} else {
 
 					// inicio sesion
-					setCookie('email', data.email);
-					setCookie('username', data.username);
-					setCookie('userid', data.userid);
-					setCookie('avatar', data.avatar);
+					setCookie('email', data.email, 7);
+					setCookie('username', data.username, 7);
+					setCookie('userid', data.userid, 7);
+					setCookie('avatar', data.avatar, 7);
 
-					location.reload();
+					$.post('/includes/phpscripts/user_login_str.php', {id:data.userid}, function(str){
+						setCookie('mutm_gif', str, 7);
+						location.reload();
+					});				
 
 				}
 			}
@@ -190,12 +194,15 @@ function userlif() {
 				if(typeof data.userid != "undefined") {
 
 					// inicio sesion
-					setCookie('email', userinfo.email);
-					setCookie('username', userinfo.username);
-					setCookie('userid', data.userid);
-					setCookie('avatar', "http://graph.facebook.com/" + userinfo.id + "/picture");
+					setCookie('email', userinfo.email,7);
+					setCookie('username', userinfo.username,7);
+					setCookie('userid', data.userid,7);
+					setCookie('avatar', "http://graph.facebook.com/" + userinfo.id + "/picture",7);
 
-					location.reload();
+					$.post('/includes/phpscripts/user_login_str.php', {id:data.userid}, function(str){
+						setCookie('mutm_gif', str, 7);
+						location.reload();
+					});					
 
 				}
 
