@@ -20,7 +20,8 @@ else {
 			'nombre_empresa' => $usuario->get('nombre_empresa'),
 			'telefono' => $usuario->get('telefono'),
 			'url' => $url,
-			'titulo' => $titulo		
+			'titulo' => $titulo,
+			'id' => $usuario->get('id')
 		);
 
 	if($usuario->get('nombre_empresa') == '') $params['empresa'] = false;
