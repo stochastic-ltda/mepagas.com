@@ -8,7 +8,6 @@ if (!class_exists('AvisoMapper')) { include( dirname(__FILE__) . '/classes/Mappe
 
 $avisoMapper = new AvisoMapper();
 $aviso = $avisoMapper->findById($avisoid);
-if(!is_null($aviso) && count($aviso) > 0) $aviso = $aviso[0];
 
 $localidadMapper = new LocalidadMapper();
 $localidades = $localidadMapper->getAll();
