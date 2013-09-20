@@ -190,7 +190,7 @@ class AvisoMapper {
 
 			}
 
-			return $avisos[0];
+			return $avisos;
 			else return $avisos;
 		}
 
