@@ -47,7 +47,7 @@ $.post('/includes/phpscripts/user_is_user.php', {code: getCookie('mutm_gif'), us
 		<div id="user_avisos">
 			<h3>Mis Avisos</h3>
 			<table width="100%" cellpadding="5" cellspacing="0">
-			<? if(!is_null($aviso) && count($aviso) > 0): ?>
+			<? if(!is_null($avisos) && count($avisos) > 0): ?>
 			<? foreach($avisos as $aviso): ?>
 				<tr class="aviso-row">
 					<td><a href="/<?=$aviso->get('id')?>/<?=$aviso->get('permalink')?>" target="_blank"><?=$aviso->get('tipo')?> <?=$aviso->get('precio')?> y <?=$aviso->get('titulo')?></a></td>
