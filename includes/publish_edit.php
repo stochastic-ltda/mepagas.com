@@ -3,6 +3,11 @@
 if (!class_exists('LocalidadMapper')) { include( dirname(__FILE__) . '/classes/Mappers/LocalidadMapper.php'); }
 if (!class_exists('PrecioMapper')) { include( dirname(__FILE__) . '/classes/Mappers/PrecioMapper.php'); }
 if (!class_exists('CategoriaMapper')) { include( dirname(__FILE__) . '/classes/Mappers/CategoriaMapper.php'); }
+if (!class_exists('SubcategoriaMapper')) { include( dirname(__FILE__) . '/classes/Mappers/SubcategoriaMapper.php'); }
+if (!class_exists('AvisoMapper')) { include( dirname(__FILE__) . '/classes/Mappers/AvisoMapper.php'); }
+
+$avisoMapper = new AvisoMapper();
+$aviso = $avisoMapper->findById($avisoid);
 
 $localidadMapper = new LocalidadMapper();
 $localidades = $localidadMapper->getAll();
@@ -12,6 +17,12 @@ $precios = $precioMapper->getAll();
 
 $categoriaMapper = new CategoriaMapper;
 $categorias = $categoriaMapper->getAll();
+
+$categoria = $categoriaMapper->getByNombre(utf8_decode($aviso->get('categoria')));
+$subcatMapper = new SubcategoriaMapper();
+$subcats = $subcatMapper->getByIdCategoria($categoria->get('id'));
+
+//echo "<pre>"; print_r($aviso); echo "</pre>";
 
 ?>
 
@@ -27,27 +38,29 @@ $categorias = $categoriaMapper->getAll();
 
 	<form method="post" action="" onsubmit="return false;">
 
+		<input type="hidden" id="avisoid" value="<?=$aviso->get('id')?>">
+
 		<div class="aviso-wrapper">
 
 			<div class="row">
 
 				<!-- // Tipo de aviso -->
 				<select name="tipo" id="tipo">
-					<option value="Me pagas">Me pagas</option>
-					<option value="Te pago">Te pago</option>
+					<option value="Me pagas" <?=($aviso->get('tipo') == "Me pagas")?'selected':'';?>>Me pagas</option>
+					<option value="Te pago" <?=($aviso->get('tipo') == "Te pago")?'selected':'';?>>Te pago</option>
 				</select>
 
 				<!-- // Precio -->
 				<select name="precio" id="precio">
 					<option value="">$ precio</option>
 					<? foreach($precios as $p): ?>
-						<option value="<?=$p->get('valor')?>"><?=$p->get('nombre');?></option>
+						<option value="<?=$p->get('valor')?>" <?=($p->get('valor')==$aviso->get('precio'))?'selected':''?>><?=$p->get('nombre');?></option>
 					<? endforeach; ?>				
 				</select>
 
 				<!-- // Titulo -->
 				<label for="titulo"> y </label> 
-				<input type="text" name="titulo" id="titulo" placeholder="Ej: te paseo el perro">
+				<input type="text" name="titulo" id="titulo" placeholder="Ej: te paseo el perro" value="<?=$aviso->get('titulo')?>">
 			</div>
 
 			<div class="row">
@@ -57,17 +70,23 @@ $categorias = $categoriaMapper->getAll();
 				<select name="categorias" id="categorias">
 					<option value="">Selecciona una categoría</option>
 					<? foreach($categorias as $c): ?>
-						<option value="<?=$c->get('id').'||'.$c->get('nombre')?>"><?=utf8_encode($c->get('nombre'))?></option>
+						<option value="<?=$c->get('id').'||'.utf8_encode($c->get('nombre'))?>" <?=($c->get('nombre')==utf8_decode($aviso->get('categoria')))?'selected':''?>>
+							<?=utf8_encode($c->get('nombre'))?>
+						</option>
 					<? endforeach; ?>
 				</select>
 			</div>
 
 			<div class="row" id="subcategorias-wrapper">
 				<!-- // Listado de subcategorias -->
-				<!-- TODO: Pasar las categorias a base de datos -->
 				<label for="categorias">Subtegorías </label> 
 				<select name="subcategorias" id="subcategorias">
 					<option value="">Selecciona una subcategoría</option>
+					<? foreach($subcats as $sc): ?>
+						<option value="<?=utf8_encode($sc->get('nombre'))?>" <?=($sc->get('nombre')==utf8_decode($aviso->get('subcategoria')))?'selected':''?>>
+							<?=utf8_encode($sc->get('nombre'))?>
+						</option>
+					<? endforeach; ?>
 				</select>
 			</div>
 
@@ -85,7 +104,7 @@ $categorias = $categoriaMapper->getAll();
 					<a data-wysihtml5-command="insertUnorderedList" id="insertUnorderedList" class="btn last"></a>
 				</div>
 
-				<textarea name="descripcion" id="descripcion" placeholder="Ingresa una descripción ..."></textarea>
+				<textarea name="descripcion" id="descripcion" placeholder="Ingresa una descripción ..."><?=$aviso->get('descripcion')?></textarea>
 			</div>
 
 			<div class="row"> 
@@ -95,7 +114,7 @@ $categorias = $categoriaMapper->getAll();
 				<label for="cobertura">Cobertura de servicio</label> 
 				<select name="cobertura" id="cobertura" multiple="multiple">
 					<? foreach($localidades as $loc): ?>
-						<option value="<?=utf8_encode($loc->get('nombre'))?>"><?=utf8_encode($loc->get('nombre'))?></option>
+						<option value="<?=utf8_encode($loc->get('nombre'))?>" <?=(in_array( utf8_encode($loc->get('nombre')) , $aviso->get('localidades')))?'selected':''?>><?=utf8_encode($loc->get('nombre'))?></option>
 					<? endforeach; ?>
 				</select>
 			</div>
@@ -105,7 +124,17 @@ $categorias = $categoriaMapper->getAll();
 				<label for="imagenes">Imágenes</label> 
 				<input type="file" name="imagenes[]" id="imagenes" multiple="multiple" onchange="imgselected();">
 
-				<div class="imagenes-zone"></div>
+				<div class="imagenes-zone">
+
+					<? foreach($aviso->get('imagenes') as $img): ?>
+						<div class="image-thumb" id="<?=current(explode(".",$img))?>">
+			                <div class="trash">
+			                    <img src="/assets/img/delete.png" onclick="imgdelete('<?=$img?>', '<?=current(explode(".",$img))?>')">
+			                </div>
+			                <img src="<?=$config->imgsrc_path . "thumb_" . $img?>">                
+			            </div>
+			        <? endforeach; ?>
+				</div>
 			</div>
 		</div>
 
@@ -187,13 +216,13 @@ $categorias = $categoriaMapper->getAll();
 
 			<div class="row aright">
 				<!-- // Terminos y condiciones de uso -->
-				<input type="checkbox" name="acepto" id="acepto"> 
+				<input type="checkbox" name="acepto" id="acepto" checked="checked"> 
 				<label for="acepto">Acepto los Términos y Condiciones de uso</label>
 			</div>
 		</div>
 
 		<div class="row aright">
-			<input type="submit" id="subir" name="subir" value="Subir pituto">
+			<input type="submit" id="actualizar" name="subir" value="Editar pituto">
 		</div>
 	</form>
 </div>

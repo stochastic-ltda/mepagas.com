@@ -16,6 +16,17 @@ class CategoriaMapper {
 
 	}
 
+	public function getByNombre($nombre) {
+
+		$mysql = new Mysql();
+		$link = $mysql->connect();
+
+		$sql = "SELECT * FROM categoria WHERE nombre LIKE '$nombre'";
+		$res = mysql_query($sql) or die(mysql_error());
+
+		return $this->processReturn($res, null);		
+	}
+
 	public static function getPermalinkByNombre($nombre) {
 
 		$mysql = new Mysql();

@@ -1365,8 +1365,12 @@ font-style: italic;
 	margin-top: 20px;
 }
 
+.aviso-row:hover, .favorito-row:hover {
+	background-color: #CCC;
+}
+
 #user_avisos {
-	width: 40%;
+	width: 55%;
 	float: left;
 	margin-left: 5%;
 }
@@ -1380,7 +1384,7 @@ font-style: italic;
 	}
 
 #user_favoritos {
-	width: 40%;
+	width: 25%;
 	float: left;
 	margin-left: 5%;	
 }
@@ -1405,6 +1409,8 @@ margin-bottom: 10px;
 }
 
 #user-opt-edit a { color: blue; }
+
+.user-opt { display: none; }
 
 /* ----------------------------------------------------------------------------------------------------------------------
    WYSIHTML5 PERSONALIZADO

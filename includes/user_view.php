@@ -46,11 +46,16 @@ $.post('/includes/phpscripts/user_is_user.php', {code: getCookie('mutm_gif'), us
 	<div class="user_data row">
 		<div id="user_avisos">
 			<h3>Mis Avisos</h3>
-			<table width="100%">
+			<table width="100%" cellpadding="5" cellspacing="0">
 			<? foreach($avisos as $aviso): ?>
-				<tr>
-					<td><a href="/<?=$aviso->get('id')?>/<?=$aviso->get('permalink')?>"><?=$aviso->get('titulo')?></a></td>
-					<td class="user-opt">Editar | Eliminar</td>
+				<tr class="aviso-row">
+					<td><a href="/<?=$aviso->get('id')?>/<?=$aviso->get('permalink')?>" target="_blank"><?=$aviso->get('tipo')?> <?=$aviso->get('precio')?> y <?=$aviso->get('titulo')?></a></td>
+					<td class="user-opt" valign="top">
+						<a href="/aviso/editar/<?=$aviso->get('id')?>">Editar</a> | 
+						<? if($aviso->get('estado') == 'inactivo'): ?> <a href="#" data-id="<?=$aviso->get('id')?>" class="activar-aviso">Publicar</a> <? endif;?>
+						<? if($aviso->get('estado') == 'pendiente'): ?> En espera <? endif;?>
+						<? if($aviso->get('estado') == 'activo'): ?> <a href="#" data-id="<?=$aviso->get('id')?>" class="desactivar-aviso">Ocultar</a> <? endif;?>
+					</td>
 				</tr>
 			<? endforeach; ?>
 			</table>
@@ -58,11 +63,11 @@ $.post('/includes/phpscripts/user_is_user.php', {code: getCookie('mutm_gif'), us
 
 		<div id="user_favoritos">
 			<h3>Mis Favoritos</h3>
-			<table width="100%">
+			<table width="100%" cellpadding="5" cellspacing="0">
 			<? foreach($favoritos as $favorito): ?>
-				<tr id="fav<?=$favorito['id']?>">
-					<td><a href="<?=$favorito['url']?>"><?=$favorito['titulo']?></a></td>
-					<td class="user-opt"><a href="#" data-id="<?=$favorito['id']?>" class="delfavorito">Eliminar</a></td>
+				<tr id="fav<?=$favorito['id']?>" class="favorito-row">
+					<td><a href="<?=$favorito['url']?>" target="_blank"><?=$favorito['titulo']?></a></td>
+					<td class="user-opt" valign="top"><a href="#" data-id="<?=$favorito['id']?>" class="delfavorito">Eliminar</a></td>
 				</tr>
 			<? endforeach; ?>
 			</table>

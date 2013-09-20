@@ -61,14 +61,6 @@ class UsuarioMapper {
 			mysql_query($s7) or die(mysql_error());
 		}
 
-		
-		
-		
-		
-		
-		
-		
-
 	}
 
 	public function findByEmail($email) {

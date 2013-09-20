@@ -8,6 +8,15 @@ if(isset($_GET['f1'])) {
 
 		include("includes/publish.php");
 
+	} elseif($f1 == 'aviso') {
+
+		if(isset($_GET['f2']) && isset($_GET['f3'])) {
+			$avisoid = $_GET['f3'];
+			if($_GET['f2'] == 'editar') {
+				include("includes/publish_edit.php");				
+			}
+		}
+
 	} elseif($f1 == 'usuario') {
 
 		if(isset($_GET['f2'])) {

@@ -39,7 +39,8 @@ if(mysql_num_rows($res)) {
 				"descripcion" => mysql_result($res, $i, "descripcion"),
 				"fecha_creacion" => mysql_result($res, $i, "fecha_creacion"),
 				"fecha_modificacion" => mysql_result($res, $i, "fecha_modificacion"),
-				"permalink" => mysql_result($res, $i, "permalink")
+				"permalink" => mysql_result($res, $i, "permalink"),
+				"estado" => mysql_result($res, $i, "estado")
 			);
 
 		// Cargo imagenes

@@ -19,7 +19,30 @@
 			return false;
 		}
 
+		var activaraviso = function() {
+			var id = $(this).attr('data-id');
+			$.post('/includes/phpscripts/aviso_activar.php', {id:id}, function(data){
+				if(data == "true") $('.activar-aviso[data-id='+id+']').html("En espera");						
+			});
+
+			return false;
+		}
+
+		var desactivaraviso = function() {
+
+			if(confirm("¿Estas seguro que desear dar de baja este aviso?")) {
+				var id = $(this).attr('data-id');
+				$.post('/includes/phpscripts/aviso_desactivar.php', {id:id}, function(data){
+					if(data == "true") $('.desactivar-aviso[data-id='+id+']').html("En espera");						
+				});
+			}
+
+			return false;
+		}
+
 		// Main
+		$('.activar-aviso').bind('click', activaraviso);
+		$('.desactivar-aviso').bind('click', desactivaraviso);
 
 		// Flag is same user or visit
 		isUser = true;
@@ -32,6 +55,7 @@
 
 				if(isUser) {
 					$('.delfavorito').bind('click', deletefav);
+					setTimeout( function() { $('.user-opt').fadeIn(); }, 1000);
 				} else {
 					$('.user-opt').html("");
 					$('.user-opt').hide();
