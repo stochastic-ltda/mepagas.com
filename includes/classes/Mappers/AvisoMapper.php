@@ -131,10 +131,13 @@ class AvisoMapper {
 		// Insert aviso
 		$sql = "SELECT * FROM aviso WHERE id = $id";
 		$res = mysql_query($sql) or die(mysql_error());		
-		
+
 		$aviso = $this->processReturn($res, null);
+		if(!is_null($aviso) && count($aviso) > 0) $aviso = $aviso[0];
+				
 		$aviso->set('localidades', $this->findLocalidadesById($id));
 		$aviso->set('imagenes', $this->findImagenesById($id));
+
 
 		return $aviso;
 
