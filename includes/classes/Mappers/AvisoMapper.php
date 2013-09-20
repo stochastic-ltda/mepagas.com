@@ -191,7 +191,6 @@ class AvisoMapper {
 			}
 
 			return $avisos;
-			else return $avisos;
 		}
 
 	}
