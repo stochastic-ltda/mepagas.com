@@ -20,6 +20,8 @@ if(isset($term_categoria)) {
 	$params['facets'][$fidx++] = array('field' => 'subcategoria', 'order' => 'term');
 }
 
+$params['term'][$tidx++]['estado'] = 'activo'; // Muestra solo activos
+
 if(isset($term_subcategoria)) $params['term'][$tidx++]['subcategoria'] = utf8_encode(SubcategoriaMapper::getNombreByPermalink(($term_subcategoria)));
 
 //echo "<pre>"; print_r($params);

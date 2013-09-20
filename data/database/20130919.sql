@@ -1,0 +1,1 @@
+ALTER TABLE  `aviso` ADD  `estado` VARCHAR( 20 ) NOT NULL DEFAULT  'pendiente';

@@ -68,49 +68,6 @@ function confirmDelete() {
 	return false;
 }
 
-function processAviso() {
-
-	// Obtengo datos
-	var tipo = $('#tipo').val();
-	var precio = $('#precio').val();
-	var titulo = $('#titulo').val();
-	var categoria = $('#categorias').val().split("||")[1];
-	var subcategoria = $('#subcategorias').val();
-	var descripcion = $('#descripcion').val();
-	
-	var i=0;
-	var localidades = new Array();
-	$('.search-choice span').each(function() {
-		localidades[i] = $(this).html();
-		i++;
-	});
-
-	var imagenes = new Array();
-	var j=0;
-	$('.image-thumb img').each(function() {
-		var src = $(this).attr('src');
-		if(src != '/assets/img/delete.png') {
-			imagenes[j] = src.replace("/upload/img/thumb_","");
-			j++;
-		}
-	});
-
-	var acepto = $('#acepto').is(":checked");	
-	var id_usuario = getCookie('userid');
-
-	// TODO: Validacion de campos
-
-	// Procesamiento de datos
-	$.post('/includes/phpscripts/publish_aviso.php', {id_usuario:id_usuario, tipo:tipo, precio:precio, titulo:titulo, categoria:categoria, subcategoria:subcategoria, descripcion:descripcion, localidades:localidades, imagenes:imagenes, acepto:acepto}, function(data) {
-		
-		// TODO: Procesar posibles errores de carga en el aviso
-		alert("Su aviso ha sido publicado");
-		document.location="/";
-	});
-
-
-}
-
 
 // ------------------------------------------------------------------------------------------------------------------
 // Login
