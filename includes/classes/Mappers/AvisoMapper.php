@@ -143,6 +143,20 @@ class AvisoMapper {
 
 	}
 
+	public function getPendientes($fromid) {
+
+		$mysql = new Mysql();
+		$link = $mysql->connect();
+
+		// Insert aviso
+		$sql = "SELECT * FROM aviso WHERE estado='pendiente'";
+		if(!is_null($fromid) && $fromid!="") $sql .= " AND id > $fromid";
+		
+		$res = mysql_query($sql) or die(mysql_error());		
+		return $this->processAllReturn($res, null);
+
+	}
+
 	public function findLocalidadesById($id) {
 
 		$mysql = new Mysql();
@@ -169,6 +183,34 @@ class AvisoMapper {
 		for($i=0; $i<mysql_num_rows($res); $i++) $imagenes[] = mysql_result($res, $i, "imagen");
 
 		return $imagenes;
+
+	}
+
+	public function processAllReturn($res, $default=null) {
+
+		if(mysql_num_rows($res) == 0) return $default;
+		else {
+			$avisos = array();
+			for($i=0; $i<mysql_num_rows($res); $i++) {
+
+				$aviso = new Aviso();
+				$aviso->set('id', mysql_result($res, $i, "id"));
+				$aviso->set('tipo', mysql_result($res, $i, "tipo"));
+				$aviso->set('precio', mysql_result($res, $i, "precio"));
+				$aviso->set('titulo', mysql_result($res, $i, "titulo"));
+				$aviso->set('permalink', mysql_result($res, $i, "permalink"));
+				$aviso->set('categoria', mysql_result($res, $i, "categoria"));
+				$aviso->set('subcategoria', mysql_result($res, $i, "subcategoria"));
+				$aviso->set('descripcion', mysql_result($res, $i, "descripcion"));
+				$aviso->set('estado', mysql_result($res, $i, "estado"));
+				$aviso->set('localidades', $this->findLocalidadesById(mysql_result($res, $i, "id")));
+				$aviso->set('imagenes', $this->findImagenesById(mysql_result($res, $i, "id")));
+				$avisos[] = $aviso;
+
+			}
+
+			return $avisos;
+		}
 
 	}
 
