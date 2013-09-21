@@ -1,0 +1,55 @@
+<!DOCTYPE>
+<html>
+<head>
+	<meta charset="utf-8">	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="aprobar_avisos.js"></script>
+
+	<style>
+	body { font-family: Arial; }
+	a { text-decoration: none; }
+
+	.aviso {
+		background-color: palegoldenrod;
+		padding: 1%;
+		float: left;
+		margin-bottom: 10px;
+		width: 98%;
+	}
+	.aviso ul { list-style: none; }
+	.aviso ul li { margin-bottom: 5px; }
+	.aviso ul li ul li { display: inline; }
+	.btn {
+	    text-decoration: none;
+	    border: 1px solid #999;
+	    color: #666;
+	    background-color: #EEE;
+	    border-radius: 3px;
+	    padding: 4px;
+	    line-height: 40px;
+	}
+	.aviso ul li img { width: 100px; }
+	#imagenes ul { margin-left: -35px; }	
+	.localidad {
+		border: 1px solid #CCC;
+		padding: 5px;
+		border-radius: 10px;
+	}
+	</style>
+</head>
+
+<body>
+	<p align="right"><a href="index.php">Volver</a>
+	<h1>Aprobar avisos</h1>
+
+	<div class="avisos">
+		<div id="list-avisos"></div>
+	</div>
+
+	<script>
+	$(document).ready(function(){
+		$('.avisos').avisos({});
+	});	
+	</script>
+</body>
+</html>

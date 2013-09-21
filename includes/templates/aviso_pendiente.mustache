@@ -1,0 +1,18 @@
+<div class="aviso" aviso-id="{{id}}">
+	<ul>	
+		<li>
+			<a href="#" class="btn btn-aprobar" data-id="{{id}}">Aprobar</a>
+			<a href="#" class="btn btn-rechazar" data-id="{{id}}">Rechazar</a>
+		</li>	
+		<li><b>Título:</b> <a href="{{url}}" target="_blank">{{titulo}}</a></li>
+		<li id="descripcion"><b>Descripción:</b> {{descripcion}}</li>
+		<li id="imagenes"><b>Imágenes:</b>
+			<ul>
+			{{#imagenes}}
+				<li><img src="{{src}}"></li>
+			{{/imagenes}}
+			</ul>
+		</li>
+		<li id="localidades"><b>Localidades:</b> {{#localidades}} <span class="localidad">{{nombre}}</span> {{/localidades}}</li>		
+	</ul>
+</div>
