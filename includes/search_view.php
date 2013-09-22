@@ -1,10 +1,12 @@
+<title><?=$title?> | Mepagas.com</title>
+<META NAME="Description" CONTENT="<?=$description?>">
 <?php
 if (!class_exists('CategoriaMapper')) { include( dirname(__FILE__) . '/classes/Mappers/CategoriaMapper.php'); }
 if (!class_exists('SubcategoriaMapper')) { include( dirname(__FILE__) . '/classes/Mappers/SubcategoriaMapper.php'); }
 ?>
 
 <div class="publish-zone">
-	<h1>En Mepagas.com gana dinero publicando <span class="gratis">GRATIS</span> TU PITUTO</h1> 
+	<h3>En Mepagas.com gana dinero publicando <span class="gratis">GRATIS</span> TU PITUTO</h3> 
 	<div class="text">
 		<a href="/publica-tu-pituto">PUBLICA TU PITUTO AQUI</a>
 	</div>
@@ -90,7 +92,7 @@ if (!class_exists('SubcategoriaMapper')) { include( dirname(__FILE__) . '/classe
 	<aside class="main">
 
 		<div class="controls-wrapper">
-			<h3>Últimos Avisos (<?=$total?>)</h3>
+			<h1><?=$h1?> (<?=$total?>)</h1>
 			<div class="controls">
 
 				<div class="display">
@@ -122,7 +124,7 @@ if (!class_exists('SubcategoriaMapper')) { include( dirname(__FILE__) . '/classe
 				<? endif; ?>
 
 				<div class="text <?=(!is_null($r->__get('thumbnail')))?'si':'no'?>-image">
-					<h1><a href="/<?=$r->__get('id')?>/<?=$r->__get('permalink')?>"><?=$r->__get('tipo')?> <span class="color-<?=$r->__get('precio')?>">$<?=number_format($r->__get('precio'),0,",",".")?></span> y <?=$r->__get('titulo')?></a></h1>
+					<h2><a href="/<?=$r->__get('id')?>/<?=$r->__get('permalink')?>"><?=$r->__get('tipo')?> <span class="color-<?=$r->__get('precio')?>">$<?=number_format($r->__get('precio'),0,",",".")?></span> y <?=$r->__get('titulo')?></a></h2>
 					<p><?=substr(strip_tags($r->__get('descripcion')),0,150)?>...</p>
 					<span class="price">
 						<span class="price-bill bg-<?=($r->__get('precio')>20000)?'cheque':$r->__get('precio');?>"><span class="color-<?=$r->__get('precio')?>"><?=number_format($r->__get('precio'),0,",",".")?></span></span>

@@ -6,7 +6,7 @@ if (!class_exists('SubcategoriaMapper')) { include( dirname(__FILE__) . '/classe
 // Se genera busqueda simple que entregue ultimos 20 avisos ordenados del mas nuevo al mas antiguo
 $elastic = new Elasticsearch("avisos");
 
-$params['limit'] = 5;	
+$params['limit'] = 20;	
 $params['sort'] = array(array('fecha_creacion' => array('order' => 'desc')));
 if(isset($_REQUEST['p'])) $params['page'] = $_REQUEST['p'];
 
@@ -30,5 +30,21 @@ $elastic->doSearch(null, $params);
 $results = $elastic->getResults();
 $facets = $elastic->getFacets();
 $total = $elastic->getTotal();
+
+// Metadata
+$h1 = "Últimos avisos";
+$title = "Gana dinero publicando GRATIS tu pituto";
+if(isset($term_precio)  && isset($term_subcategoria)) $title = "Pitutos en " . utf8_encode(SubcategoriaMapper::getNombreByPermalink(($term_subcategoria))) ." a $$term_precio pesos";
+elseif(isset($term_precio)  && isset($term_categoria)) $title = "Pitutos en " . CategoriaMapper::getNombreByPermalink($term_categoria) . " a $$term_precio pesos";
+elseif(isset($term_precio)) $title = "Pitutos a $$term_precio pesos";
+elseif(isset($term_subcategoria)) $title = "Pitutos en " . utf8_encode(SubcategoriaMapper::getNombreByPermalink(($term_subcategoria)));
+elseif(isset($term_categoria)) $title = "Pitutos en " . CategoriaMapper::getNombreByPermalink($term_categoria);
+$h1 = $title;
+
+$description = "Encuentra todos los pitutos";
+if(isset($term_subcategoria)) $description .= " en " . utf8_encode(SubcategoriaMapper::getNombreByPermalink(($term_subcategoria)));
+elseif(isset($term_categoria)) $description .= " en " . CategoriaMapper::getNombreByPermalink($term_categoria);
+
+if(isset($term_precio)) $description .=" a sólo $$term_precio pesos";
 
 ?>

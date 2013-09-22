@@ -8,7 +8,7 @@ if($id_categoria != '') {
 	$categorias = $subcatMapper->getByIdCategoria($id_categoria);
 }
 
-echo '<label for="categorias">Subtegorías </label>';
+echo '<h4>Subtegorías</h4>';
 echo '<select name="subcategorias" id="subcategorias">';
 echo '	<option value="">Selecciona una subcategoría</option>';
 

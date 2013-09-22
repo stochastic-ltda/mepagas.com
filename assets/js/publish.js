@@ -180,8 +180,9 @@
 				$.post('/includes/phpscripts/publish_aviso.php', {id_usuario:id_usuario, tipo:tipo, precio:precio, titulo:titulo, categoria:categoria, subcategoria:subcategoria, descripcion:descripcion, localidades:localidades, imagenes:imagenes, acepto:acepto}, function(data) {
 					
 					// TODO: Procesar posibles errores de carga en el aviso
-					alert("Su aviso ha sido modificado");
-					document.location="/";
+					alert("Tu pituto ha sido publicado");
+					alert("En este momento se encuentra en proceso de aprobación\nPuedes revisar los avances en TU CUENTA");
+					document.location="/usuario/"+id_usuario;
 				});
 
 			}
