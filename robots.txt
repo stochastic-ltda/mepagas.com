@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /_xdpanel/
+Disallow: /assets/
+Disallow: /data/
+Disallow: /includes/
+Disallow: /scripts/
+Disallow: /upload/
+Disallow: /usuario/

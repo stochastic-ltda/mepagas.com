@@ -81,7 +81,7 @@ function checkli() {
 	var username = getCookie('username');
 
 	if(email != '' && typeof email != "undefined") {
-		var html = '<img src="'+avatar+'"><p>Hola <b>'+username+'</b>!<br><a href="/usuario/'+userid+'">mi cuenta</a><br><a href="#" id="logout" onclick="userlo()">[salir]</a></p>';
+		var html = '<img src="'+avatar+'"><p>Hola <b>'+username+'</b>!<br><a href="/usuario/'+userid+'">tu cuenta</a><br><a href="#" id="logout" onclick="userlo()">[salir]</a></p>';
 		$('.login-info').html(html);
 	}
 }

@@ -34,7 +34,7 @@ $subcats = $subcatMapper->getByIdCategoria($categoria->get('id'));
 <link rel="stylesheet" type="text/css" href="/includes/javascripts/chosen/chosen.min.css">
 
 <div class="publish">
-	<h1>Publica tu pituto</h1>
+	<h1>Edita tu pituto</h1>
 
 	<form method="post" action="" onsubmit="return false;">
 
@@ -43,6 +43,8 @@ $subcats = $subcatMapper->getByIdCategoria($categoria->get('id'));
 		<div class="aviso-wrapper">
 
 			<div class="row">
+
+				<h4>Título</h4>
 
 				<!-- // Tipo de aviso -->
 				<select name="tipo" id="tipo">
@@ -61,12 +63,14 @@ $subcats = $subcatMapper->getByIdCategoria($categoria->get('id'));
 				<!-- // Titulo -->
 				<label for="titulo"> y </label> 
 				<input type="text" name="titulo" id="titulo" placeholder="Ej: te paseo el perro" value="<?=$aviso->get('titulo')?>">
+
+				<p class="mini-info">Completa el título de tu pituto, por ejemplo: <b>Me pagas $5.000 y paseo a tu perro por 1 hora</b></p>
 			</div>
 
 			<div class="row">
 				<!-- // Listado de categorias -->
 				<!-- TODO: Pasar las categorias a base de datos -->
-				<label for="categorias">Categorías </label> 
+				<h4>Categorías </h4> 
 				<select name="categorias" id="categorias">
 					<option value="">Selecciona una categoría</option>
 					<? foreach($categorias as $c): ?>
@@ -79,7 +83,7 @@ $subcats = $subcatMapper->getByIdCategoria($categoria->get('id'));
 
 			<div class="row" id="subcategorias-wrapper">
 				<!-- // Listado de subcategorias -->
-				<label for="categorias">Subtegorías </label> 
+				<h4>Subtegorías </h4> 
 				<select name="subcategorias" id="subcategorias">
 					<option value="">Selecciona una subcategoría</option>
 					<? foreach($subcats as $sc): ?>
@@ -93,7 +97,7 @@ $subcats = $subcatMapper->getByIdCategoria($categoria->get('id'));
 			<div class="row">
 
 				<!-- // Descripcion -->
-				<label for="descripcion">Descripción</label>
+				<h4>Describe tu pituto</h4>
 
 				<!-- // Wysihtml5 Toolbar -->
 				<div id="toolbar" style="display: none;">
@@ -105,18 +109,20 @@ $subcats = $subcatMapper->getByIdCategoria($categoria->get('id'));
 				</div>
 
 				<textarea name="descripcion" id="descripcion" placeholder="Ingresa una descripción ..."><?=$aviso->get('descripcion')?></textarea>
+
+				<p class="mini-info">Cuéntamos más detalles acerca de tu pituto, por ejemplo: cuanto tiempo tarda, si es presencial o lo haces vía internet, que experiencia tienes, etc.</p>
 			</div>
 
 			<div class="row"> 
 				<!-- // Cobertura del servicio -->
-				<!-- TODO: Agregar las regiones y todo chile al listado de localidades -->
-				<!-- TODO: Agregar icono informativo con explicacion de regiones y todo chile -->
-				<label for="cobertura">Cobertura de servicio</label> 
+				<h4>Cobertura de pituto</h4> 
 				<select name="cobertura" id="cobertura" multiple="multiple">
 					<? foreach($localidades as $loc): ?>
 						<option value="<?=utf8_encode($loc->get('nombre'))?>" <?=(in_array( utf8_encode($loc->get('nombre')) , $aviso->get('localidades')))?'selected':''?>><?=utf8_encode($loc->get('nombre'))?></option>
 					<? endforeach; ?>
 				</select>
+
+				<p class="mini-info">Ingresa las localidades en donde puedes realizar tu pituto, puedes ser una o varias comunas e incluso <b>Todo Chile</b></p>
 			</div>
 
 			<div class="row">

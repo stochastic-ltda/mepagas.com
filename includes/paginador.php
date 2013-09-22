@@ -6,7 +6,7 @@
     $page++;
 
     // total de paginas
-    $totalPages = (int) ($total / 5);
+    $totalPages = (int) ($total / 20);
     if($total % 20 > 0) $totalPages++;
 
     $url = current(explode("?",$_SERVER['REQUEST_URI']));

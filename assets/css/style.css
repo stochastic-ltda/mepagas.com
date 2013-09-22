@@ -279,7 +279,7 @@ header {
 		text-decoration: none;
 	}
 
-	.publish-zone h1 {
+	.publish-zone h3 {
 		width: 55%;
 		margin: 0 auto;
 		font-family: 'bree_serifregular', Arial, sans-serif ;
@@ -400,9 +400,9 @@ header {
 	margin-bottom: 40px;
 }
 
-.controls-wrapper h3 {
+.controls-wrapper h1 {
 	font-family: 'bree_serifregular', Arial, sans-serif ;
-	font-size: 32px;
+	font-size: 24px;
 	font-weight: normal;
 	color: #444;
 	padding: 0 0 19px 0;
@@ -463,6 +463,12 @@ header {
    AVISOS 
    --------------------------------------------------------------------------------------------------------------------*/
 
+#pituto-no-disponible {
+	margin-top: 120px;
+	margin-bottom: 50px;
+	font-style: italic;
+}
+
 .aviso {
 	float: left;
 	width: 100%;
@@ -488,7 +494,7 @@ header {
 		width: 66%;
 	}
 
-	.aviso .text h1 {
+	.aviso .text h2 {
 		font-family: 'bree_serifregular', Arial, sans-serif ;
 		font-size: 20px;
 		font-weight: normal;
@@ -576,7 +582,7 @@ header {
 	padding: 9px 0 0 34%;
 }
 
-.publish-zone_despl h1 {
+.publish-zone_despl h3 {
 	float: left;
 	width: 50%;
 	font-family: 'bree_serifregular', Arial, sans-serif ;
@@ -751,7 +757,7 @@ header {
 	padding: 0 0 29px 12px; 
 }
 
-.contenido_ficha_descripcion h1 {
+.contenido_ficha_descripcion h2 {
 	font-family: 'Bitter', serif;
 	font-size: 17px;
 	padding: 20px 0 8px 0;
@@ -767,7 +773,7 @@ header {
 	color: #555;
 }
 
-.contenido_full_centro_der h1 {
+.contenido_full_centro_der h2 {
 	font-family: Arial,sans-serif;
 	font-size: 15px;
 	border-bottom: 1px solid #dcdcdc;
@@ -1213,6 +1219,13 @@ footer {
    PUBLICADOR 
    --------------------------------------------------------------------------------------------------------------------*/
 
+.publish .mini-info {
+	font-size: 13px;
+	margin-top: 10px;
+	font-style: italic;
+	color: #333;
+}
+
 .publish {
 	padding: 50px 5px 10px 30px;	
 }
@@ -1418,7 +1431,7 @@ margin-bottom: 10px;
 
 .wysihtml5-sandbox {
 	width: 100% !important;
-	height: 300px !important;
+	height: 150px !important;
 }
 
 #toolbar {
