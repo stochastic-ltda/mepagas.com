@@ -39,7 +39,9 @@ elseif(isset($term_precio)  && isset($term_categoria)) $title = "Pitutos en " . 
 elseif(isset($term_precio)) $title = "Pitutos a $$term_precio pesos";
 elseif(isset($term_subcategoria)) $title = "Pitutos en " . utf8_encode(SubcategoriaMapper::getNombreByPermalink(($term_subcategoria)));
 elseif(isset($term_categoria)) $title = "Pitutos en " . CategoriaMapper::getNombreByPermalink($term_categoria);
-$h1 = $title;
+
+if(str_replace("GRATIS", "", $title) == $title) $h1 = $title;
+
 
 $description = "Encuentra todos los pitutos";
 if(isset($term_subcategoria)) $description .= " en " . utf8_encode(SubcategoriaMapper::getNombreByPermalink(($term_subcategoria)));
