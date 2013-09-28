@@ -1,0 +1,2 @@
+ALTER TABLE  `usuario` ADD  `token` VARCHAR( 200 ) NOT NULL ,
+ADD  `estado` INT NOT NULL DEFAULT  '0'

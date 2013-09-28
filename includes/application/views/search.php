@@ -1,8 +1,8 @@
 <title><?=$title?> | Mepagas.com</title>
 <META NAME="Description" CONTENT="<?=$description?>">
 <?php
-if (!class_exists('CategoriaMapper')) { include( dirname(__FILE__) . '/classes/Mappers/CategoriaMapper.php'); }
-if (!class_exists('SubcategoriaMapper')) { include( dirname(__FILE__) . '/classes/Mappers/SubcategoriaMapper.php'); }
+if (!class_exists('CategoriaMapper')) { include( dirname(__FILE__) . '/../../classes/Mappers/CategoriaMapper.php'); }
+if (!class_exists('SubcategoriaMapper')) { include( dirname(__FILE__) . '/../../classes/Mappers/SubcategoriaMapper.php'); }
 ?>
 
 <div class="publish-zone">
@@ -101,7 +101,7 @@ if (!class_exists('SubcategoriaMapper')) { include( dirname(__FILE__) . '/classe
 				</div>
 
 				<div class="order">
-					<? include('paginador.php'); ?>
+					<? include(dirname(__FILE__) . '/../../paginador.php'); ?>
 					<!--
 					<span class="orden">orden</span>
 					<span class="orden_arrb"><a href="#"><img src="/assets/img/flecha_arriba.png"/></a></span>

@@ -1,7 +1,7 @@
 <?php
-if (!class_exists('ElasticSearch')) { include( dirname(__FILE__) . '/classes/Services/Elasticsearch/Elasticsearch.php'); }
-if (!class_exists('CategoriaMapper')) { include( dirname(__FILE__) . '/classes/Mappers/CategoriaMapper.php'); }
-if (!class_exists('SubcategoriaMapper')) { include( dirname(__FILE__) . '/classes/Mappers/SubcategoriaMapper.php'); }
+if (!class_exists('ElasticSearch')) { include( dirname(__FILE__) . '/../../classes/Services/Elasticsearch/Elasticsearch.php'); }
+if (!class_exists('CategoriaMapper')) { include( dirname(__FILE__) . '/../../classes/Mappers/CategoriaMapper.php'); }
+if (!class_exists('SubcategoriaMapper')) { include( dirname(__FILE__) . '/../../classes/Mappers/SubcategoriaMapper.php'); }
 
 // Se genera busqueda simple que entregue ultimos 20 avisos ordenados del mas nuevo al mas antiguo
 $elastic = new Elasticsearch("avisos");
@@ -39,7 +39,9 @@ elseif(isset($term_precio)  && isset($term_categoria)) $title = "Pitutos en " . 
 elseif(isset($term_precio)) $title = "Pitutos a $$term_precio pesos";
 elseif(isset($term_subcategoria)) $title = "Pitutos en " . utf8_encode(SubcategoriaMapper::getNombreByPermalink(($term_subcategoria)));
 elseif(isset($term_categoria)) $title = "Pitutos en " . CategoriaMapper::getNombreByPermalink($term_categoria);
-$h1 = $title;
+
+if(str_replace("GRATIS", "", $title) == $title) $h1 = $title;
+
 
 $description = "Encuentra todos los pitutos";
 if(isset($term_subcategoria)) $description .= " en " . utf8_encode(SubcategoriaMapper::getNombreByPermalink(($term_subcategoria)));

@@ -73,24 +73,208 @@ function confirmDelete() {
 // Login
 // ------------------------------------------------------------------------------------------------------------------
 
+/**
+ * User register
+ * Registro de usuario desde el modal
+ */
+function userregister(form) {
+
+	$(form).append('<img src="/assets/img/loading.gif" class="loading">');
+
+	event.preventDefault();	
+	$('#reg-errorlist').html("");
+
+	var nombre = form.nombre.value;
+	var email = form.email.value;
+	var password = form.password.value;
+	var terms = form.terms.checked;
+
+	var request = $.ajax({
+		type: "POST",
+		url: '/includes/phpscripts/user_create.php', 
+		data: { 
+			nombre:nombre, 
+			email:email, 
+			password:password, 
+			terms: terms
+		},
+		dataType: "json", 
+		success: function(data) {
+
+			$('.loading').remove();
+
+			if(typeof data.userid != "undefined") {
+
+				// inicio sesion
+				getloginstr(data.userid, 1);
+				setCookie('email', email, 1);
+				setCookie('nombre', nombre, 1);
+				setCookie('userid', data.userid, 1);
+				setCookie('avatar', '', 1);				
+
+				changeloginfo(nombre, data.userid,"");
+				$('.close-reveal-modal').click();
+
+			} else {
+				// error en validacion 
+				// muestro problemas de validacion
+				for(var i=0; i<data.length; i++)
+					$('#reg-errorlist').append('<li>'+data[i]+'</li>');
+			}
+		}
+	});
+
+}
+
+/**
+ * Change Login Info
+ * Cambia la informacion del usuario en la posicion superior derecha
+ */
+function changeloginfo(nombre, id, avatar) {
+
+	if(avatar == "") avatar = "/upload/avatar/default.png";
+	var html = 	'<img src="'+avatar+'" id="usr-ava">' +
+				'<p>Hola <b>'+nombre.split(" ")[0]+'</b>!</p><br>' +
+				'<p class="small-row"><a href="/usuario/'+id+'" id="usr-acc">Mi cuenta</a></p><br> '+
+				'<p class="small-row"><a href="/usuario/'+id+'/mensajes" id="usr-msj">Mensajes</a></p>';
+	$('.login-info').html(html);
+}
+
+/**
+ * Check Login
+ * Revisa si se ha iniciado sesion y carga la informacion de usuario
+ */
 function checkli() {
 
 	var email = getCookie('email');
 	var avatar = getCookie('avatar');
 	var userid = getCookie('userid');
-	var username = getCookie('username');
+	var nombre = getCookie('nombre');
 
 	if(email != '' && typeof email != "undefined") {
-		var html = '<img src="'+avatar+'"><p>Hola <b>'+username+'</b>!<br><a href="/usuario/'+userid+'">tu cuenta</a><br><a href="#" id="logout" onclick="userlo()">[salir]</a></p>';
-		$('.login-info').html(html);
+		changeloginfo(nombre, userid, avatar);
 	}
 }
+
+/**
+ * User Login
+ * Inicio de sesion de usuario
+ */
+function userlogin(form) {
+
+	$(form).append('<img src="/assets/img/loading.gif" class="loading">');
+
+	event.preventDefault();	
+	$('#log-errorlist').html("");
+
+	var email = form.email.value;
+	var pass = form.password.value;
+	var failed = false;
+
+	if(email=='' || pass=='') failed = true;
+
+	if(failed) {
+		$('#log-errorlist').append('<li>Email o password incorrecto</li>');
+		$('.loading').remove();
+	} else {
+
+		var request = $.ajax({
+			type: "POST",
+			url: '/includes/phpscripts/user_login.php', 
+			data: {email:email, pass:pass},
+			dataType: "json",
+			success: function(data) {
+
+				$('.loading').remove();
+
+				if(data.length == 0) {
+					$('#log-errorlist').append('<li>Email o password incorrecto</li>');
+				} else {
+
+					// inicio sesion
+					getloginstr(data.userid, 7);
+					setCookie('email', email, 7);
+					setCookie('nombre', data.nombre, 7);
+					setCookie('userid', data.userid, 7);
+					setCookie('avatar', data.avatar, 7);
+
+					changeloginfo(data.nombre, data.userid, data.avatar);
+					$('.close-reveal-modal').click();	
+
+				}
+			}
+		});
+
+	}
+}
+
+/**
+ * Get Login String
+ * Retorna string identificador de usuario
+ */
+function getloginstr(id, days) {
+	$.post('/includes/phpscripts/user_login_str.php', {id:id}, function(str){
+		setCookie('mutm_gif', str, days);
+	});				
+}
+
+/**
+ * User logout
+ * Elimina cookies de usuario
+ */
+function userlogout() {
+	setCookie('email','',-1);
+	setCookie('avatar','',-1);
+	setCookie('userid','',-1);
+	setCookie('nombre','',-1);
+	setCookie('mutm_gif','',-1);
+
+	var html = 	'<a class="btn btn-register" href="#" data-reveal-id="regmodal">Registrar</a>'+
+				'<a class="btn btn-login" href="#" data-reveal-id="logmodal">Login</a>';
+
+	location.reload();
+}
+
+/**
+ * User Recover
+ * Recupera contraseña de usuario
+ */
+function userrecover(form) {
+
+	event.preventDefault();
+	$('#rec-errorlist').html("");
+	$("#rec-donelist").html('<img src="/assets/img/loading.gif" class="loading">');
+
+	var email = form.email.value;
+	if(email=='' || typeof email == "undefined") {
+		$('#rec-errorlist').append("<i>Ingresa un email válido</li>");
+		$('#rec-donelist .loading').remove();
+	} else {
+		$.post('/includes/phpscripts/user_recover.php', {email:email}, function(response){
+			console.log(response);
+			if(response == '0') $('#rec-errorlist').append("<i>Ha ocurrido un problema al momento de enviar el correo</li>");
+			else if(response == '1') $('#rec-errorlist').append("<i>Ingresa un email válido</li>");
+			else if(response == '2') $('#rec-errorlist').append("<i>Su cuenta se encuentra inactiva, puedes activarla <a href='/usuario/enviar-activacion/?email="+email+"'>aquí</a></li>");
+			else if(response == '3') $('#rec-errorlist').append("<i>Email no registrado</li>");
+			else $('#rec-donelist').html("<i>Correo enviado!</i>");
+			$('#rec-donelist .loading').remove();
+		})
+	}
+
+}
+
+// ---
+// FIN Login
+// ---
+
+
+
 
 function userlo() {
 	setCookie('email','');
 	setCookie('avatar','');
 	setCookie('userid','');
-	setCookie('username','');
+	setCookie('nombre','');
 	setCookie('mutm_gif','');
 	document.location="/";
 }
@@ -120,7 +304,7 @@ function userli() {
 
 					// inicio sesion
 					setCookie('email', data.email, 7);
-					setCookie('username', data.username, 7);
+					setCookie('nombre', data.nombre, 7);
 					setCookie('userid', data.userid, 7);
 					setCookie('avatar', data.avatar, 7);
 
@@ -136,34 +320,4 @@ function userli() {
 	}
 
 	return false;
-}
-
-function userlif() {
-	FB.api('/me', function(userinfo) {
-
-		var request = $.ajax({
-			type: "POST",
-			url: '/includes/phpscripts/user_create_facebook.php', 
-			data: userinfo, 
-			dataType: "json", 
-			success: function(data) {
-
-				if(typeof data.userid != "undefined") {
-
-					// inicio sesion
-					setCookie('email', userinfo.email,7);
-					setCookie('username', userinfo.username,7);
-					setCookie('userid', data.userid,7);
-					setCookie('avatar', "http://graph.facebook.com/" + userinfo.id + "/picture",7);
-
-					$.post('/includes/phpscripts/user_login_str.php', {id:data.userid}, function(str){
-						setCookie('mutm_gif', str, 7);
-						location.reload();
-					});					
-
-				}
-
-			}
-		});
-	});	
 }

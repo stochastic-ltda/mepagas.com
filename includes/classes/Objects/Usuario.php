@@ -13,10 +13,12 @@ class Usuario {
 			'telefono' => null,
 			'password' => null,
 			'avatar' => null,
-			'acercade' => null
+			'acercade' => null,
+			'token' => null,
+			'estado' => 0
 		);
 
-	function __construct($id=null,$facebook_id=null,$usuario=null,$nombre=null,$nombre_empresa=null,$email=null,$telefono=null,$password=null, $avatar=null, $acercade=null) {
+	function __construct($id=null,$facebook_id=null,$usuario=null,$nombre=null,$nombre_empresa=null,$email=null,$telefono=null,$password=null, $avatar=null, $acercade=null, $token=null) {
 		$this->_fields['id'] = $id;
 		$this->_fields['facebook_id'] = $facebook_id;
 		$this->_fields['nombre'] = $nombre;
@@ -26,6 +28,7 @@ class Usuario {
 		$this->_fields['telefono'] = $telefono;
 		$this->_fields['password'] = $password;
 		$this->_fields['acercade'] = $acercade;
+		$this->_fields['token'] = $token;
 
 		if(is_null($avatar)) $this->_fields['avatar'] = '/upload/avatar/default.png';
 		else $this->_fields['avatar'] = $avatar;

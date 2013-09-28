@@ -11,7 +11,7 @@ if(!is_null($usuario)) {
 
 	$user = array(
 			'email' => $usuario->get('email'),
-			'username' => $usuario->get('nombre'),
+			'nombre' => $usuario->get('nombre'),
 			'userid' => $usuario->get('id'),
 			'avatar' => $usuario->get('avatar')
 		);

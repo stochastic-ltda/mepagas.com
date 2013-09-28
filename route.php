@@ -23,12 +23,26 @@ if(isset($_GET['f1'])) {
 
 			if($_GET['f2'] == "editar") {
 				$userid = $_GET['f3'];
-				include("includes/user_edit_controller.php");
-				include("includes/user_edit_view.php");
+				include("includes/application/controllers/user_edit.php");
+				include("includes/application/views/user_edit.php");
+
+			} elseif($_GET['f2'] == 'recuperar-clave') {
+				include("includes/application/controllers/user_recover.php");
+				include("includes/application/views/user_recover.php");
+
+			} elseif($_GET['f2'] == 'enviar-activacion') {
+				include("includes/application/controllers/user_enviar_activacion.php");
+				include("includes/application/views/user_enviar_activacion.php");
+
+			} elseif($_GET['f2'] == 'activar') {
+				$token = $_GET['f3'];
+				include("includes/application/controllers/user_activar.php");
+				include("includes/application/views/user_activar.php");
+
 			} else {
 				$userid = $_GET['f2'];
-				include("includes/user_controller.php");
-				include("includes/user_view.php");
+				include("includes/application/controllers/user_account.php");
+				include("includes/application/views/user_account.php");
 			}
 
 		} else {
@@ -37,8 +51,8 @@ if(isset($_GET['f1'])) {
 
 	} elseif(is_numeric($f1) && isset($_GET['f2']) && (strpos($_GET['f2'], "me-pagas")!==false || strpos($_GET['f2'], "te-pago")!==false)) {
 
-		include("includes/ficha_controller.php");
-		include("includes/ficha_view.php");
+		include("includes/application/controllers/ficha.php");
+		include("includes/application/views/ficha.php");
 
 	} else {
 		$term_precio = null;
@@ -59,13 +73,13 @@ if(isset($_GET['f1'])) {
 			}
 		}
 		
-		include("includes/search_controller.php");
-			include("includes/search_view.php");
+		include("includes/application/tcontrollers/search.php");
+			include("includes/application/views/search.php");
 	}
 
 } else {
-	include("includes/search_controller.php");
-	include("includes/search_view.php");
+	include("includes/application/controllers/search.php");
+	include("includes/application/views/search.php");
 }
 
 ?>

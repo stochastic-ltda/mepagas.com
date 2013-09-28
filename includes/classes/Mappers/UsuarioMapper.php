@@ -1,5 +1,7 @@
 <?php
+if (!class_exists('Mailer')) { include( dirname(__FILE__) . '/../Services/Mustache/Mustache.php'); }
 if (!class_exists('Mysql')) { include( dirname(__FILE__) . '/../Services/Database/Mysql.php'); }
+if (!class_exists('Mailer')) { include( dirname(__FILE__) . '/../Services/Email/Mailer.php'); }
 if (!class_exists('Usuario')) { include( dirname(__FILE__) . '/../Objects/Usuario.php'); }
 
 class UsuarioMapper {
@@ -10,7 +12,7 @@ class UsuarioMapper {
 		$link = $mysql->connect();
 
 		// Insert aviso
-		$sql = "INSERT INTO usuario (id, facebook_id, usuario, nombre, nombre_empresa, email, telefono, password, avatar) VALUES ('','".$usuario->get('facebook_id')."','".$usuario->get('usuario')."','".$usuario->get('nombre')."','".$usuario->get('nombre_empresa')."','".$usuario->get('email')."','".$usuario->get('telefono')."','".$usuario->get('password')."','".$usuario->get('avatar')."')";
+		$sql = "INSERT INTO usuario (id, facebook_id, usuario, nombre, nombre_empresa, email, telefono, password, avatar, token) VALUES ('','".$usuario->get('facebook_id')."','".$usuario->get('usuario')."','".$usuario->get('nombre')."','".$usuario->get('nombre_empresa')."','".$usuario->get('email')."','".$usuario->get('telefono')."','".$usuario->get('password')."','".$usuario->get('avatar')."', '".$usuario->get('token')."')";
 			
 		$res = mysql_query($sql) or die(mysql_error());		
 		$id = mysql_insert_id();
@@ -61,6 +63,21 @@ class UsuarioMapper {
 			mysql_query($s7) or die(mysql_error());
 		}
 
+		if(!is_null($usuario->get('token'))) {
+			$s7 = "UPDATE usuario SET token = '" . $usuario->get('token') . "' WHERE id = $id";
+			mysql_query($s7) or die(mysql_error());
+		}
+
+		if(!is_null($usuario->get('estado'))) {
+			$s7 = "UPDATE usuario SET estado = '" . $usuario->get('estado') . "' WHERE id = $id";
+			mysql_query($s7) or die(mysql_error());
+		}
+
+		if(!is_null($usuario->get('password'))) {
+			$s7 = "UPDATE usuario SET password = '" . $usuario->get('password') . "' WHERE id = $id";
+			mysql_query($s7) or die(mysql_error());
+		}
+
 	}
 
 	public function findByEmail($email) {
@@ -80,6 +97,17 @@ class UsuarioMapper {
 		$link = $mysql->connect();
 
 		$sql = "SELECT * FROM usuario WHERE id = '$id'";
+		$res = mysql_query($sql) or die(mysql_error());
+
+		return $this->processReturn($res, null);
+	}
+
+	public function findByToken($token) {
+
+		$mysql = new Mysql();
+		$link = $mysql->connect();
+
+		$sql = "SELECT * FROM usuario WHERE token = '$token'";
 		$res = mysql_query($sql) or die(mysql_error());
 
 		return $this->processReturn($res, null);
@@ -124,10 +152,39 @@ class UsuarioMapper {
 			$usuario->set('telefono', mysql_result($res, 0, "telefono"));
 			$usuario->set('avatar', mysql_result($res, 0, "avatar"));
 			$usuario->set('acercade', mysql_result($res, 0, "acercade"));
+			$usuario->set('token', mysql_result($res, 0, "token"));
+			$usuario->set('estado', mysql_result($res, 0, "estado"));
+			$usuario->set('password', mysql_result($res, 0, "password"));
 
 			return $usuario;
 		}
 
+	}
+
+	public function sendActivationEmail($nombre, $email, $token) {
+
+		$template = "user_activation";
+		$params = array("nombre"=>$nombre, "token"=>$token);
+		$html = Mustache::paint($template, $params);
+
+		$mail = new Mailer();
+		if(!$mail->send($email, $nombre, "Activa tu cuenta de usuario", $html))
+			return "Ha ocurrido un error al enviar el email";
+
+		return true;
+	}
+
+	public function sendRecoverEmail($nombre, $email, $token) {
+
+		$template = "user_recover";
+		$params = array("nombre"=>$nombre, "token"=>$token);
+		$html = Mustache::paint($template, $params);
+
+		$mail = new Mailer();
+		if(!$mail->send($email, $nombre, "Recupera tu password", $html))
+			return "Ha ocurrido un error al enviar el email";
+
+		return true;
 	}
 
 }
