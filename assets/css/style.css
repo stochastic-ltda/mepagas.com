@@ -197,14 +197,54 @@ header {
 		right: 10px;
 		position: absolute;
 		width: auto;
+		min-width: 140px;
 	}
 
-	.login-info { text-align: right; }
+	.login-info { text-align: right; padding-top: 3px; }
 
-	.login-info img {
+	.login-info .btn {
+		text-align: center;
+		font-family: "Droid Sans", arial, sans-serif;
+		padding: 10px;
+		font-size: 14px;
+		-moz-transition: all 0.3s ease 0s;
+		-webkit-transition: all 0.3s ease 0s;
+		-o-transition: all 0.3s ease 0s;
+		transition: all 0.3s ease 0s;
+		margin-top: 5px;
+	}
+
+	.login-info .btn:hover {
+		text-decoration: none;
+		background: #76A933;
+		color: #FFF;
+	}
+
+		.login-info .btn-register {
+			color: #76A933;		
+		}
+
+		.login-info .btn-login {
+			background-color: #f2eee7;	
+		}
+
+	.login-info #usr-ava {
 	    float: left;
 	    margin-right: 4px;
 	    width: 50px;
+	    border: 1px solid #CCC;
+	}
+
+	.login-info #usr-acc {
+		background: url('/assets/img/user_account_small.png') no-repeat left -2px;
+		padding-left: 19px;
+		font-size: 11px;
+	}
+
+	.login-info #usr-msj {
+		background: url('/assets/img/user_messages_small.png') no-repeat left -2px;
+		padding-left: 19px;
+		font-size: 11px !important;
 	}
 
 	#logout {
@@ -213,7 +253,7 @@ header {
 	}
 	.login-info p {
 	    float: left;
-	    margin-top: 5px;
+	    margin-top: 2px;
 	}
 
 	.header-login input {
@@ -293,6 +333,15 @@ header {
 	float: left;
 	width: 980px;
 }
+
+	.content .infotext {
+		font-size: 12px !important;
+		line-height: 15px !important;
+		margin-top: 10px;
+	}
+
+	.content .errors { color: red; }
+	.content .dones { color: green; }
 
 .sidebar-wrapper {
 	float: left;

@@ -8,11 +8,13 @@ $config = new Config();
 <head>
 	<meta charset="utf-8">	
 	<link rel="stylesheet" href="/assets/css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="/assets/css/reveal.css">
 	
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>	
 	<script type="text/javascript" src="/assets/js/functions.js"></script>
+	<script type="text/javascript" src="/assets/js/facebook.js"></script>
 </head>
-<body>
+<body>	
 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
 		var js, fjs = d.getElementsByTagName(s)[0];
@@ -29,12 +31,16 @@ $config = new Config();
 			</div>
 
 			<div class="login-info">
+				<a class="btn btn-register" href="#" data-reveal-id="regmodal">Registrar</a>
+				<a class="btn btn-login" href="#" data-reveal-id="logmodal">Login</a>
+				<!--
 				<div class="header-login">
 					<input type="text" id="li-email" placeholder="Email"> 
 					<input type="password" id="li-pass" placeholder="Password"> 
 					<a href="#" class="butn" onclick="userli()">Login</a>
 				</div>
 				<div class="fb-login-button" data-width="200" data-autologoutlink="true" data-size="large" data-onlogin="userlif()" data-scope="offline_access,user_birthday,user_likes,email"></div>
+				-->
 			</div>			
 		</aside>
 	</header>
@@ -54,6 +60,11 @@ $config = new Config();
 			checkli();
 		});
 	</script>
+
+	<?php include("includes/modals.php"); ?>	
+
+	<!-- // Scripts -->
+	<script type="text/javascript" src="/assets/js/jquery.reveal.js"></script>
 
 </body>
 </html>

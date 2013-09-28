@@ -1,5 +1,5 @@
 <?php
-if (!class_exists('UsuarioMapper')) { include( dirname(__FILE__) . '/classes/Mappers/UsuarioMapper.php'); }
+if (!class_exists('UsuarioMapper')) { include( dirname(__FILE__) . '/../../classes/Mappers/UsuarioMapper.php'); }
 
 $usuarioMapper = new UsuarioMapper();
 $user = $usuarioMapper->findById($userid);

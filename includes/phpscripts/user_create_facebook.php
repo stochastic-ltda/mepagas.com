@@ -18,6 +18,8 @@ if($usuarioMapper->findEmail($_POST['email'])) {
 	$usuario->set('nombre_empresa', $usuarioOLD->get('nombre_empresa'));
 	$usuario->set('acercade', $usuarioOLD->get('acercade'));
 	$usuario->set('telefono', $usuarioOLD->get('telefono'));
+	$usuario->set('token', $usuarioOLD->get('token'));
+	$usuario->set('estado', $usuarioOLD->get('estado'));
 	$usuarioMapper->update($usuarioOLD->get('id'), $usuario);
 
 } else {

@@ -1,7 +1,7 @@
 <?php
-if (!class_exists('ElasticSearch')) { include( dirname(__FILE__) . '/classes/Services/Elasticsearch/Elasticsearch.php'); }
-if (!class_exists('CategoriaMapper')) { include( dirname(__FILE__) . '/classes/Mappers/CategoriaMapper.php'); }
-if (!class_exists('SubcategoriaMapper')) { include( dirname(__FILE__) . '/classes/Mappers/SubcategoriaMapper.php'); }
+if (!class_exists('ElasticSearch')) { include( dirname(__FILE__) . '/../../classes/Services/Elasticsearch/Elasticsearch.php'); }
+if (!class_exists('CategoriaMapper')) { include( dirname(__FILE__) . '/../../classes/Mappers/CategoriaMapper.php'); }
+if (!class_exists('SubcategoriaMapper')) { include( dirname(__FILE__) . '/../../classes/Mappers/SubcategoriaMapper.php'); }
 
 // Se genera busqueda simple que entregue ultimos 20 avisos ordenados del mas nuevo al mas antiguo
 $elastic = new Elasticsearch("avisos");

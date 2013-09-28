@@ -1,7 +1,7 @@
 <?php
-if (!class_exists('UsuarioMapper')) { include( dirname(__FILE__) . '/classes/Mappers/UsuarioMapper.php'); }
-if (!class_exists('AvisoMapper')) { include( dirname(__FILE__) . '/classes/Mappers/AvisoMapper.php'); }
-if (!class_exists('GeneralMapper')) { include( dirname(__FILE__) . '/classes/Mappers/GeneralMapper.php'); }
+if (!class_exists('UsuarioMapper')) { include( dirname(__FILE__) . '/../../classes/Mappers/UsuarioMapper.php'); }
+if (!class_exists('AvisoMapper')) { include( dirname(__FILE__) . '/../../classes/Mappers/AvisoMapper.php'); }
+if (!class_exists('GeneralMapper')) { include( dirname(__FILE__) . '/../../classes/Mappers/GeneralMapper.php'); }
 
 $usuarioMapper = new UsuarioMapper();
 $avisoMapper = new AvisoMapper();

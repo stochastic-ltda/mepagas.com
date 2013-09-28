@@ -15,7 +15,7 @@ $.post('/includes/phpscripts/user_is_user.php', {code: getCookie('mutm_gif'), us
 <div class="fond_text_header_mp_despl">
 				
 	<div class="publish-zone_despl">
-		 <h1>Gana dinero publicando <span class="text_gratis">GRATIS</span> TU PITUTO</h1>
+		 <h3>Gana dinero publicando <span class="text_gratis">GRATIS</span> TU PITUTO</h3>
 		<div class="txt_publica_gratis_despl">
 			<a href="/publica-tu-pituto">PUBLICA TU PITUTO AQUI</a>
 		</div> 
