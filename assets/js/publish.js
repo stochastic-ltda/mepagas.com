@@ -289,10 +289,7 @@ function checkul() {
 			if(response == "ERROR") {
 				alert("Ha ocurrido un problema, por favor inténtelo más tarde");
 			} else {							
-				$('#usuario-logged').html(response);
-				$('#usuario-logged').show();
-				$('#usuario-login').hide();
-				$('#usuario-registro').hide();						
+				$('#usuario-login').html(response);
 			}
 
 		});

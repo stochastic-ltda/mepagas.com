@@ -202,7 +202,35 @@ header {
 
 	.login-info { text-align: right; padding-top: 3px; }
 
-	.login-info .btn {
+	#usuario-login {
+	    padding-top: 15px;
+	}
+
+	#usuario-login #data {
+    	float: left;
+    	margin-left: 20px;
+	}
+
+	#usuario-login #uavatar {
+	    float: left;
+	}
+
+	#usuario-login .smallfont {
+	    width: 100%;
+	    float: left;
+	    margin-top: 20px;
+	}
+
+	#usuario-login #data p {
+	    font-size: 20px;
+	    font-weight: bold;
+	}
+
+	#usuario-login #data ul {
+	    list-style: none;
+	}
+
+	#usuario-login .btn, .login-info .btn {
 		text-align: center;
 		font-family: "Droid Sans", arial, sans-serif;
 		padding: 10px;
@@ -212,9 +240,10 @@ header {
 		-o-transition: all 0.3s ease 0s;
 		transition: all 0.3s ease 0s;
 		margin-top: 5px;
+		background-color: #EEE;
 	}
 
-	.login-info .btn:hover {
+	#usuario-login .btn:hover, .login-info .btn:hover {
 		text-decoration: none;
 		background: #76A933;
 		color: #FFF;
@@ -1294,9 +1323,9 @@ footer {
 }
 
 	.publish h1 {
-		font-family: 'bree_serifregular', Arial, sans-serif ;
+		font-family: Arial, sans-serif ;
 		font-size: 28px;
-		font-weight: normal;
+		font-weight: bold;
 		color: #444;
 		margin-right: 5%;
 	}
