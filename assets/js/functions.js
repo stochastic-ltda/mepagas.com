@@ -113,7 +113,9 @@ function userregister(form) {
 				setCookie('avatar', '', 1);				
 
 				changeloginfo(nombre, data.userid,"");
+				if($('#usuario-login').length>0) changepubloginfo(data.nombre, email, data.avatar);
 				$('.close-reveal-modal').click();
+				if(typeof(checkul)=="function") checkul();
 
 			} else {
 				// error en validacion 
@@ -138,6 +140,20 @@ function changeloginfo(nombre, id, avatar) {
 				'<p class="small-row"><a href="/usuario/'+id+'" id="usr-acc">Mi cuenta</a></p><br> '+
 				'<p class="small-row"><a href="/usuario/'+id+'/mensajes" id="usr-msj">Mensajes</a></p>';
 	$('.login-info').html(html);
+}
+
+/**
+ * Change Publish Login Info
+ * Cambia la informacion del usuario en el formulario de publicacion de pituto
+ */
+function changepubloginfo(nombre, email, avatar) {
+
+	if(avatar == "") avatar = "/upload/avatar/default.png";
+	var html = 	'<img src="'+avatar+'" id="usr-ava">' +
+				'<p><b>'+nombre+'</b></p><br>' +
+				'<p>Email: '+ email +'</p>';
+				
+	$('#usuario-login').html(html);
 }
 
 /**
@@ -199,7 +215,9 @@ function userlogin(form) {
 					setCookie('avatar', data.avatar, 7);
 
 					changeloginfo(data.nombre, data.userid, data.avatar);
+					if($('#usuario-login').length>0) changepubloginfo(data.nombre, email, data.avatar);
 					$('.close-reveal-modal').click();	
+					if(typeof(checkul)=="function") checkul();
 
 				}
 			}

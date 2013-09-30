@@ -9,10 +9,13 @@ $config = new Config();
 	<meta charset="utf-8">	
 	<link rel="stylesheet" href="/assets/css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="/assets/css/reveal.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/progression.css">
 	
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>	
+	<!--<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>	-->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript" src="/assets/js/functions.js"></script>
 	<script type="text/javascript" src="/assets/js/facebook.js"></script>
+	<script type="text/javascript" src="/assets/js/progression.js"></script>
 </head>
 <body>	
 	<div id="fb-root"></div>

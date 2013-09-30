@@ -39,6 +39,7 @@ function fb_login(){
 
                             changeloginfo(userinfo.name, data.userid, "http://graph.facebook.com/" + userinfo.id + "/picture"); 
                             $('.close-reveal-modal').click();
+                            if(typeof(checkul)=="function") checkul();
                         }
 
                     }
