@@ -34,3 +34,21 @@
 		Registrarte vía Facebook
 	</div>
 </div>
+
+<!-- // Modal mensaje -->
+<div id="msjmodal" class="reveal-modal small">
+	<a class="close-reveal-modal">&#215;</a>
+	<h1>Envía un mensaje</h1>
+	<form method="post" onsubmit="sendmsj(this)">
+		<p id="msjde">De: {{msjde}}</p>
+		<p id="msjpara">Para: {{msjpara}}</p>
+		<input type="hidden" name="from" id="from">
+		<input type="hidden" name="to" id="to">
+		<input type="hidden" name="aviso" id="aviso">
+		<p>Mensaje:</p>
+		<textarea name="msjbody" id="msjbody"></textarea>
+		<ul class="errors" id="msj-errorlist"></ul>
+		<div id="msj-donelist"></div>
+		<input type="submit" name="enviar" id="enviar" value="Enviar mensaje">
+	</form>
+</div>

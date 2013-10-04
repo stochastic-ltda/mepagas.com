@@ -33,7 +33,7 @@ $(document).ready(function(){
 	});
 
 	$(window).on('scroll', function() {
-		if($(window).scrollTop() > 200) {
+		if($(window).scrollTop() > 300) {
 			$('.contenido_centro_despl_full_usuario').addClass('info-fixed');
 		} else {
 			$('.contenido_centro_despl_full_usuario').removeClass('info-fixed');
@@ -106,8 +106,24 @@ $('#user-denunciar').on('click', function() {
 })
 
 function showInfo() {
-	$('#btn-contactar').hide();
-	$('#contacto_oculto').fadeIn();
+	event.preventDefault();
+	var email = getCookie("email");
+	if(typeof email == "undefined") $('.btn-login').click();
+	else {
+		var fromname = getCookie("nombre");
+		var fromid = getCookie("mutm_gif")+"-"+getCookie("userid");
+		var toname = $('.contenido_nombreuser_imagen h3 a').html();
+		var toid = $('.contenido_nombreuser_imagen h3 a').attr('href').replace('/usuario/','');
+		var avisoid = location.pathname.split("/")[1];
+
+		$('#msjde').html($('#msjde').html().replace("{{msjde}}","<b>"+fromname+"</b>"));
+		$('#msjpara').html($('#msjpara').html().replace('{{msjpara}}', "<b>"+toname+"</b>"));
+		$('#msjmodal #from').val(fromid);
+		$('#msjmodal #to').val(toid);
+		$('#msjmodal #aviso').val(avisoid);
+		$('#msjmodal').reveal();
+		$('#msjbody').focus();
+	}
 }
 
 function shareInfo(obj) {

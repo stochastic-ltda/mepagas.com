@@ -159,3 +159,17 @@
 	margin-left: 15px;
 	color: red;
 }
+
+/* Modal mensajes */
+#msjbody {
+    width: 100%;
+}
+#msjmodal form {
+    width: 100%;
+    margin-bottom: 0px;
+}
+#msjmodal textarea {
+    font-family: "Droid Sans", Arial, sans-serif;
+    font-size: 13px;
+    height: 100px;
+}

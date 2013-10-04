@@ -1,51 +1,39 @@
-<script>
-$.post('/includes/phpscripts/user_is_user.php', {code: getCookie('mutm_gif'), userid: <?=$user->get('id')?>}, function(response){
-	if(response == 'false') {
-		//$('#user_edit').html("");
-	} else {
-		setCookie('avatar', "<?=$user->get('avatar')?>", 7);
-	}
-});
-</script>
 <title><?=$title?></title>
 <script type="text/javascript" src="/assets/js/user.js"></script>
-<script> 
-	$('#divlogo').addClass('logo_mepagas_despliegue').removeClass('logo');
-</script>
-<div class="fond_text_header_mp_despl">
-				
-	<div class="publish-zone_despl">
-		 <h3>Gana dinero publicando <span class="text_gratis">GRATIS</span> TU PITUTO</h3>
-		<div class="txt_publica_gratis_despl">
-			<a href="/publica-tu-pituto">PUBLICA TU PITUTO AQUI</a>
-		</div> 
-	</div>
 
-</div>
-
-<p class="user-opt" id="user-opt-edit"><a href="/usuario/editar/<?=$user->get('id')?>">Editar</a></p>
+<!-- // Header -->
+<div class="fond_text_header_mp_despl"><div class="publish-zone_despl"><h3>Gana dinero publicando <span class="text_gratis">GRATIS</span> TU PITUTO</h3><div class="txt_publica_gratis_despl"><a href="/publica-tu-pituto">PUBLICA TU PITUTO AQUI</a></div> </div></div>
 
 <div class="content" id="user_account">
 
-	<div class="user_general row">
-		<div id="user_avatar"><img src="<?=$user->get('avatar')?>?type=large"></div>
-		<div id="user_info">
-			<h1><?=$user->get('usuario')?></h1>
-			<ul>
-				<li>Nombre: <?=$user->get('nombre')?></li>
-				<li>Empresa: <?=$user->get('nombre_empresa')?></li>
-				<li>Email: <?=$user->get('email')?></li>
-				<li>Teléfono: <?=$user->get('telefono')?></li>
-			</ul>
-		</div>		
-		<div id="user_about">
-			<?=$user->get('acercade')?>
-		</div>
+	<div id="user-sidebar">
+		<h2><?=$user->get('nombre');?></h2>
+		<div id="avatar"><img src="<?=$user->get('avatar')?>?type=large"></div>
+
+		<ul id="options">
+			<li class="opt-perfil"><a href="/usuario/<?=$user->get('id')?>">Perfil</a></li>
+			<li class="opt-pitutos"><a href="/usuario/<?=$user->get('id')?>?s=pit">Pitutos</a></li>
+			<li class="opt-favoritos user-opt"><a href="/usuario/<?=$user->get('id')?>?s=fav">Favoritos</a></li>
+			<li class="opt-calificaciones"><a href="/usuario/<?=$user->get('id')?>?s=cal">Calificaciones</a></li>
+			<li class="opt-mensajes user-opt"><a href="/usuario/<?=$user->get('id')?>?s=msj">Mensajes</a></li>
+			<li class="opt-cerrar_sesion user-opt"><a href="#" onclick="userlogout()">Cerrar sesión</a></li>
+		</ul>
 	</div>
 
-	<div class="user_data row">
-		<div id="user_avisos">
-			<h3>Mis Avisos</h3>
+	<div id="user-main">
+
+		<h1><?=$h1?></h1>
+
+		<!-- // Perfil -->
+		<? if(is_null($s)): ?>
+			<p>Nombre: <?=$user->get('nombre');?></p>
+			<p>Empresa: <?=$user->get('nombre_empresa');?></p>
+			<p>Acerca de mí: </p>
+			<p><?=$user->get('acercade')?></p>
+		<? endif; ?>
+
+		<!-- // Pitutos -->
+		<? if($s=="pit"): ?>
 			<table width="100%" cellpadding="5" cellspacing="0">
 			<? if(!is_null($avisos) && count($avisos) > 0): ?>
 			<? foreach($avisos as $aviso): ?>
@@ -61,10 +49,10 @@ $.post('/includes/phpscripts/user_is_user.php', {code: getCookie('mutm_gif'), us
 			<? endforeach; ?>
 			<? endif; ?>
 			</table>
-		</div>
+		<? endif; ?>
 
-		<div id="user_favoritos">
-			<h3>Mis Favoritos</h3>
+		<!-- // Favoritos -->
+		<? if($s=="fav"): ?>
 			<table width="100%" cellpadding="5" cellspacing="0">
 			<? foreach($favoritos as $favorito): ?>
 				<tr id="fav<?=$favorito['id']?>" class="favorito-row">
@@ -73,11 +61,65 @@ $.post('/includes/phpscripts/user_is_user.php', {code: getCookie('mutm_gif'), us
 				</tr>
 			<? endforeach; ?>
 			</table>
-		</div>
-	</div> 
+		<? endif; ?>
 
+		<!-- // Calificacion de usuario -->
+		<? if($s=="cal"): ?><? endif; ?>
+
+		<!-- // Mensajes -->
+		<? if($s=="msj"): ?>
+			<ul id="msj-fold">
+				<li class="active" id="btn-rec">Recibidos</li>
+				<li id="btn-env">Enviados</li>
+			</ul>
+			
+			<div id="msj-recibidos">
+				<? if(count($msjrec) > 0) : ?>
+					<table width="100%" cellpadding="5" cellspacing="0">
+					<? foreach($msjrec as $m): ?>
+						<tr id="msj<?=$m->get('id')?>" class="msj-row <?=($m->get('leido')==0)?'no-leido':''?>">
+							<td id="ndesde<?=$m->get('id')?>"><?=$m->get('_desde')?></td>
+							<td id="naviso<?=$m->get('id')?>"><?=$m->get('_aviso')?></td>
+							<td><?=strtolower(date("j-M H:i", strtotime($m->get('fecha'))))?></td>
+							<td><a href="#" data-id="<?=$m->get('id')?>" class="msj-delete"><img src="/assets/img/msj_delete.png"></a></td>
+						</tr>
+						<tr id="cuerpo<?=$m->get('id')?>" class="cuerpo-row" style="display:none;">
+							<td colspan="4">
+								<?=$m->get('mensaje')?>
+								<div class="btn-responder"><a href="#" data-id="<?=$m->get('id')?>">Responder</a></div>
+							</td>
+						</tr>
+					<? endforeach; ?>
+					</table>
+				<? else: ?>
+					<p>No tienes nuevos mensajes</p>
+				<? endif; ?>
+			</div>
+
+			<div id="msj-enviados" style="display:none">
+				<? if(count($msjenv) > 0) : ?>
+					<table width="100%" cellpadding="5" cellspacing="0">
+					<? foreach($msjenv as $m): ?>
+						<tr id="msj<?=$m->get('id')?>" class="msj-row">
+							<td><?=$m->get('_para')?></td>
+							<td><?=$m->get('_aviso')?></td>
+							<td><?=$m->get('fecha')?></td>
+							<td><a href="#" data-id="<?=$m->get('id')?>" class="msj-delete"><img src="/assets/img/msj_delete.png"></a></td>
+						</tr>
+						<tr id="cuerpo<?=$m->get('id')?>" class="cuerpo-row" style="display:none;">
+							<td colspan="4"><?=$m->get('mensaje')?></td>
+						</tr>
+					<? endforeach; ?>
+					</table>
+				<? else: ?>
+					<p>No tienes nuevos mensajes</p>
+				<? endif; ?>
+			</div>
+		<? endif; ?>
+
+	</div>
 </div>
 
 <script>
-$('.content').user({userid: <?=$user->get('id')?>});
+$('.content').user({userid: <?=$user->get('id')?>, avatar: "<?=$user->get('avatar')?>"});
 </script>
