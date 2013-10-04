@@ -27,6 +27,7 @@ $titulo = str_replace(" ","-",$titulo);
 $titulo = str_replace("--","-",$titulo);
 $titulo = str_replace("(","",$titulo);
 $titulo = str_replace(")","",$titulo);
+$titulo = ereg_replace("[^A-Za-z0-9\-]", "", $titulo);
 
 $aviso->set("permalink", $titulo);
 

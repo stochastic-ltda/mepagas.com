@@ -135,7 +135,7 @@ function userregister(form) {
 function changeloginfo(nombre, id, avatar) {
 
 	if(avatar == "") avatar = "/upload/avatar/default.png";
-	var html = 	'<img src="'+avatar+'" id="usr-ava">' +
+	var html = 	'<a href="/usuario/'+id+'"><img src="'+avatar+'" id="usr-ava"></a>' +
 				'<p>Hola <b>'+nombre.split(" ")[0]+'</b>!</p><br>' +
 				'<p class="small-row"><a href="/usuario/'+id+'" id="usr-acc">Mi cuenta</a></p><br> '+
 				'<p class="small-row"><a href="/usuario/'+id+'?s=msj" id="usr-msj">Mensajes</a></p>';

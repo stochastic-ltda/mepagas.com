@@ -5,6 +5,6 @@ $usuarioMapper = new UsuarioMapper();
 $user = $usuarioMapper->findById($userid);
 
 $isFacebook = false;
-if(!in_array($user->get('facebook_id'), array('', null))) $isFacebook = true;
+// if(!in_array($user->get('facebook_id'), array('', null))) $isFacebook = true; 
 
 ?>

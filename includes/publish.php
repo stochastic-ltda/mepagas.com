@@ -15,7 +15,7 @@ $categorias = $categoriaMapper->getAll();
 
 ?>
 
-<script type="text/javascript" src="/includes/javascripts/wysihtml5/parser_rules/advanced.js"></script>
+<script type="text/javascript" src="/includes/javascripts/wysihtml5/parser_rules/simple.js"></script>
 <script src="/includes/javascripts/wysihtml5/dist/wysihtml5-0.3.0.js"></script>
 <script type="text/javascript" src="/includes/javascripts/chosen/chosen.jquery.js"></script>
 <script type="text/javascript" src="/assets/js/functions.js"></script>
