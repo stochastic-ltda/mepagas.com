@@ -1601,6 +1601,13 @@ font-weight: bold;
 .opt-calificaciones { background: url('/assets/img/user_calificaciones.png') no-repeat left top; }
 .opt-mensajes { background: url('/assets/img/user_mensajes.png') no-repeat left top; }
 .opt-cerrar_sesion { background: url('/assets/img/user_cerrar_sesion.png') no-repeat left top; }
+.opt-editperfil { 
+	background: url('/assets/img/user_edit.png') no-repeat left top;
+	height: 20px;
+	width: 85px;
+	float: right;
+	line-height: 22px;
+}
 
 .btn-responder a {
 	text-align: center;

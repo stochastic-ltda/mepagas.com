@@ -26,6 +26,7 @@
 
 		<!-- // Perfil -->
 		<? if(is_null($s)): ?>
+			<div class="user-opt opt-editperfil"><a href="/usuario/editar/<?=$user->get('id')?>">Editar perfil</a></div>
 			<p>Nombre: <?=$user->get('nombre');?></p>
 			<p>Empresa: <?=$user->get('nombre_empresa');?></p>
 			<p>Acerca de mí: </p>
