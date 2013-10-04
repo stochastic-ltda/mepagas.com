@@ -1,14 +1,11 @@
+<script src="/includes/javascripts/raty/jquery.raty.js"></script>
 <div class="contenido_nombreuser_imagen">
 	<h3><a href="/usuario/{{id}}">{{nombre}}</a></h3>
 	<span class="img_user_mepagas"><img src="{{avatar}}"/></span>
 </div>
 
-<div class="contenedor_calificar" style="display:none">
-	<a href="#">Estrella 1</a>
-	<a href="#">Estrella 2</a>
-	<a href="#">Estrella 3</a>
-	<a href="#">Estrella 4</a>
-	<a href="#">Estrella 5</a>
+<div class="contenedor_calificar">
+	<div id="star"></div>
 </div>
 
 <div class="contenido_contactar_user">
@@ -23,6 +20,16 @@
 <h1>Compartir</h1>
 
 <div class="compartir_redes_sociales">
+	<div class="fb-like" data-width="200" data-colorscheme="light" data-layout="box_count" data-action="recommend" data-show-faces="true" data-send="false" data-href="{{url}}"></div>
+
+	<br><br>
+
+	<a href="https://twitter.com/share" class="twitter-share-button" data-url="{{url}}" data-lang="es" data-count="vertical">Tweet</a>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+	<!--
 	<a href="https://www.facebook.com/sharer/sharer.php?u={{url}}" onclick="return shareInfo(this)" class="facebook">Facebook</a>
-	<a href="http://twitter.com/share?text={{titulo}}&url={{url}}" onclick="return shareInfo(this)" class="twitter">Twitter</a>
+	<a href="http://twitter.com/share?text={{titulo}}&url={{url}}" onclick="return shareInfo(this)" class="twitter">Twitter</a>-->
 </div>
+
+<script> $('#star').raty(); </script>

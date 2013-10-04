@@ -121,7 +121,7 @@ function showInfo() {
 		$('#msjmodal #from').val(fromid);
 		$('#msjmodal #to').val(toid);
 		$('#msjmodal #aviso').val(avisoid);
-		$('#msjmodal').reveal();
+		$('#msjmodal').reveal({animation:"fade"});
 		$('#msjbody').focus();
 	}
 }
