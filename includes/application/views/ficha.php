@@ -9,7 +9,7 @@
 <? if(!is_null($data)): ?>
 
 	<title><?=$title?></title>
-	<META NAME="Description" CONTENT="<?=$data['descripcion']?>">
+	<META NAME="Description" CONTENT="<?=strip_tags($data['descripcion'])?>">
 	<script> 
 		var userid = <?=$data['id_usuario']?>; 
 		$('#divlogo').addClass('logo_mepagas_despliegue').removeClass('logo');
@@ -108,7 +108,7 @@
 
 		<div class="contenido_ficha_descripcion">
 			<h2>Descripción</h2>
-			<p><?=$data['descripcion']?></p> 
+			<p><?=strip_tags($data['descripcion'],"<b><i><br><ul><ol><u><strong><em><p><div><span><li>")?></p> 
 		</div>
 
 		<div class="contenido_selec_precios" style="display:none">
