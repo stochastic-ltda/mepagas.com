@@ -102,7 +102,7 @@
 					$('#msjmodal #from').val(msj.to);
 					$('#msjmodal #to').val(msj.from);
 					$('#msjmodal #aviso').val(msj.avisoid);
-					$('#msjmodal').reveal();
+					$('#msjmodal').reveal({animation:"fade"});
 					$('#msjbody').focus();
 
 					
