@@ -13,6 +13,13 @@ if(!is_null($data)) {
 
 	$categoria_url = Cleaner::makeUrl($data['categoria']);
 	$subcategoria_url = Cleaner::makeUrl($data['subcategoria']);
+
+	$class_precio = '';	
+	$img_precio = 'cheque';
+	if($data['precio'] <= 20000) {
+		$class_precio = "color-".$data['precio'];
+		$img_precio = "billete_".($data['precio']/1000)."mil_gran";
+	}
 }
 
 
