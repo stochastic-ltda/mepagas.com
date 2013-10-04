@@ -70,8 +70,8 @@
 
 			<h2>Precio</h2>
 			<div class="precio_conten_desp">
-				<span class="contendor_precio_txt color_billete_5mil">$<?=$precio?></span>
-				<span class="contendor_precio_icon"><img src="/assets/img/billete_5mil_gran.png"/></span>
+				<span class="contendor_precio_txt <?=$class_precio?>">$<?=$precio?></span>
+				<span class="contendor_precio_icon"><img src="/assets/img/<?=$img_precio?>.png"/></span>
 			</div>
 
 			<h2>Cobertura del Servicio</h2>
@@ -84,18 +84,6 @@
 			<? if($data['estado'] == 'pendiente'): ?>
 			<h2 style="color:red">Aviso en proceso de aprobación</h2>
 			<? endif; ?>
-
-			<!-- // TODO: Implementar calificacion de aviso -->
-			<!--
-			<h2>Calificar</h2>
-			<div class="contenedor_calificar">
-				<a href="#">Estrella 1</a>
-				<a href="#">Estrella 2</a>
-				<a href="#">Estrella 3</a>
-				<a href="#">Estrella 4</a>
-				<a href="#">Estrella 5</a>
-			</div>
-			-->
 
 		</aside>
 
