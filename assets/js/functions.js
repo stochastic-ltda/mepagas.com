@@ -138,8 +138,16 @@ function changeloginfo(nombre, id, avatar) {
 	var html = 	'<img src="'+avatar+'" id="usr-ava">' +
 				'<p>Hola <b>'+nombre.split(" ")[0]+'</b>!</p><br>' +
 				'<p class="small-row"><a href="/usuario/'+id+'" id="usr-acc">Mi cuenta</a></p><br> '+
-				'<p class="small-row"><a href="/usuario/'+id+'/mensajes" id="usr-msj">Mensajes</a></p>';
+				'<p class="small-row"><a href="/usuario/'+id+'?s=msj" id="usr-msj">Mensajes</a></p>';
 	$('.login-info').html(html);
+
+	$.post('/includes/phpscripts/user_mensaje_checknew.php', {id:id}, function(data) {
+		if(data == 0) {
+			$('#usr-msj #new').remove();
+		} else {
+			$('#usr-msj').append('<span id="new">'+data+'</span>');
+		}
+	})
 }
 
 /**
@@ -285,7 +293,51 @@ function userrecover(form) {
 // FIN Login
 // ---
 
+/**
+ * Send Message
+ * Envio de mensaje entre usuarios
+ */
+function sendmsj(form) {
 
+	$(form).append('<img src="/assets/img/loading.gif" class="loading">');
+
+	event.preventDefault();	
+	$('#msj-errorlist').html("");
+
+	var from = form.from.value;
+	var to = form.to.value;
+	var body = form.msjbody.value;
+	var id_aviso = form.aviso.value;
+
+	var request = $.ajax({
+		type: "POST",
+		url: '/includes/phpscripts/ficha_sendmessage.php', 
+		data: { 
+			from: from, 
+			to: to, 
+			body: body,
+			id_aviso: id_aviso
+		},
+		dataType: "json", 
+		success: function(data) {
+
+			$('.loading').remove();
+
+			if(data == true) {				
+				done = "<b>¡Mensaje enviado!</b><br>Puedes revisar tus mensajes <a href='/usuario/"+getCookie('userid')+"?s=msj'>AQUI</a>";
+				$('#msj-donelist').html(done);				
+				$('#msjbody').val("");
+
+			} else {
+				// error en validacion 
+				// muestro problemas de validacion
+				for(var i=0; i<data.length; i++)
+					$('#msj-errorlist').append('<li>'+data[i]+'</li>');
+			}
+		}
+	});
+
+}
 
 
 function userlo() {
