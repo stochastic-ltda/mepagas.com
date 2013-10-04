@@ -73,7 +73,7 @@ if(isset($_GET['f1'])) {
 			}
 		}
 		
-		include("includes/application/tcontrollers/search.php");
+		include("includes/application/controllers/search.php");
 			include("includes/application/views/search.php");
 	}
 
