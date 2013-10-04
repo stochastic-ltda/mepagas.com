@@ -14,6 +14,11 @@ $(document).ready(function(){
 					img.css('left', '50%');
 					img.css('margin-left', img.width()/-2);
 
+				} else if(img.height() == img.width()) {
+					img.height('353px');
+					img.width('353px');
+					img.css('left', '50%');
+					img.css('margin-left', img.width()/-2);
 				} else {
 
 					img.css('top', '50%');
