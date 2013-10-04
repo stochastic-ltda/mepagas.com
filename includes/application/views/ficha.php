@@ -99,51 +99,7 @@
 			<p><?=strip_tags($data['descripcion'],"<b><i><br><ul><ol><u><strong><em><p><div><span><li>")?></p> 
 		</div>
 
-		<div class="contenido_selec_precios" style="display:none">
-			<div class="contendor_tabs_list">
-				<ul class="ul_tabs_list">
-					<li><a href="#" class="activo contenido_list_produc_fnd">Todos</a></li>
-					<li><a href="#"><span class="color_billete_mil tamano_num_list">1.000</span><span class="img_billete_list"><img src="/assets/img/billete_mil.png"/></span></a></li>
-					<li><a href="#"><span class="color_billete_2mil tamano_num_list">2.000</span><span class="img_billete_list"><img src="/assets/img/billete_2mil.png"/></span></a></li>
-					<li><a href="#"><span class="color_billete_5mil tamano_num_list">5.000</span><span class="img_billete_list"><img src="/assets/img/billete_5mil.png"/></span></a></li>
-					<li><a href="#"><span class="color_billete_10mil tamano_num_list">10.000</span><span class="img_billete_list"><img src="/assets/img/billete_10mil.png"/></span></a></li>
-					<li><a href="#"><span class="color_billete_20mil tamano_num_list">20.000</span><span class="img_billete_list"><img src="/assets/img/billete_20mil.png"/></span></a></li>
-				</ul>
-
-				<div class="contenido_list_produc contenido_list_produc_fnd">
-					<span class="contenedor_list_precios_producto">
-						<span class="contenedor_list_producto_txt">
-							<a href="#">Me pagas $5.000 y te corto el pasto con máquina lalalal</a>
-						</span>
-						<img src="/assets/img/img_aviso_lista.jpg"/>
-					</span> 
-					<span class="contenedor_list_precios_producto">
-						<span class="contenedor_list_producto_txt">
-							<a href="#">Me pagas $5.000 y te corto el pasto con máquina lalalal</a>
-						</span>
-						<img src="/assets/img/img_aviso_lista.jpg"/>
-					</span> 
-					<span class="contenedor_list_precios_producto">
-						<span class="contenedor_list_producto_txt">
-							<a href="#">Me pagas $5.000 y te corto el pasto con máquina lalalal</a>
-						</span>
-						<img src="/assets/img/img_aviso_lista.jpg"/>
-					</span> 
-					<span class="contenedor_list_precios_producto">
-						<span class="contenedor_list_producto_txt">
-							<a href="#">Me pagas $5.000 y te corto el pasto con máquina lalalal</a>
-						</span>
-						<img src="/assets/img/img_aviso_lista.jpg"/>
-					</span> 
-				</div>
-
-			</div>
-
-			<div class="cont_entrar_secc_list">
-				<a href="#">Entrar a todo $5.000</a>
-			</div>
-
-		</div>
+		<div class="contenido_selec_precios"></div>
 
 		<div class="contenedor_disqus">
 		    <div id="disqus_thread"></div>

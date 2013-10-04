@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+	// Imagefit
 	setTimeout(function(){
 		var count = $('#gallery img').length;
 		
@@ -29,7 +30,7 @@ $(document).ready(function(){
 			}
 		}
 
-	}, 100);
+	}, 100);	
 
 	checkli();
 
@@ -42,6 +43,16 @@ $(document).ready(function(){
 			$('.contenido_centro_despl_full_usuario').addClass('info-fixed');
 		} else {
 			$('.contenido_centro_despl_full_usuario').removeClass('info-fixed');
+		}
+	});
+
+	// More pitutos
+	$.ajax({
+		method: 'post',
+		async: 'true',
+		url: '/includes/phpscripts/ficha_otros.php',
+		success: function(html) {
+			$('.contenido_selec_precios').html(html);
 		}
 	});
 
