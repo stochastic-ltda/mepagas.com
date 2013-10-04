@@ -1151,11 +1151,19 @@ header {
 
 .contenedor_list_precios_producto {
 	float: left;
+	height: 130px;
 	width: 160px;
 	border: 1px solid #dcdcdc;
 	padding: 5px;
 	margin: 0 7px 0 0;
 	background: #fff;
+	overflow: hidden;
+	position: relative;
+}
+
+.contenedor_list_precios_producto img {
+	width: 100%; 
+	height: 100%;
 }
 
 .contenedor_list_producto_txt {
@@ -1166,6 +1174,8 @@ header {
 	padding: 4px 4px 4px 5px;
 	width: 151px;
 	background: url(../img/fnd_list_pro.png);
+	bottom: 5px;
+	height: 40px;
 }
 
 .contenedor_list_producto_txt a {

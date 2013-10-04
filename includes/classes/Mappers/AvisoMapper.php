@@ -186,6 +186,20 @@ class AvisoMapper {
 
 	}
 
+	public function getLast($num, $precio=null) {
+
+		$mysql = new Mysql();
+		$link = $mysql->connect();
+
+		$sql = "SELECT * FROM aviso WHERE estado='activo' ";
+		if(!is_null($precio)) $sql .= "AND precio = $precio ";
+		$sql .= "ORDER BY id DESC LIMIT $num";
+
+		$res = mysql_query($sql) or die(mysql_error());
+		return $this->processAllReturn($res, null);
+
+	}
+
 	public function processAllReturn($res, $default=null) {
 
 		if(mysql_num_rows($res) == 0) return $default;
