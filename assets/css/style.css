@@ -1726,3 +1726,88 @@ background-position: center -158px !important;
 	width: 75%;
 	height: 200px;
 }
+
+
+/* ----------------------------------------------------------------------------------------------------------------------
+   USER CALIFICAR
+   --------------------------------------------------------------------------------------------------------------------*/
+
+#user_clasificar {
+width: 90%;
+margin-left: 5%;
+margin-top: 90px;
+}
+
+#user_clasificar #uc_avatar {
+    float: right;
+    padding: 5px;
+    background: #EEE;
+}
+#user_clasificar h2 {
+    margin-bottom: 20px;
+}
+#user_clasificar h3 {
+    font-size: 28px;
+}
+#user_clasificar .hint_recomendar {
+	position: absolute;
+	top: 10px;
+	left: 190px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+#user_clasificar #recomendar {
+    width: 60%;
+    display: block;
+    float: left;
+    position: relative;    
+}
+#user_clasificar #mas-calificaciones {
+    width: 60%;
+    float: left;
+    margin-top: 22px;
+    list-style: none;
+}
+#user_clasificar #mas-calificaciones li {
+    width: 100%;
+    height: 45px;
+    font-size: 16px;
+    position: relative;
+}
+#user_clasificar #mas-calificaciones li div {
+    display: block;
+}
+
+.hint_confiable, .hint_responsable, .hint_experiencia, .hint_calidad {
+	position: absolute;
+	top: 19px;
+	left: 110px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#user_clasificar .row {
+    width: 60%;
+    float: left;
+    margin-top: 20px;
+    font-size: 14px;
+}
+#user_clasificar textarea {
+    width: 100%;
+    height: 210px;
+}
+#user_clasificar .mini {
+    font-size: 11px;
+}
+#user_clasificar .btn {
+    background: #EEE;
+    padding: 10px;
+    border: 1px solid #c6c6c6;
+    border-radius: 11px;
+    font-weight: bold;
+}
+
+#user_clasificar a {
+	text-decoration: none;
+}

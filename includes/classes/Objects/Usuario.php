@@ -15,7 +15,12 @@ class Usuario {
 			'avatar' => null,
 			'acercade' => null,
 			'token' => null,
-			'estado' => 0
+			'estado' => 0,
+			'r_recomendado' => 0,
+			'r_confiable' => 0,
+			'r_responsable' => 0,
+			'r_calidad' => 0,
+			'r_experiencia' => 0
 		);
 
 	function __construct($id=null,$facebook_id=null,$usuario=null,$nombre=null,$nombre_empresa=null,$email=null,$telefono=null,$password=null, $avatar=null, $acercade=null, $token=null) {

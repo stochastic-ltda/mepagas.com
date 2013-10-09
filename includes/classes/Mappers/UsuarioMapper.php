@@ -68,13 +68,38 @@ class UsuarioMapper {
 			mysql_query($s7) or die(mysql_error());
 		}
 
-		if(!is_null($usuario->get('estado'))) {
+		if(!is_null($usuario->get('estado')) && $usuario->get('estado')!=0) {
 			$s7 = "UPDATE usuario SET estado = '" . $usuario->get('estado') . "' WHERE id = $id";
 			mysql_query($s7) or die(mysql_error());
 		}
 
 		if(!is_null($usuario->get('password'))) {
 			$s7 = "UPDATE usuario SET password = '" . $usuario->get('password') . "' WHERE id = $id";
+			mysql_query($s7) or die(mysql_error());
+		}
+
+		if(!is_null($usuario->get('r_recomendado'))) {
+			$s7 = "UPDATE usuario SET r_recomendado = '" . $usuario->get('r_recomendado') . "' WHERE id = $id";
+			mysql_query($s7) or die(mysql_error());
+		}
+
+		if(!is_null($usuario->get('r_confiable'))) {
+			$s7 = "UPDATE usuario SET r_confiable = '" . $usuario->get('r_confiable') . "' WHERE id = $id";
+			mysql_query($s7) or die(mysql_error());
+		}
+
+		if(!is_null($usuario->get('r_responsable'))) {
+			$s7 = "UPDATE usuario SET r_responsable = '" . $usuario->get('r_responsable') . "' WHERE id = $id";
+			mysql_query($s7) or die(mysql_error());
+		}
+
+		if(!is_null($usuario->get('r_calidad'))) {
+			$s7 = "UPDATE usuario SET r_calidad = '" . $usuario->get('r_calidad') . "' WHERE id = $id";
+			mysql_query($s7) or die(mysql_error());
+		}
+
+		if(!is_null($usuario->get('r_experiencia'))) {
+			$s7 = "UPDATE usuario SET r_experiencia = '" . $usuario->get('r_experiencia') . "' WHERE id = $id";
 			mysql_query($s7) or die(mysql_error());
 		}
 

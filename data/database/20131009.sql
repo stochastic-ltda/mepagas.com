@@ -1,0 +1,1 @@
+ALTER TABLE  `calificacion` ADD  `id_califica` INT NOT NULL

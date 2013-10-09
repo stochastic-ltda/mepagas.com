@@ -39,6 +39,10 @@ if(isset($_GET['f1'])) {
 				include("includes/application/controllers/user_activar.php");
 				include("includes/application/views/user_activar.php");
 
+			} elseif($_GET['f2'] == 'calificar') {
+				include("includes/application/controllers/user_clasificar.php");
+				include("includes/application/views/user_clasificar.php");
+
 			} else {
 				$userid = $_GET['f2'];
 				include("includes/application/controllers/user_account.php");
