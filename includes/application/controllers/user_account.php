@@ -3,11 +3,13 @@ if (!class_exists('UsuarioMapper')) { include( dirname(__FILE__) . '/../../class
 if (!class_exists('AvisoMapper')) { include( dirname(__FILE__) . '/../../classes/Mappers/AvisoMapper.php'); }
 if (!class_exists('MensajeMapper')) { include( dirname(__FILE__) . '/../../classes/Mappers/MensajeMapper.php'); }
 if (!class_exists('GeneralMapper')) { include( dirname(__FILE__) . '/../../classes/Mappers/GeneralMapper.php'); }
+if (!class_exists('CalificacionMapper')) { include( dirname(__FILE__) . '/../../classes/Mappers/CalificacionMapper.php'); }
 
 $usuarioMapper = new UsuarioMapper();
 $avisoMapper = new AvisoMapper();
 $generalMapper = new GeneralMapper();
 $mensajeMapper = new MensajeMapper();
+$calificacionMapper = new CalificacionMapper();
 
 $user = $usuarioMapper->findById($userid);
 
@@ -39,6 +41,7 @@ switch ($s) {
 
 	case 'cal':
 		$h1 = "Calificaciones";		
+		$calificaciones = $calificacionMapper->getByIdUser($user->get('id'));
 		break;
 
 	case 'msj':

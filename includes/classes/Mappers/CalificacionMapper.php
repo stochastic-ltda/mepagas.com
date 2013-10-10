@@ -47,5 +47,57 @@ class CalificacionMapper {
 		return $data;
 	}
 
+	public function getByIdUser($id_user) {
+
+		$mysql = new Mysql();
+		$link = $mysql->connect();
+
+		$sql = "SELECT * FROM calificacion WHERE id_usuario = $id_user ORDER BY fecha desc";
+		$res = mysql_query($sql) or die(mysql_error());
+
+		return $this->processReturn($res, null);
+
+	}
+
+	public function processReturn($res, $default) {
+
+		if(mysql_num_rows($res) == 0) return $default;
+
+		$calificaciones = array();
+		$idx = 0;
+		for($i=0; $i<mysql_num_rows($res); $i++) {
+
+			$c = new Calificacion();
+			$c->set('r_recomendado', mysql_result($res, $i, "r_recomendado"));
+			$c->set('r_confiable', mysql_result($res, $i, "r_confiable"));
+			$c->set('r_responsable', mysql_result($res, $i, "r_responsable"));
+			$c->set('r_calidad', mysql_result($res, $i, "r_calidad"));
+			$c->set('r_experiencia', mysql_result($res, $i, "r_experiencia"));
+			$c->set('detalle', mysql_result($res, $i, "detalle"));
+			$c->set('id_usuario', mysql_result($res, $i, "id_usuario"));
+			$c->set('id_aviso', mysql_result($res, $i, "id_aviso"));
+			$c->set('fecha', mysql_result($res, $i, "fecha"));
+			$c->set('id_califica', mysql_result($res, $i, "id_califica"));
+
+			// obtengo info del usuario
+			if (!class_exists('UsuarioMapper')) { include( dirname(__FILE__) . '/../Mappers/UsuarioMapper.php'); }
+			$usuarioMapper = new UsuarioMapper();
+			$usuario = $usuarioMapper->findById(mysql_result($res, $i, "id_califica"));
+
+			// obtengo info del aviso
+			if (!class_exists('AvisoMapper')) { include( dirname(__FILE__) . '/../Mappers/AvisoMapper.php'); }
+			$avisoMapper = new AvisoMapper();
+			$aviso = $avisoMapper->findById(mysql_result($res, $i, "id_aviso"));
+
+			$calificaciones[$idx]['calificacion'] = $c;
+			$calificaciones[$idx]['usuario'] = $usuario;
+			$calificaciones[$idx]['aviso'] = $aviso;
+			$idx++;
+		}
+
+		return $calificaciones;
+
+	}
+
 }
 ?>

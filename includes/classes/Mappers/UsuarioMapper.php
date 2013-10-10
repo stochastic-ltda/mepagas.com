@@ -181,6 +181,12 @@ class UsuarioMapper {
 			$usuario->set('estado', mysql_result($res, 0, "estado"));
 			$usuario->set('password', mysql_result($res, 0, "password"));
 
+			$usuario->set('r_recomendado', mysql_result($res, 0, "r_recomendado"));
+			$usuario->set('r_confiable', mysql_result($res, 0, "r_confiable"));
+			$usuario->set('r_responsable', mysql_result($res, 0, "r_responsable"));
+			$usuario->set('r_calidad', mysql_result($res, 0, "r_calidad"));
+			$usuario->set('r_experiencia', mysql_result($res, 0, "r_experiencia"));
+
 			return $usuario;
 		}
 
