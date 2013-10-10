@@ -91,7 +91,10 @@
 				<div class="calificacion">
 
 					<!-- // star recomendado -->
-					<div id="star_recomendado<?=$idx?>"></div>
+					<div class="user-recomendado">
+						<div class="star_recomendado" id="star_recomendado<?=$idx?>"></div>
+						<div class="num_recomendado"><?=$recomendado[(int) ($c['calificacion']->get('r_recomendado') -1)]?></div>
+					</div>
 					<script>$('#star_recomendado<?=$idx?>').raty({readOnly:true,size: 35, starOn: 'star-on-semibig.png',starOff: 'star-off-semibig.png', score:<?=$c['calificacion']->get('r_recomendado')?>});</script>
 
 					<!-- // fecha y nombre -->

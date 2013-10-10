@@ -1658,9 +1658,11 @@ width: 125px;
 }
 
 #user_account h4 {
-	font-size: 16px;
-	margin-bottom: 10px;
-	float: left;
+font-size: 16px;
+margin-bottom: 0px;
+float: left;
+border-bottom: 1px solid #CCC;
+width: 100%;
 }
 
 #user_account h3 {
@@ -1721,6 +1723,27 @@ margin-bottom: 10px;
 .listado-calificaciones .title {
     font-size: 11px;
     color: #999;
+}
+
+.star_recomendado {
+    float: left;
+    width: 150px !important;
+}
+.num_recomendado {
+    float: left;
+    width: 230px;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 24px;
+}
+.user-recomendado {
+    width: 100%;
+    display: block;
+    float: left;
+}
+.listado-calificaciones {
+    float: left;
+    padding-top: 15px;
 }
 
 /* ----------------------------------------------------------------------------------------------------------------------

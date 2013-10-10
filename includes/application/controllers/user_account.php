@@ -42,6 +42,7 @@ switch ($s) {
 	case 'cal':
 		$h1 = "Calificaciones";		
 		$calificaciones = $calificacionMapper->getByIdUser($user->get('id'));
+		$recomendado = array('Muy mal recomendado','No recomendado','Recomendado','Bien recomendado','Muy bien recomendado!');
 		break;
 
 	case 'msj':
