@@ -68,13 +68,38 @@ class UsuarioMapper {
 			mysql_query($s7) or die(mysql_error());
 		}
 
-		if(!is_null($usuario->get('estado'))) {
+		if(!is_null($usuario->get('estado')) && $usuario->get('estado')!=0) {
 			$s7 = "UPDATE usuario SET estado = '" . $usuario->get('estado') . "' WHERE id = $id";
 			mysql_query($s7) or die(mysql_error());
 		}
 
 		if(!is_null($usuario->get('password'))) {
 			$s7 = "UPDATE usuario SET password = '" . $usuario->get('password') . "' WHERE id = $id";
+			mysql_query($s7) or die(mysql_error());
+		}
+
+		if(!is_null($usuario->get('r_recomendado'))) {
+			$s7 = "UPDATE usuario SET r_recomendado = '" . $usuario->get('r_recomendado') . "' WHERE id = $id";
+			mysql_query($s7) or die(mysql_error());
+		}
+
+		if(!is_null($usuario->get('r_confiable'))) {
+			$s7 = "UPDATE usuario SET r_confiable = '" . $usuario->get('r_confiable') . "' WHERE id = $id";
+			mysql_query($s7) or die(mysql_error());
+		}
+
+		if(!is_null($usuario->get('r_responsable'))) {
+			$s7 = "UPDATE usuario SET r_responsable = '" . $usuario->get('r_responsable') . "' WHERE id = $id";
+			mysql_query($s7) or die(mysql_error());
+		}
+
+		if(!is_null($usuario->get('r_calidad'))) {
+			$s7 = "UPDATE usuario SET r_calidad = '" . $usuario->get('r_calidad') . "' WHERE id = $id";
+			mysql_query($s7) or die(mysql_error());
+		}
+
+		if(!is_null($usuario->get('r_experiencia'))) {
+			$s7 = "UPDATE usuario SET r_experiencia = '" . $usuario->get('r_experiencia') . "' WHERE id = $id";
 			mysql_query($s7) or die(mysql_error());
 		}
 
@@ -155,6 +180,12 @@ class UsuarioMapper {
 			$usuario->set('token', mysql_result($res, 0, "token"));
 			$usuario->set('estado', mysql_result($res, 0, "estado"));
 			$usuario->set('password', mysql_result($res, 0, "password"));
+
+			$usuario->set('r_recomendado', mysql_result($res, 0, "r_recomendado"));
+			$usuario->set('r_confiable', mysql_result($res, 0, "r_confiable"));
+			$usuario->set('r_responsable', mysql_result($res, 0, "r_responsable"));
+			$usuario->set('r_calidad', mysql_result($res, 0, "r_calidad"));
+			$usuario->set('r_experiencia', mysql_result($res, 0, "r_experiencia"));
 
 			return $usuario;
 		}

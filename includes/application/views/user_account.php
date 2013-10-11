@@ -65,7 +65,76 @@
 		<? endif; ?>
 
 		<!-- // Calificacion de usuario -->
-		<? if($s=="cal"): ?><? endif; ?>
+		<? if($s=="cal"): ?>
+			<script src="/includes/javascripts/raty/jquery.raty.js"></script>			
+
+			<a href="/usuario/calificar/<?=$user->get('id')?>" id="btn-calificar">Califica a <?=current(explode(" ", $user->get('nombre')))?>!</a>
+			<script> if(typeof getCookie('userid') == "undefined") $('#btn-calificar').remove(); </script>
+
+			<div id="user-calificacion">
+				<h3><?=$user->get('nombre')?></h3>
+				<div id="star_recomendar-wrapper">
+					<div id="star_recomendar"></div> 
+					<span id="num_recomendado"><?=$user->get('r_recomendado')?></span>
+					<span id="num_calificaciones">(<?=count($calificaciones)?> calificaci<?=(count($calificaciones)>1)?'ones':'ón';?>)</span>
+				</div>
+
+				<ul id="mas-calificaciones">
+					<li><p class="star_label">Confiable</p> <div id="star_confiable" class="stars"></div><span class="hint_confiable"></span></li>
+					<li><p class="star_label">Responsable</p> <div id="star_responsable" class="stars"></div><span class="hint_responsable"></span></li>
+					<li><p class="star_label">Experiencia</p> <div id="star_experiencia" class="stars"></div><span class="hint_experiencia"></span></li>
+					<li><p class="star_label">Calidad</p><div id="star_calidad" class="stars"></div><span class="hint_calidad"></span></li>
+				</ul>
+			</div>
+
+			<!-- // TODO: Implementar Filtros -->
+			<!-- // Listado de calificaciones -->
+			<h4>Listado de calificaciones</h4>
+			<? $idx=0; ?>
+
+			<? if(count($calificaciones) > 0): ?>
+				<div class="listado-calificaciones">
+				<? foreach($calificaciones as $c): ?>
+					<div class="calificacion">
+
+						<!-- // star recomendado -->
+						<div class="user-recomendado">
+							<div class="star_recomendado" id="star_recomendado<?=$idx?>"></div>
+							<div class="num_recomendado"><?=$recomendado[(int) ($c['calificacion']->get('r_recomendado') -1)]?></div>
+						</div>
+						<script>$('#star_recomendado<?=$idx?>').raty({readOnly:true,size: 35, starOn: 'star-on-semibig.png',starOff: 'star-off-semibig.png', score:<?=$c['calificacion']->get('r_recomendado')?>});</script>
+
+						<!-- // fecha y nombre -->
+						<? $date = new DateTime($c['calificacion']->get('fecha')); ?>
+						<p class="date-name"><?=date_format($date, "d/m/y")?> <b><?=$c['usuario']->get('nombre')?></b></p>
+
+						<!-- // titulo aviso -->
+						<p class="title"><?=$c['aviso']->get('tipo')." ".$c['aviso']->get('precio')." y ".$c['aviso']->get('titulo')?></p>
+
+						<!-- // mas calificaciones -->
+						<ul class="user-calificaciones">
+							<li><p class="star_label">Confiable</p> <div id="star_confiable<?=$idx?>" class="stars"></div></li>
+							<li><p class="star_label">Responsable</p> <div id="star_responsable<?=$idx?>" class="stars"></div></li>
+							<li><p class="star_label">Experiencia</p> <div id="star_experiencia<?=$idx?>" class="stars"></div></li>
+							<li><p class="star_label">Calidad</p><div id="star_calidad<?=$idx?>" class="stars"></div></li>
+
+							<script>$('#star_confiable<?=$idx?>').raty({readOnly:true, score:<?=$c['calificacion']->get('r_confiable')?>});</script>
+							<script>$('#star_responsable<?=$idx?>').raty({readOnly:true, score:<?=$c['calificacion']->get('r_responsable')?>});</script>
+							<script>$('#star_experiencia<?=$idx?>').raty({readOnly:true, score:<?=$c['calificacion']->get('r_experiencia')?>});</script>
+							<script>$('#star_calidad<?=$idx?>').raty({readOnly:true, score:<?=$c['calificacion']->get('r_calidad')?>});</script>
+						</ul>
+
+						<!-- // detalles -->
+						<p class="user-detalle"><?=nl2br($c['calificacion']->get('detalle'))?></p>
+						<? $idx++; ?>
+
+					</div>
+				<? endforeach; ?>
+				</div>
+			<? else: ?>				
+				<p><i>Este usuario aún no presenta calificaciones</i></p>
+			<? endif; ?>
+		<? endif; ?>
 
 		<!-- // Mensajes -->
 		<? if($s=="msj"): ?>
@@ -124,3 +193,49 @@
 <script>
 $('.content').user({userid: <?=$user->get('id')?>, avatar: "<?=$user->get('avatar')?>"});
 </script>
+
+<!-- // Scripts -->
+<? if($s=="cal"): ?>
+<script type="text/javascript">
+	$('#star_recomendar').raty({
+		number:5,
+		readOnly:true,
+		half: true,
+		halfShow: true,
+		starOn: 'star-on-big.png',
+		starHalf: 'star-half-big.png',
+		starOff: 'star-off-big.png',
+		size: 35,
+		score: <?=$user->get('r_recomendado')?>
+	});
+
+	$('#star_confiable').raty({
+		score: <?=$user->get('r_confiable')?>,
+		half: true,
+		halfShow: true,
+		readOnly: true
+	});
+
+	$('#star_responsable').raty({
+		score: <?=$user->get('r_responsable')?>,
+		half: true,
+		halfShow: true,
+		readOnly: true
+	});
+
+	$('#star_experiencia').raty({
+		score: <?=$user->get('r_experiencia')?>,
+		half: true,
+		halfShow: true,
+		readOnly: true
+
+	});
+
+	$('#star_calidad').raty({
+		score: <?=$user->get('r_calidad')?>,
+		half: true,
+		halfShow: true,
+		readOnly: true
+	});
+</script>
+<? endif; ?>
