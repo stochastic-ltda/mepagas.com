@@ -1,5 +1,5 @@
 <? if($redirect): ?><script> document.location="/"; </script><? endif; ?>
-
+<script>if(typeof getCookie('userid') == "undefined") history.go(-1);</script>
 <div class="content" id="user_clasificar">
 	<div id="uc_avatar">
 		<img src="<?=$usuario->get('avatar')?>">
@@ -29,7 +29,7 @@
 
 		<div id="pituto" class="row">
 			<p>
-				Pituto: 
+				¿Qué pituto te hizo? 
 				<select id="nombre-pituto" name="nombre_pituto">
 					<? foreach($avisos as $a): ?>
 						<option value="<?=$a->get('id')?>"><?=$a->get('tipo')?> <?=$a->get('precio')?> y <?=$a->get('titulo')?></option>

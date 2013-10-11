@@ -18,22 +18,22 @@ class CalificacionMapper {
 
 	}
 
-	public function deleteByIds($id_usuario, $id_califica) {
+	public function deleteByIds($id_usuario, $id_califica, $id_aviso) {
 
 		$mysql = new Mysql();
 		$link = $mysql->connect();
 
-		$sql = "DELETE FROM calificacion WHERE id_califica = $id_califica AND id_usuario = $id_usuario";
+		$sql = "DELETE FROM calificacion WHERE id_califica = $id_califica AND id_usuario = $id_usuario AND id_aviso = $id_aviso";
 		$res = mysql_query($sql) or die(mysql_error());		
 
 	}
 
-	public function getMedia($id_califica) {
+	public function getMedia($id_usuario) {
 
 		$mysql = new Mysql();
 		$link = $mysql->connect();
 
-		$sql = "SELECT AVG(r_recomendado) AS recomendado, AVG(r_confiable) AS confiable, AVG(r_responsable) AS responsable, AVG(r_calidad) AS calidad, AVG(r_experiencia) AS experiencia FROM calificacion WHERE id_usuario = $id_califica";
+		$sql = "SELECT AVG(r_recomendado) AS recomendado, AVG(r_confiable) AS confiable, AVG(r_responsable) AS responsable, AVG(r_calidad) AS calidad, AVG(r_experiencia) AS experiencia FROM calificacion WHERE id_usuario = $id_usuario";
 
 		$res = mysql_query($sql) or die(mysql_error());
 		$data = array(
@@ -45,6 +45,18 @@ class CalificacionMapper {
 			);
 
 		return $data;
+	}
+
+	public function getCountByIdUser($id_user) {
+
+		$mysql = new Mysql();
+		$link = $mysql->connect();
+
+		$sql = "SELECT count(*) as cantidad FROM calificacion WHERE id_usuario = $id_user";
+		$res = mysql_query($sql) or die(mysql_error());
+
+		return mysql_result($res, 0, "cantidad");
+
 	}
 
 	public function getByIdUser($id_user) {

@@ -5,8 +5,9 @@
 </div>
 
 <div class="contenedor_calificar">
-	<div id="star"></div>
+	<div id="star"></div> <span class="recomendado">{{recomendado}}</span>	
 </div>
+<div id="calificaciones"><a href="/usuario/{{id}}?s=cal">{{calificaciones}}</a></div>
 
 <div class="contenido_contactar_user">
 	<a href="#" id="btn-contactar" onclick="showInfo()">Contactar</a>
@@ -25,4 +26,4 @@
 	<a href="http://twitter.com/share?text={{titulo}}&url={{url}}" onclick="return shareInfo(this)" class="twitter">Twitter</a>
 </div>
 
-<script> $('#star').raty(); </script>
+<script> $('#star').raty({score: "{{recomendado}}", readOnly: true }); </script>
