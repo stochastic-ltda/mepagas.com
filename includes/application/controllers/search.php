@@ -24,7 +24,7 @@ $params['term'][$tidx++]['estado'] = 'activo'; // Muestra solo activos
 
 if(isset($term_subcategoria)) $params['term'][$tidx++]['subcategoria'] = utf8_encode(SubcategoriaMapper::getNombreByPermalink(($term_subcategoria)));
 
-echo "<pre>"; print_r($params);
+//echo "<pre>"; print_r($params);
 
 $elastic->doSearch(null, $params);
 $results = $elastic->getResults();
