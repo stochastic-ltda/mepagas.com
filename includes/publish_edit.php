@@ -137,10 +137,15 @@ $subcats = $subcatMapper->getByIdCategoria($categoria->get('id'));
 			                <div class="trash">
 			                    <img src="/assets/img/delete.png" onclick="imgdelete('<?=$img?>', '<?=current(explode(".",$img))?>')">
 			                </div>
-			                <img src="<?=$config->imgsrc_path . "thumb_" . $img?>">                
+			                <img src="<?=$config->imgsrc_path . "thumb_" . $img?>" title="Dale click para seleccionar como principal">                
 			            </div>
 			        <? endforeach; ?>
 				</div>
+			</div>
+
+			<div class="row">
+				<h4>Comentarios</h4>
+				<input type="checkbox" <?=($aviso->get('comentarios')==1)?'checked="checked"':''?> id="comentarios"> Permitir que usuarios dejen comentarios
 			</div>
 		</div>
 
@@ -256,6 +261,8 @@ $(document).ready(function(){
 
 	//$('#subir').on('click', function() { processAviso(); });
 	checkul();
+
+	$('.image-thumb img[src="/upload/img/<?=$aviso->get("thumbnail")?>"]').parent().addClass('img-principal')
 
 });
 	

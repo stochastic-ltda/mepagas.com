@@ -49,6 +49,11 @@ function imgselected() {
 		$('.imagenes-zone #load-image').remove();
 		$('.imagenes-zone').append(img);
 		$('#imagenes').val("");
+
+		// Imagen principal
+		if( $('.img-principal').length == 0 ) {
+			$('.imagenes-zone .image-thumb:first').addClass('img-principal')
+		}
 	});
 
 }
