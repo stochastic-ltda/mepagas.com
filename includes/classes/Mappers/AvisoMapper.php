@@ -10,7 +10,7 @@ class AvisoMapper {
 		$link = $mysql->connect();
 
 		// Insert aviso
-		$sql = "INSERT INTO aviso (id_usuario,tipo,precio,titulo,categoria, subcategoria, descripcion, publicado, fecha_creacion, fecha_modificacion, permalink) VALUES ('".$aviso->get('id_usuario')."','".$aviso->get('tipo')."','".$aviso->get('precio')."','".$aviso->get('titulo')."','".$aviso->get('categoria')."','".$aviso->get('subcategoria')."','".$aviso->get('descripcion')."', 0, now(), now(),'".$aviso->get('permalink')."')";
+		$sql = "INSERT INTO aviso (id_usuario,tipo,precio,titulo,categoria, subcategoria, descripcion, publicado, fecha_creacion, fecha_modificacion, permalink, thumbnail, comentarios) VALUES ('".$aviso->get('id_usuario')."','".$aviso->get('tipo')."','".$aviso->get('precio')."','".$aviso->get('titulo')."','".$aviso->get('categoria')."','".$aviso->get('subcategoria')."','".$aviso->get('descripcion')."', 0, now(), now(),'".$aviso->get('permalink')."','".$aviso->get('thumbnail')."','".$aviso->get('comentarios')."')";
 		$res = mysql_query($sql) or die(mysql_error());		
 
 		$id = mysql_insert_id();
@@ -101,6 +101,16 @@ class AvisoMapper {
 
 		if(!is_null($aviso->get('estado'))) {
 			$s1 = "UPDATE aviso SET estado = '" . $aviso->get('estado') . "' WHERE id = $id";
+			mysql_query($s1) or die(mysql_error());
+		}
+
+		if(!is_null($aviso->get('thumbnail'))) {
+			$s1 = "UPDATE aviso SET thumbnail = '" . $aviso->get('thumbnail') . "' WHERE id = $id";
+			mysql_query($s1) or die(mysql_error());
+		}
+
+		if(!is_null($aviso->get('comentarios'))) {
+			$s1 = "UPDATE aviso SET comentarios = '" . $aviso->get('comentarios') . "' WHERE id = $id";
 			mysql_query($s1) or die(mysql_error());
 		}
 
@@ -217,6 +227,8 @@ class AvisoMapper {
 				$aviso->set('subcategoria', mysql_result($res, $i, "subcategoria"));
 				$aviso->set('descripcion', mysql_result($res, $i, "descripcion"));
 				$aviso->set('estado', mysql_result($res, $i, "estado"));
+				$aviso->set('thumbnail', mysql_result($res, $i, "thumbnail"));
+				$aviso->set('comentarios', mysql_result($res, $i, "comentarios"));
 				$aviso->set('localidades', $this->findLocalidadesById(mysql_result($res, $i, "id")));
 				$aviso->set('imagenes', $this->findImagenesById(mysql_result($res, $i, "id")));
 				$avisos[] = $aviso;
@@ -245,6 +257,8 @@ class AvisoMapper {
 				$aviso->set('subcategoria', mysql_result($res, $i, "subcategoria"));
 				$aviso->set('descripcion', mysql_result($res, $i, "descripcion"));
 				$aviso->set('estado', mysql_result($res, $i, "estado"));
+				$aviso->set('thumbnail', mysql_result($res, $i, "thumbnail"));
+				$aviso->set('comentarios', mysql_result($res, $i, "comentarios"));
 				$avisos[] = $aviso;
 
 			}

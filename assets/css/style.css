@@ -1434,12 +1434,18 @@ footer {
 		width: 100%;
 	}
 
+	.publish .img-principal {
+		border: 2px solid red;
+		background-color: red;
+	}
+
 	.publish .image-thumb {
 	    width: 150px;
 	    height: 100px;
 	    overflow: hidden !important;
 	    display: inline-block;
 	    margin: 5px;
+	    cursor: pointer;
 	}
 
 	.publish .image-thumb img {

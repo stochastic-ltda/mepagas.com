@@ -12,6 +12,11 @@ $aviso->set("subcategoria", $_POST['subcategoria']);
 $aviso->set("descripcion", $_POST['descripcion']);
 $aviso->set("localidades", $_POST['localidades']);
 $aviso->set("imagenes", $_POST['imagenes']);
+$aviso->set("thumbnail", $_POST['thumbnail']);
+
+$comentarios = 0;
+if($_POST['comentarios'] == "true") $comentarios = 1;
+$aviso->set("comentarios", $comentarios);
 
 // Genero permalink
 $titulo = strtolower($_POST['tipo'] . "-" . $_POST['precio'] . "-" . $_POST['titulo']);

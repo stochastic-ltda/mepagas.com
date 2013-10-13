@@ -34,7 +34,7 @@ foreach ($_FILES as $key) {
                 <div class="trash">
                     <img src="/assets/img/delete.png" onclick="imgdelete(\'' . $image_name . '\',\'' . current(explode(".",$image_name)) . '\')">
                 </div>
-                <img src="'. $config->imgsrc_path . $thumb_name . '">                
+                <img src="'. $config->imgsrc_path . $thumb_name . '" title="Dale click para seleccionar como principal"                
             </div>';
         echo $html;
 

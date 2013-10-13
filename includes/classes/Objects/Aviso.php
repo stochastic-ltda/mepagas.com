@@ -14,7 +14,9 @@ class Aviso {
 			'localidades' => null,
 			'imagenes' => null,
 			'permalink' => null,
-			'estado' => null
+			'estado' => null,
+			'thumbnail' => null,
+			'comentarios' => null
 		);
 
 	public function set($field, $value) {

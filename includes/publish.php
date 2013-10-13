@@ -107,6 +107,11 @@ $categorias = $categoriaMapper->getAll();
 
 				<div class="imagenes-zone"></div>
 			</div>
+
+			<div class="row">
+				<h4>Comentarios</h4>
+				<input type="checkbox" checked="checked" id="comentarios"> Permitir que usuarios dejen comentarios
+			</div>
 		</div>
 
 		<div class="usuario-wrapper">

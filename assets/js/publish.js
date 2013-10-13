@@ -170,14 +170,17 @@
 				}
 			});
 
+			var thumbnail = $('.img-principal img:last').attr('src').split("/")[3]
+
 			var acepto = $('#acepto').is(":checked");	
+			var comentarios = $('#comentarios').is(":checked");	
 			var id_usuario = getCookie('userid');
 
 			// TODO: Validacion de campos
 			if(validaraviso()) {
 
 				// Procesamiento de datos
-				$.post('/includes/phpscripts/publish_aviso.php', {id_usuario:id_usuario, tipo:tipo, precio:precio, titulo:titulo, categoria:categoria, subcategoria:subcategoria, descripcion:descripcion, localidades:localidades, imagenes:imagenes, acepto:acepto}, function(data) {
+				$.post('/includes/phpscripts/publish_aviso.php', {id_usuario:id_usuario, tipo:tipo, precio:precio, titulo:titulo, categoria:categoria, subcategoria:subcategoria, descripcion:descripcion, localidades:localidades, imagenes:imagenes, acepto:acepto, thumbnail:thumbnail, comentarios:comentarios}, function(data) {
 					
 					// TODO: Procesar posibles errores de carga en el aviso
 					alert("Tu pituto ha sido publicado");
@@ -218,14 +221,17 @@
 				}
 			});
 
+			var thumbnail = $('.img-principal img:last').attr('src').split("/")[3]
+
 			var acepto = $('#acepto').is(":checked");	
+			var comentarios = $('#comentarios').is(":checked");	
 			var id_usuario = getCookie('userid');
 
 			// TODO: Validacion de campos
 			if(validaraviso()) {
 
 				// Procesamiento de datos
-				$.post('/includes/phpscripts/publish_edit_aviso.php', {id: avisoid, id_usuario:id_usuario, tipo:tipo, precio:precio, titulo:titulo, categoria:categoria, subcategoria:subcategoria, descripcion:descripcion, localidades:localidades, imagenes:imagenes, acepto:acepto}, function(data) {
+				$.post('/includes/phpscripts/publish_edit_aviso.php', {id: avisoid, id_usuario:id_usuario, tipo:tipo, precio:precio, titulo:titulo, categoria:categoria, subcategoria:subcategoria, descripcion:descripcion, localidades:localidades, imagenes:imagenes, acepto:acepto, thumbnail:thumbnail, comentarios:comentarios}, function(data) {
 					
 					// TODO: Procesar posibles errores de carga en el aviso
 					alert("Tu aviso ha sido actualizado");
@@ -256,9 +262,15 @@
 			if($('#cobertura').val() == null) { alert("Debes seleccionar al menos una localidad"); ret = false; }
 			if($('.image-thumb img').length == 0) { alert("Debes ingresar al menos una imagen a tu aviso"); ret = false; }
 			if(!$('#acepto').is(':checked')) { alert("Debes aceptar los términos y condiciones de uso"); ret = false; }
+			if($('.img-principal').length == 0) { alert("Debes seleccionar una imagen principal"); ret = false; }
 
 			return ret;
         	
+        }
+
+        var setprincipal = function() {
+        	$('.image-thumb').removeClass('img-principal');
+        	$(this).addClass('img-principal');
         }
 
 
@@ -271,6 +283,8 @@
         $('#categorias').bind('change', changecategory);
         if($('#subir').length > 0) $('#subir').bind('click', processaviso);
         if($('#actualizar').length > 0) $('#actualizar').bind('click', editaraviso);
+
+        $('.image-thumb').live('click', setprincipal);
 
 	}
 

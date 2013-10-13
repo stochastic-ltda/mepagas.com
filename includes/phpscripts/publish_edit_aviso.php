@@ -14,6 +14,12 @@ if(isset($_POST['id'])) {
 	$aviso->set("descripcion", $_POST['descripcion']);
 	$aviso->set("localidades", $_POST['localidades']);
 	$aviso->set("imagenes", $_POST['imagenes']);
+	$aviso->set("thumbnail", $_POST['thumbnail']);
+
+	$comentarios = 0;
+	if($_POST['comentarios'] == "true") $comentarios = 1;
+	$aviso->set("comentarios", $comentarios);
+
 	$aviso->set("publicado", 0);
 
 	$avisoMapper = new AvisoMapper();

@@ -40,12 +40,14 @@ if(mysql_num_rows($res)) {
 				"fecha_creacion" => mysql_result($res, $i, "fecha_creacion"),
 				"fecha_modificacion" => mysql_result($res, $i, "fecha_modificacion"),
 				"permalink" => mysql_result($res, $i, "permalink"),
-				"estado" => mysql_result($res, $i, "estado")
+				"estado" => mysql_result($res, $i, "estado"),
+				"thumbnail" => mysql_result($res, $i, "thumbnail"),
+				"comentarios" => mysql_result($res, $i, "comentarios")
 			);
 
 		// Cargo imagenes
 		for($j=0; $j<mysql_num_rows($img); $j++) {
-			if($j==0) $doc["thumbnail"] = "thumb_" . mysql_result($img, $j, "imagen");
+			//if($j==0) $doc["thumbnail"] = "thumb_" . mysql_result($img, $j, "imagen");
 			$doc["imagenes"][$j] = mysql_result($img, $j, "imagen");
 		}		
 
