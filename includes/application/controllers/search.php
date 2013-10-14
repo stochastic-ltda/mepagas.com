@@ -35,10 +35,10 @@ $total = $elastic->getTotal();
 $h1 = "Últimos avisos";
 $title = "Gana dinero publicando GRATIS tu pituto";
 if(isset($term_precio)  && isset($term_subcategoria)) $title = "Pitutos en " . utf8_encode(SubcategoriaMapper::getNombreByPermalink(($term_subcategoria))) ." a $$term_precio pesos";
-elseif(isset($term_precio)  && isset($term_categoria)) $title = "Pitutos en " . CategoriaMapper::getNombreByPermalink($term_categoria) . " a $$term_precio pesos";
+elseif(isset($term_precio)  && isset($term_categoria)) $title = "Pitutos en " . utf8_encode(CategoriaMapper::getNombreByPermalink($term_categoria)) . " a $$term_precio pesos";
 elseif(isset($term_precio)) $title = "Pitutos a $$term_precio pesos";
 elseif(isset($term_subcategoria)) $title = "Pitutos en " . utf8_encode(SubcategoriaMapper::getNombreByPermalink(($term_subcategoria)));
-elseif(isset($term_categoria)) $title = "Pitutos en " . CategoriaMapper::getNombreByPermalink($term_categoria);
+elseif(isset($term_categoria)) $title = "Pitutos en " . utf8_encode(CategoriaMapper::getNombreByPermalink($term_categoria));
 
 if(str_replace("GRATIS", "", $title) == $title) $h1 = $title;
 

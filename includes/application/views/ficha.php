@@ -1,3 +1,10 @@
+<meta property="og:url" content="http://www.mepagas.com/<?=$data['id']?>/<?=$data['permalink']?>" />
+<meta property="og:description" content="<?=strip_tags($data['descripcion']?>" />
+<meta property="og:image" content="http://www.mepagas.com/upload/img/<?=$data['thumbnail']?>" />
+<meta property="og:title" content="<?=$title?>"/>
+<meta property="og:site_name" content="Mepagas.com"/>
+
+
 <? if(is_null($data)): ?>
 	<title>Aviso en proceso de carga</title>
 	<div id="pituto-no-disponible">		
