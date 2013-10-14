@@ -68,7 +68,7 @@ if (!class_exists('SubcategoriaMapper')) { include( dirname(__FILE__) . '/../../
 					<ul>
 						<? $base_cat_url = (isset($term_precio)) ? '/'.$term_precio.'/':'/';  ?>
 						<? foreach($facets['categoria']['terms'] as $cat): ?>
-							<li><a href="<?=$base_cat_url . CategoriaMapper::getPermalinkByNombre($cat['term'])?>"><?=$cat['term']?></span> (<?=$cat['count']?>)</a></li>
+							<li><a href="<?=$base_cat_url . CategoriaMapper::getPermalinkByNombre(utf8_decode($cat['term']))?>"><?=$cat['term']?></span> (<?=$cat['count']?>)</a></li>
 						<? endforeach; ?>
 					</ul>
 				</nav>

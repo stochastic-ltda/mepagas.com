@@ -16,7 +16,7 @@ $params['facets'][$fidx++] = array('field' => 'categoria', 'order' => 'term');
 
 if(isset($term_precio)) $params['term'][$tidx++]['precio'] = $term_precio;
 if(isset($term_categoria)) {
-	$params['term'][$tidx++]['categoria'] = CategoriaMapper::getNombreByPermalink($term_categoria);
+	$params['term'][$tidx++]['categoria'] = utf8_encode(CategoriaMapper::getNombreByPermalink($term_categoria));
 	$params['facets'][$fidx++] = array('field' => 'subcategoria', 'order' => 'term');
 }
 

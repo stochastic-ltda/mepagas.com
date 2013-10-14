@@ -59,7 +59,7 @@ $categorias = $categoriaMapper->getAll();
 				<select name="categorias" id="categorias" data-progression data-helper="Ingresa la <b>categoría</b> en la que podemos clasificar tu pituto">
 					<option value="">Selecciona una categoría</option>
 					<? foreach($categorias as $c): ?>
-						<option value="<?=$c->get('id').'||'.$c->get('nombre')?>"><?=utf8_encode($c->get('nombre'))?></option>
+						<option value="<?=$c->get('id').'||'.utf8_encode($c->get('nombre'))?>"><?=utf8_encode($c->get('nombre'))?></option>
 					<? endforeach; ?>
 				</select>
 			</div>

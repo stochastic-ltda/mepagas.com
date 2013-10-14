@@ -3,7 +3,7 @@ class Mysql {
 	
 	protected $_host = 'localhost';
 	protected $_user = 'root';
-	protected $_pass = 'donpipowinner';
+	protected $_pass = 'root';
 	protected $_dbase = 'mepagas';
 
 	protected $_link;
