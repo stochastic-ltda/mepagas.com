@@ -2,6 +2,11 @@
 <div id="logmodal" class="reveal-modal small">
      <a class="close-reveal-modal">&#215;</a>
 	<h1>Inicia tu sesión</h1>
+	<div class="fb-button" onclick="fb_login()">
+		Ingresar vía Facebook
+	</div>
+
+	<h2>O también puedes...</h2>
 	<form method="post" onsubmit="userlogin(this)">
 		<input type="text" id="email" name="email" placeholder="Email">
 		<input type="password" id="password" name="password" placeholder="Contraseña">
@@ -9,17 +14,19 @@
 		<ul class="errors" id="log-errorlist"></ul>
 		<input type="submit" name="login" id="login" value="Login">
 	</form>
-
-	<h2>O también puedes...</h2>
-	<div class="fb-button" onclick="fb_login()">
-		Ingresar vía Facebook
-	</div>
 </div>
 
 <!-- // Modal registro -->
 <div id="regmodal" class="reveal-modal small">
 	<a class="close-reveal-modal">&#215;</a>
 	<h1>Primero crea tu propia cuenta</h1>
+	<p>Evita llenar formularios y registrate en Mepagas.com con tu cuenta de Facebook. Serán sólo dos clics</p>
+	<div class="fb-button" onclick="fb_login()">
+		Registrarte vía Facebook
+	</div>
+	
+
+	<h2>O también puedes...</h2>
 	<form method="post" onsubmit="userregister(this)">
 		<input type="text" id="nombre" name="nombre" placeholder="Nombre">
 		<input type="text" id="email" name="email" placeholder="Email">
@@ -28,11 +35,6 @@
 		<ul class="errors" id="reg-errorlist"></ul>
 		<input type="submit" name="registrar" id="registrar" value="Crear cuenta">
 	</form>
-
-	<h2>O también puedes...</h2>
-	<div class="fb-button" onclick="fb_login()">
-		Registrarte vía Facebook
-	</div>
 </div>
 
 <!-- // Modal mensaje -->

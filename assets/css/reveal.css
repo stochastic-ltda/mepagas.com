@@ -135,20 +135,20 @@
 }
 
 .reveal-modal .fb-button {
-	color: white;
-	background: #395898;
-	width: 220px;
-	padding: 10px;
-	line-height: 1em;
-	margin: 5px auto;
-	font-size: 15px;
-	font-family: "Droid Sans", arial, sans-serif;
-	-moz-transition: all 0.3s ease 0s;
-	-webkit-transition: all 0.3s ease 0s;
-	-o-transition: all 0.3s ease 0s;
-	transition: all 0.3s ease 0s;
-	cursor: pointer;
-	text-align: center;
+color: white;
+background: #395898;
+width: 220px;
+padding: 10px;
+line-height: 1em;
+margin: 0px auto 30px;
+font-size: 18px;
+font-family: "Droid Sans", arial, sans-serif;
+-moz-transition: all 0.3s ease 0s;
+-webkit-transition: all 0.3s ease 0s;
+-o-transition: all 0.3s ease 0s;
+transition: all 0.3s ease 0s;
+cursor: pointer;
+text-align: center;
 }
 
 .reveal-modal .fb-button:hover {
