@@ -219,6 +219,20 @@ class UsuarioMapper {
 
 	}
 
+	public function sendAlertCalificaEmail($nombre, $email, $contactado, $idcontactado) {
+
+		$template = "user_alertacalifica";
+		$params = array("nombre"=>$nombre, "contactado"=>$contactado, "idcontactado"=>$idcontactado);
+		$html = Mustache::paint($template, $params);
+
+		$mail = new Mailer();
+		if(!$mail->send($email, $nombre, "Cuentanos tu experiencia con $contactado en Mepagas.com", $html))
+			return "Ha ocurrido un problema al enviar el email";
+
+		return true;
+
+	}
+
 	public function sendRecoverEmail($nombre, $email, $token) {
 
 		$template = "user_recover";
