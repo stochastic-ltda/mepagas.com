@@ -205,6 +205,20 @@ class UsuarioMapper {
 		return true;
 	}
 
+	public function sendAlertMensajeEmail($nombre, $email, $sinleer) {
+
+		$template = "user_alertamensaje";
+		$params = array("nombre"=>$nombre, "sinleer"=>$sinleer);
+		$html = Mustache::paint($template, $params);
+
+		$mail = new Mailer();
+		if(!$mail->send($email, $nombre, "Tienes mensajes sin leer en Mepagas.com", $html))
+			return "Ha ocurrido un problema al enviar el email";
+
+		return true;
+
+	}
+
 	public function sendRecoverEmail($nombre, $email, $token) {
 
 		$template = "user_recover";
