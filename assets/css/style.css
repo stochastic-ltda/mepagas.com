@@ -420,7 +420,9 @@ header {
     font-variant: small-caps;
 }
 #filtros li {
-    background: url('/assets/img/close.png') no-repeat 185px 5px;
+    background: url('/assets/img/close.png') no-repeat 185px 5px #EEE;
+border-bottom: 0px;
+border-radius: 10px;
 }
 
 .main {
