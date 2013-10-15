@@ -18,24 +18,24 @@ if (!class_exists('SubcategoriaMapper')) { include( dirname(__FILE__) . '/../../
 		
 		<div class="sidebar">
 			<!-- // Filtros -->
-			<nav><ul>
+			<nav><ul id="filtros">
 
 				<? if(isset($term_precio) && !is_null($term_precio)): ?>
 					<? $url = (isset($term_subcategoria)) ? "/".$term_categoria."/".$term_subcategoria : "/".$term_categoria; ?>
-					<li><a href="<?=$url?>">[X] Precio: <?=$term_precio?></a></li>
+					<li><a href="<?=$url?>"><div class="filtro-label">Precio</div> <div class="filtro-value"><?=str_replace("-", " ",$term_precio)?></div></a></li>
 				<? endif; ?>
 
 				<? if(isset($term_categoria) && !is_null($term_categoria)): ?>
-					<li><a href="/<?=$term_precio?>">[X] Categoria: <?=$term_categoria?></a></li>
+					<li><a href="/<?=$term_precio?>"><div class="filtro-label">Categoria</div> <div class="filtro-value"><?=str_replace("-", " ",$term_categoria)?></div></a></li>
 				<? endif; ?>
 
 				<? if(isset($term_subcategoria) && !is_null($term_subcategoria)): ?>
 					<? if(isset($term_precio)): ?>
-					<li><a href="/<?=$term_precio?>/<?=$term_categoria?>">[X] Subcategoria: <?=$term_subcategoria?></a></li>
+					<li><a href="/<?=$term_precio?>/<?=$term_categoria?>"><div class="filtro-label">Subcategoria</div> <div class="filtro-value"><?=str_replace("-", " ",$term_subcategoria)?></div></a></li>
 					<? endif; ?>
 
 					<? if(!isset($term_precio)): ?>
-					<li><a href="/<?=$term_categoria?>">[X] Subcategoria: <?=$term_subcategoria?></a></li>
+					<li><a href="/<?=$term_categoria?>"><div class="filtro-label">Subcategoria</div> <div class="filtro-value"><?=str_replace("-", " ",$term_subcategoria)?></div></a></li>
 					<? endif; ?>
 				<? endif; ?>
 

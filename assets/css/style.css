@@ -412,6 +412,17 @@ header {
 	padding: 0 22px;
 }
 
+.filtro-label {
+    text-transform: lowercase;
+    font-size: 11px;
+}
+.filtro-value {
+    font-variant: small-caps;
+}
+#filtros li {
+    background: url('/assets/img/close.png') no-repeat 185px 5px;
+}
+
 .main {
 	float: left;
 	width: 698px;
